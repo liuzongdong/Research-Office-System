@@ -70,12 +70,13 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">Personnel Development <a href="add.php"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Personnel Development</button></a></div>
 				<div class="panel-body">
-					<table id="table" data-toggle="table" data-url="data.php" data-show-export="true" data-advanced-search="true" data-id-table="advancedTable" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+					<table id="table" data-toggle="table" data-show-refresh="true" data-url="data.php" data-show-export="true" data-advanced-search="true" data-id-table="advancedTable" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 						<thead>
 						<tr>
-							<th data-field="personnel_deveplopment_training_person" data-sortable="true" data-halign="center" data-align="center">Name of Trained Person:</th>
-							<th data-field="personnel_deveplopment_project_name" data-sortable="true" data-halign="center" data-align="center">Research Topic:</th>
-							<th data-field="personnel_deveplopment_author" data-sortable="true" data-halign="center" data-align="center">Collaborative Professor(s):</th>
+							<th data-field="personnel_deveplopment_training_person" data-sortable="true" data-halign="center" data-align="center">Name of Trained Person</th>
+							<th data-field="personnel_deveplopment_training_category" data-sortable="true" data-halign="center" data-align="center">Training Category</th>
+							<th data-field="personnel_deveplopment_project_name" data-sortable="true" data-halign="center" data-align="center">Research Topic</th>
+							<th data-field="personnel_deveplopment_author" data-sortable="true" data-halign="center" data-align="center">Collaborative Professor(s)</th>
 							<th data-field="action" data-searchable="false" data-width="11%" data-halign="center" data-align="center">Action</th>
 						</tr>
 						</thead>
@@ -90,7 +91,46 @@
 	<div class="footer">©2017 United International College(UIC). All Rights Reserved.</div>
 
 </div>
-
+<script>
+function confirmDelete(id) {
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this record!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        closeOnConfirm: false
+    }, function (isConfirm) {
+        if (!isConfirm) return;
+        $.ajax({
+            url: "delete.php",
+            type: "POST",
+            data: {
+                id: id
+            },
+            dataType: "html",
+            success: function (response)
+			{
+				var answer = JSON.parse(response);
+				switch ( answer.status_response )
+				{
+					case 'success' :
+						swal("Done!", "It was succesfully deleted!", "success")
+						break;
+					case 'error' :
+						swal("Error deleting!", "You are not allowed to Delete it.", "error");
+						break;
+					case 'fail' :
+						swal("Unknown Error!", "Please check your internet connection.", "error");
+						break;
+				}
+				$('#table').bootstrapTable('refresh', {silent: true});
+            },
+        });
+    });
+}
+</script>
 
 </body>
 </html>

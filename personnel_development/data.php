@@ -7,7 +7,7 @@
     }
     $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    $sql = "select personnel_deveplopment_id, personnel_deveplopment_training_person, personnel_deveplopment_project_name, personnel_deveplopment_author, action from personnel_deveplopment where personnel_deveplopment_author_id = ?"; // *, select all. '?' and '?', SQL Injection
+    $sql = "select personnel_deveplopment_id, personnel_deveplopment_training_person, personnel_deveplopment_training_category, personnel_deveplopment_project_name, personnel_deveplopment_author, action from personnel_deveplopment where personnel_deveplopment_author_id = ?"; // *, select all. '?' and '?', SQL Injection
     $prepare = $dbh -> prepare($sql); // Statement is Statement.
     $execute = $prepare -> execute(array($_SESSION['user_id'])); // Var is Var.
     if ($execute)

@@ -76,12 +76,17 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="panel panel-default">
-            <div class="panel-heading">Edit Personnel Development</div>
+            <div class="panel-heading">Edit Personnel Development
+				<div style="float:right">
+					<label for="submitForm" class="btn btn-primary"> Submit </label>
+					<label for="resetForm" class="btn btn-default"> Reset </label>
+				</div>
+			</div>
             <div class="panel-body">
 			<form id="data" role="form" method="post" enctype="multipart/form-data">
               <div class="col-xs-6">
 					<div class="form-group">
-  					  <label>Reward Category:</label>
+  					  <label>Training Category:</label>
   					  <select class="dropdown" name="personnel_deveplopment_training_category">
   						  <option <?php if($data['personnel_deveplopment_training_category'] == "Student Training") echo("selected ");?> value="Student Training">Student Training</option>
   						  <option <?php if($data['personnel_deveplopment_training_category'] == "Young-aged Academic Leaders") echo("selected ");?> value="Young-aged Academic Leaders">Young-aged Academic Leaders</option>
@@ -127,7 +132,7 @@
 				  <div class="form-group">
 					  <label>Please Upload File Here (PDF Only!)</label>
 				  </br>
-					  <input type="file" name="file" class="filestyle" data-buttonText="&nbsp Upload" accept="application/pdf" required="require">
+					  <input type="file" name="file" class="filestyle" data-buttonText="&nbsp Upload" accept="application/pdf">
 				  </div>
 				  <div class="form-group" style="text-align:center">
 					  <button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>
@@ -154,40 +159,58 @@
     </div> <!--end of center_content-->
     </div>
 
-<script>
-$("form#data").submit(function(id){
-var formData = new FormData(this);
-formData.append("id", <?php echo $_GET['id'];?>);
-	$.ajax({
-	url: "modify.php",
-	type: 'POST',
-	data: formData,
-	async: false,
+	<script>
+	$("form#data").submit(function(id){
+	var formData = new FormData(this);
+	formData.append("id", <?php echo $_GET['id'];?>);
+		$.ajax({
+		url: "modify.php",
+		type: 'POST',
+		data: formData,
+		async: false,
 
-	success: function ()
-	{
-		swal({
-			title:"Good job!",
-			text: "Edit Succesfully!",
-			type: "success"
-		},function(){
-					window.location.href = "index.php";
-			});
-	},
-	error: function (xhr, ajaxOptions, thrownError)
-	{
-		swal("Editting Adding!", "Edit Fail.", "error");
-	},
-	cache: false,
-	contentType: false,
-	processData: false
-});
+		success: function (response)
+		{
+			var answer = JSON.parse(response);
+			switch ( answer.status_response )
+			{
+				case 'success' :
+					swal(
+						{
+						title:"Good job!",
+						text: "Edit Succeed!",
+						type: "success"
+						},
+						function()
+						{
+							setTimeout(function (){
+								window.location.href = "index";
+							}, 300);
+						});
+					break;
+				case 'empty' :
+					swal("Edit Failed!", "Please Complete the Form or There is only Spaces in your submission", "error");
+					break;
+				case 'error' :
+					swal("Edit Failed!", "Please upload a PDF file, PDF File only!", "error");
+					break;
+				case 'fail' :
+					swal("Edit Failed!", "Please check your internet connection!", "error");
+					break;
 
-return false;
-});
-</script>
+			}
+		},
+		error: function (xhr, ajaxOptions, thrownError)
+		{
+			swal("Edit Failed!", "Please check your internet connection.", "error");
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
 
-
-
+	return false;
+	});
+	</script>
 </body>
 </html>
