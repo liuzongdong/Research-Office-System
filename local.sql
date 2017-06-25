@@ -193,19 +193,20 @@ CREATE TABLE `research_award` -- Patent table
     FOREIGN KEY (`research_award_author_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE `development`
+CREATE TABLE `personnel_deveplopment`
 (
     `personnel_deveplopment_id` int auto_increment primary key,
     `personnel_deveplopment_author_id` int(11),
-    `personnel_deveplopment_training_category` int(11) DEFAULT 1, /* 1 for 'Invited Report', 2 for 'Group Report' */
-    `award_name` varchar(200) DEFAULT '',
-    `award_abstract` text DEFAULT'',
-    `award_author` varchar(200) DEFAULT '',
-    `award_organization` varchar(200) DEFAULT '',
-    `grade` int(11) DEFAULT 1, /* 1 for 'Invited Report', 2 for 'Group Report' */
-    `award_date` varchar(40) DEFAULT '',
+    `personnel_deveplopment_training_category` varchar(200) DEFAULT '',
+    `personnel_deveplopment_training_person` varchar(200) DEFAULT '',
+    `personnel_deveplopment_author` varchar(200) DEFAULT '',
+    `personnel_deveplopment_project_name` varchar(200) DEFAULT '',
+    `personnel_deveplopment_abstract` text DEFAULT'',
+    `personnel_deveplopment_start_date` varchar(40) DEFAULT '',
+    `personnel_deveplopment_due_date` varchar(40) DEFAULT '',
+    `personnel_deveplopment_file` varchar(100) DEFAULT '', /* 1 for 'Invited Report', 2 for 'Group Report' */
     `action` varchar(10) DEFAULT '',
-    FOREIGN KEY (`award_user_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE 
+    FOREIGN KEY (`personnel_deveplopment_author_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `iv_project`

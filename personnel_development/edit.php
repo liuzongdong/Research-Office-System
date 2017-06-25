@@ -35,14 +35,13 @@
 
     <div class="menu">
     	<ul>
-			<li><a href="../index.php">Dashboard</a></li>
-    		<li><a href="../profile">Profile</a></li>
-    		<li><a href="../uic_project">UIC Project</a></li>
-    		<li><a href="../external_project">External Project</a></li>
-    		<li><a href="../publication">Publication</a></li>
-    		<!-- <li><a href="../patent">Patent</a></li> -->
-    		<li><a href="../achievements" class="selected">Achievements</a></li>
-    		<li><a href="../applications" >Applications</a></li>
+			<li><a href="/index.php">Dashboard</a></li>
+    		<li><a href="/profile">Profile</a></li>
+    		<li><a href="/uic_project">UIC Project</a></li>
+    		<li><a href="/external_project">External Project</a></li>
+    		<li><a href="/publication">Publication</a></li>
+    		<li><a href="/achievements" class="selected">Achievements</a></li>
+    		<li><a href="/applications" >Applications</a></li>
 				<?php if ($_SESSION['user_type'] == 2)
 				{
 					$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
@@ -79,67 +78,71 @@
           <div class="panel panel-default">
             <div class="panel-heading">Edit Personnel Development</div>
             <div class="panel-body">
-              <div class="col-xs-12">
-                <form id="data" role="form" method="post" enctype="multipart/form-data">
-
-							<div class="form-group">
-									 <label>Training Category:</label>
-									</br>
-										<div class="radio-inline">
-						 		 <label>
-						  			<input type="radio" name="personnel_deveplopment_training_category" <?php if($data['personnel_deveplopment_training_category'] == "1") echo("checked ");?> value="1">Student Training
-		         		 </label>
-		          		</div>
-                   	<div class="radio-inline">
-			          	<label>
-				      			<input type="radio" name="personnel_deveplopment_training_category" <?php if($data['personnel_deveplopment_training_category'] == "0") echo("checked ");?> value="0">Young-aged Academic Leaders
-					        </label>
-				      		</div>
-							</div>
+			<form id="data" role="form" method="post" enctype="multipart/form-data">
+              <div class="col-xs-6">
+					<div class="form-group">
+  					  <label>Reward Category:</label>
+  					  <select class="dropdown" name="personnel_deveplopment_training_category">
+  						  <option <?php if($data['personnel_deveplopment_training_category'] == "Student Training") echo("selected ");?> value="Student Training">Student Training</option>
+  						  <option <?php if($data['personnel_deveplopment_training_category'] == "Young-aged Academic Leaders") echo("selected ");?> value="Young-aged Academic Leaders">Young-aged Academic Leaders</option>
+  					  </select>
+  				  </div>
 
                   <div class="form-group">
                     <label>Name of Trained Person:</label>
                     <input class="form-control" name="personnel_deveplopment_training_person" required="require" value="<?php echo $data['personnel_deveplopment_training_person']; ?>">
                   </div>
-
-									<div class="form-group">
-										<label>Research Topic:</label>
-										<input class="form-control" name="personnel_deveplopment_project_name" required="require" value="<?php echo $data['personnel_deveplopment_project_name']; ?>">
-									</div>
+				  <div class="form-group">
+					  <label>Research Topic:</label>
+					  <input class="form-control" name="personnel_deveplopment_project_name" required="require" value="<?php echo $data['personnel_deveplopment_project_name']; ?>">
+				  </div>
 
                   <div class="form-group">
                     <label>Collaborative Professor(s):</label>
                     <input class="form-control" name="personnel_deveplopment_author" required="require" value="<?php echo $data['personnel_deveplopment_author']; ?>">
                   </div>
+				  <div class="form-group">
+					  <label>Abstract:</label>
+					  <textarea class="form-control" rows="6" name="personnel_deveplopment_abstract" required="require" ><?php echo $data['personnel_deveplopment_abstract']; ?></textarea>
+				  </div>
+				  <div class="form-group">
+					  <label>Start Date</label>
+					  <div class='input-group date' id='datetimepicker1'>
+						  <input value="<?php echo $data['personnel_deveplopment_start_date']; ?>" name="personnel_deveplopment_start_date" type='text' required="require" readonly class="form-control"/>
+						  <span class="input-group-addon">
+							  <span class="glyphicon glyphicon-calendar"></span>
+						  </span>
+					  </div>
+				  </div>
 
-									<div class="form-group">
-										<label>Abstract:</label>
-										<textarea class="form-control" rows="6" name="personnel_deveplopment_abstract" required="require" value="<?php echo $data['personnel_deveplopment_abstract']; ?>"></textarea>
-									</div>
-
-									<div class="form-group">
-														<label>Start Date:</label>
-														<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-																<input class="form-control" name="personnel_deveplopment_start_date" size="16" required="require" type="text" value="<?php echo $data['personnel_deveplopment_start_date']; ?>" readonly>
-																<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-																<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-														</div>
-									</div>
-
-									<div class="form-group">
-														<label>Due Date:</label>
-														<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-																<input class="form-control" name="personnel_deveplopment_due_date" size="16" required="require" type="text" value="<?php echo $data['personnel_deveplopment_due_date']; ?>" readonly>
-																<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-																<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-														</div>
-									</div>
-
-                  <div class="form-group" style="text-align:center">
-                    <button type="submit" class="btn btn-primary">Submit Button</button>
-                    <button type="reset" class="btn btn-default">Reset Button</button>
-                  </div>
+				  <div class="form-group">
+					  <label>Due Date</label>
+					  <div class='input-group date' id='datetimepicker2'>
+						  <input value="<?php echo $data['personnel_deveplopment_due_date']; ?>" name="personnel_deveplopment_due_date" type='text' required="require" readonly class="form-control"/>
+						  <span class="input-group-addon">
+							  <span class="glyphicon glyphicon-calendar"></span>
+						  </span>
+					  </div>
+				  </div>
+				  <div class="form-group">
+					  <label>Please Upload File Here (PDF Only!)</label>
+				  </br>
+					  <input type="file" name="file" class="filestyle" data-buttonText="&nbsp Upload" accept="application/pdf" required="require">
+				  </div>
+				  <div class="form-group" style="text-align:center">
+					  <button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>
+					  <button id="resetForm" type="reset" class="btn btn-default hidden">Reset Button</button>
+				  </div>
               </div>
+			  <div class="col-xs-6" id="pdf" style="padding-top:20px;">
+				  <object data='<?php echo "upload/".$data['personnel_deveplopment_file']; ?>'
+					  type='application/pdf'
+					  width='100%'
+					  height='660px;'>
+						  <p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="<?php echo "upload/".$data['personnel_deveplopment_file']; ?>">Download PDF</a></p>
+				  </object>
+			  </div>
+		  </form>
             </div>
           </div>
         </div>

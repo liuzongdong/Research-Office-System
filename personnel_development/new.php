@@ -1,47 +1,67 @@
 <?php
     session_start();
-    require("../base.php");
-    $url = "index.php";
-    if( $_SERVER['HTTP_REFERER'] == "" )
+    if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) )
     {
-        header("Location:".$url); exit;
+        header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
+        die( header( 'location:index' ) );
     }
-
-    // if ($_POST["name"] == "" || $_POST["code"] == "" || $_POST["authorization"] == "")
-    // {
-    //     header('HTTP/1.1 500 Internal Server...');
-    //     header('Content-Type: application/json; charset=UTF-8');
-    //     die(json_encode(array('message' => 'ERROR', 'code' => 1337)));
-    // }
-    //等你修改～
-
     else
     {
-        $personnel_deveplopment_training_category = $_POST["personnel_deveplopment_training_category"];
-    	  $personnel_deveplopment_training_person = $_POST["personnel_deveplopment_training_person"];
-    	  $personnel_deveplopment_project_name = $_POST["personnel_deveplopment_project_name"];
-        $personnel_deveplopment_author = $_POST["personnel_deveplopment_author"];
-        $personnel_deveplopment_abstract = $_POST["personnel_deveplopment_abstract"];
-        $personnel_deveplopment_start_date = $_POST["personnel_deveplopment_start_date"];
-        $personnel_deveplopment_due_date = $_POST["personnel_deveplopment_due_date"];
-        $action = "";
-        //共八个变量
-        $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-        $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-        $sql = "insert into personnel_deveplopment (personnel_deveplopment_author_id, personnel_deveplopment_training_category, personnel_deveplopment_training_person, personnel_deveplopment_project_name, personnel_deveplopment_author, personnel_deveplopment_abstract, personnel_deveplopment_start_date, personnel_deveplopment_due_date, action) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        //共九个值
-        $prepare = $dbh -> prepare($sql);
-        $execute = $prepare -> execute(array($_SESSION['user_id'], $personnel_deveplopment_training_category, $personnel_deveplopment_training_person,  $personnel_deveplopment_project_name, $personnel_deveplopment_author, $personnel_deveplopment_abstract, $personnel_deveplopment_start_date, $personnel_deveplopment_due_date, $action));
-        //共九个变量，九个“？”
-        if ($execute)
+        require("../base.php");
+        $missing = array();
+        foreach ($_POST as $key => $value)
         {
-            echo '<script type="text/javascript">alert("Add Suceess!");location.href="index.php"</script>';
+            if ($value == "" || ctype_space($value))
+            {
+                array_push($missing, $key);
+            }
+        }
+        if (count($missing) > 0)
+        {
+            $response = array('status_response'  => 'empty');
+            echo json_encode($response);
         }
         else
         {
-            var_dump($prepare->errorInfo());
-            //echo '<script type="text/javascript">alert("Add Fail!!");location.href="index.php"</script>';
+            unset($missing);
+            $personnel_deveplopment_training_category = $_POST["personnel_deveplopment_training_category"];
+        	$personnel_deveplopment_training_person = $_POST["personnel_deveplopment_training_person"];
+        	$personnel_deveplopment_project_name = $_POST["personnel_deveplopment_project_name"];
+            $personnel_deveplopment_author = $_POST["personnel_deveplopment_author"];
+            $personnel_deveplopment_abstract = $_POST["personnel_deveplopment_abstract"];
+            $personnel_deveplopment_start_date = $_POST["personnel_deveplopment_start_date"];
+            $personnel_deveplopment_due_date = $_POST["personnel_deveplopment_due_date"];
+            $action = "";
+            $upload_file = $_FILES["file"]["name"];
+            $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
+            if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")
+            {
+                $response = array('status_response'  => 'error');
+                echo json_encode($response);
+            }
+            else
+            {
+                $folder="upload/";
+                $filenamekey = md5(uniqid($_FILES["file"]["name"], true));
+                $filenamekey .= "." . $extension;
+                move_uploaded_file($_FILES["file"]["tmp_name"], "$folder".$filenamekey);
+                $dbh = new PDO($dbinfo, $dbusername, $dbpassword);
+                $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                $sql = "insert into personnel_deveplopment (personnel_deveplopment_author_id, personnel_deveplopment_training_category, personnel_deveplopment_training_person, personnel_deveplopment_project_name, personnel_deveplopment_author, personnel_deveplopment_abstract, personnel_deveplopment_start_date, personnel_deveplopment_due_date, personnel_deveplopment_file, action) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $prepare = $dbh -> prepare($sql);
+                $execute = $prepare -> execute(array($_SESSION['user_id'], $personnel_deveplopment_training_category, $personnel_deveplopment_training_person,  $personnel_deveplopment_project_name, $personnel_deveplopment_author, $personnel_deveplopment_abstract, $personnel_deveplopment_start_date, $personnel_deveplopment_due_date, $filenamekey, $action));
+                if ($execute)
+                {
+                    $response = array('status_response'  => 'success');
+                    echo json_encode($response);
+                }
+                else
+                {
+                    $response = array('status_response'  => 'fail');
+                    echo json_encode($response);
+                }
+                $dbh = null;
+            }
         }
-        $dbh = null;
     }
 ?>

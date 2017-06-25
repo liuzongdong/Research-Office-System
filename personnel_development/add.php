@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Reasearch Teacher</title>
+<title>Personnel Development</title>
 <?php importCss(); ?>
 </head>
 <body>
@@ -22,23 +22,22 @@
 
     <div class="menu">
     	<ul>
-			<li><a href="../index.php">Dashboard</a></li>
-    		<li><a href="../profile">Profile</a></li>
-    		<li><a href="../uic_project">UIC Project</a></li>
-    		<li><a href="../external_project">External Project</a></li>
-    		<li><a href="../publication">Publication</a></li>
-    		<!-- <li><a href="../patent">Patent</a></li> -->
-    		<li><a href="../achievements" class="selected">Achievements</a></li>
-    		<li><a href="../applications" >Applications</a></li>
+			<li><a href="/index.php">Dashboard</a></li>
+    		<li><a href="/profile">Profile</a></li>
+    		<li><a href="/uic_project">UIC Project</a></li>
+    		<li><a href="/external_project">External Project</a></li>
+    		<li><a href="/publication">Publication</a></li>
+    		<li><a href="/achievements" class="selected">Achievements</a></li>
+    		<li><a href="/applications" >Applications</a></li>
 				<?php if ($_SESSION['user_type'] == 2)
 				{
 					$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
 					$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
 					$sql = "select * from application, user where application.app_user_id = user.user_id AND user.programme = ? and approval = 0"; // *, select all. '?' and '?', SQL Injection
-							$prepare = $dbh -> prepare($sql); // Statement is Statement.
-							$execute = $prepare -> execute(array($_SESSION["programme"])); // Var is Var.
-							if ($execute)
-							{
+					$prepare = $dbh -> prepare($sql); // Statement is Statement.
+					$execute = $prepare -> execute(array($_SESSION["programme"])); // Var is Var.
+					if ($execute)
+					{
 						$row = $prepare -> fetchall(PDO::FETCH_ASSOC);
 						$rowCount = count($row);
 					}
@@ -64,69 +63,68 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="panel panel-default">
-            <div class="panel-heading">New Personnel Development</div>
+            <div class="panel-heading">New Personnel Development
+				<div style="float:right">
+					<label for="submitForm" class="btn btn-primary"> Submit </label>
+					<label for="resetForm" class="btn btn-default"> Reset </label>
+				</div>
+			</div>
             <div class="panel-body">
+			<form id="data" role="form" method="post">
               <div class="col-xs-12">
-							<form id="data" role="form" method="post">
+				  <div class="form-group">
+					  <label>Reward Category:</label>
+					  <select class="dropdown" name="personnel_deveplopment_training_category">
+						  <option value="Student Training">Student Training</option>
+						  <option value="Young-aged Academic Leaders">Young-aged Academic Leaders</option>
+					  </select>
+				  </div>
+				  <div class="form-group">
+	                <label>Name of Trained Person:</label>
+	                <input class="form-control" name="personnel_deveplopment_training_person" required="require">
+	              </div>
+				  <div class="form-group">
+					  <label>Research Topic:</label>
+					  <input class="form-control" name="personnel_deveplopment_project_name" required="require">
+				  </div>
+				  <div class="form-group">
+	                <label>Collaborative Professor(s):</label>
+	                <input class="form-control" name="personnel_deveplopment_author" required="require">
+	              </div>
+				  <div class="form-group">
+					  <label>Abstract:</label>
+					  <textarea class="form-control" rows="6" name="personnel_deveplopment_abstract" required="require"></textarea>
+				  </div>
+				  <div class="form-group">
+					  <label>Start Date</label>
+					  <div class='input-group date' id='datetimepicker1'>
+						  <input name="personnel_deveplopment_start_date" type='text' required="require" readonly class="form-control"/>
+						  <span class="input-group-addon">
+							  <span class="glyphicon glyphicon-calendar"></span>
+						  </span>
+					  </div>
+				  </div>
 
-							<div class="form-group">
-									 <label>Training Category:</label>
-									</br>
-										<div class="radio-inline">
-						 		 <label>
-						  			<input type="radio" name="personnel_deveplopment_training_category" value="1">Student Training
-		         		 </label>
-		          		</div>
-                   	<div class="radio-inline">
-			          	<label>
-				      			<input type="radio" name="personnel_deveplopment_training_category" value="0">Young-aged Academic Leaders
-					        </label>
-				      		</div>
-							</div>
-
-              <div class="form-group">
-                <label>Name of Trained Person:</label>
-                <input class="form-control" name="personnel_deveplopment_training_person" required="require">
-              </div>
-
-							<div class="form-group">
-								<label>Research Topic:</label>
-								<input class="form-control" name="personnel_deveplopment_project_name" required="require">
-							</div>
-
-              <div class="form-group">
-                <label>Collaborative Professor(s):</label>
-                <input class="form-control" name="personnel_deveplopment_author" required="require">
-              </div>
-
-							<div class="form-group">
-								<label>Abstract:</label>
-								<textarea class="form-control" rows="6" name="personnel_deveplopment_abstract" required="require"></textarea>
-							</div>
-
-							<div class="form-group">
-								<label>Start Date:</label>
-								<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-										<input class="form-control" name="personnel_deveplopment_start_date" size="16" required="require" type="text" value="" readonly>
-										<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<label>Due Date:</label>
-								<div class="input-group date form_date" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-										<input class="form-control" name="personnel_deveplopment_due_date" size="16" required="require" type="text" value="" readonly>
-										<span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
-										<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-								</div>
-							</div>
-
-              <div class="form-group" style="text-align:center">
-                <button type="submit" class="btn btn-primary">Submit Button</button>
-                <button type="reset" class="btn btn-default">Reset Button</button>
-              </div>
+				  <div class="form-group">
+					  <label>Due Date</label>
+					  <div class='input-group date' id='datetimepicker2'>
+						  <input name="personnel_deveplopment_due_date" type='text' required="require" readonly class="form-control"/>
+						  <span class="input-group-addon">
+							  <span class="glyphicon glyphicon-calendar"></span>
+						  </span>
+					  </div>
+				  </div>
+				  <div class="form-group">
+					  <label>Please Upload File Here (PDF Only!)</label>
+				  </br>
+					  <input type="file" name="file" class="filestyle" data-buttonText="&nbsp Upload" accept="application/pdf" required="require">
+				  </div>
+				  <div class="form-group" style="text-align:center">
+					  <button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>
+					  <button id="resetForm" type="reset" class="btn btn-default hidden">Reset Button</button>
+				  </div>
             	</div>
+			</form>
             </div>
           </div>
         </div>
@@ -138,44 +136,81 @@
     </div> <!--end of center_content-->
 
 	</div>
+	<script type="text/javascript">
+	            $(function () {
+	                $('#datetimepicker1').datetimepicker({
+	                    format: 'YYYY/MM/DD',
+						showTodayButton: true,
+						showClear: true,
+						ignoreReadonly: true
+	                });
+					$('#datetimepicker2').datetimepicker({
+	                    format: 'YYYY/MM/DD',
+						useCurrent: false,
+						showTodayButton: true,
+						showClear: true,
+						ignoreReadonly: true
+	                });
+	            });
+				$("#datetimepicker1").on("dp.change", function (e) {
+	            $('#datetimepicker2').data("DateTimePicker").minDate(e.date);
+	        });
+	        $("#datetimepicker2").on("dp.change", function (e) {
+	            $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+	        });
+	</script>
+	<script>
+	$("form#data").submit(function(){
+	var formData = new FormData(this);
+		$.ajax({
+		url: "new.php",
+		type: 'POST',
+		data: formData,
+		async: false,
 
-		<script>
-		$("form#data").submit(function(){
-		var formData = new FormData(this);
-			$.ajax({
-			url: "new.php",
-			type: 'POST',
-			data: formData,
-			async: false,
-
-			success: function ()
+		success: function (response)
+		{
+			var answer = JSON.parse(response);
+			switch ( answer.status_response )
 			{
-				swal({
-					title:"Good job!",
-					text: "Add Succesfully!",
-					type: "success"
-				},function()
-				{
-					setTimeout(function (){
-						window.location.href = "index.php";
-					}, 300);
+				case 'success' :
+					swal(
+						{
+						title:"Good job!",
+						text: "Add Succeed!",
+						type: "success"
+						},
+						function()
+						{
+							setTimeout(function (){
+								window.location.href = "index";
+							}, 300);
 
-	    		});
-			},
-			error: function (xhr, ajaxOptions, thrownError)
-			{
-				swal("Error Adding!", "Add Fail.", "error");
-			},
-			cache: false,
-			contentType: false,
-			processData: false
-		});
+						});
+					break;
+				case 'empty' :
+					swal("Add Failed!", "Please Complete the Form or There is only Spaces in your submission", "error");
+					break;
+				case 'error' :
+					swal("Add Failed!", "Please upload a PDF file, PDF File only!", "error");
+					break;
+				case 'fail' :
+					swal("Add Failed!", "Please check your internet connection!", "error");
+					break;
 
-		return false;
-		});
-		</script>
+			}
+		},
+		error: function (xhr, ajaxOptions, thrownError)
+		{
+			swal("Add Failed!", "Please check your internet connection!", "error");
+		},
+		cache: false,
+		contentType: false,
+		processData: false
+	});
 
-
-
+	return false;
+	});
+	</script>
 	</body>
 	</html>
