@@ -1,0 +1,12 @@
+Options -Indexes
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_FILENAME}.php [NC,L]
+<files base.php>
+	Order allow,deny
+	Deny from all
+</files>
+<files .htaccess>
+	Order allow,deny
+	Deny from all
+</files>

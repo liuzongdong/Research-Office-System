@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Welcome to RO System</title>
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/sweetalert.css" rel="stylesheet">
+<script src="js/sweetalert.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+
+</head>
+<body>
+<div id="panelwrap">
+
+	<div class="header">
+    <div class="title"><a href="#"><img src="uic_logo.png"></img></a></div>
+    </div>
+
+    <div>
+		<div class="wrapper">
+	    <form id="data" class="form-signin" method="post">
+	      <h3 class="form-signin-heading">Sign Up</h3>
+	      <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
+	      <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+	      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+		  <p style="padding-top:20px;">Already registered? Click <a href="login.html">here</a> to login.</p>
+	    </form>
+	  </div>
+
+		<div class="clear"></div>
+		<div class="footer">©2017 United International College(UIC). All Rights Reserved.</div>
+    </div> <!--end of center_content-->
+
+</div>
+
+
+<script>
+$("form#data").submit(function(){
+var formData = new FormData(this);
+	$.ajax({
+	url: "signup.php",
+	type: 'POST',
+	data: formData,
+	async: false,
+
+	success: function ()
+	{
+		swal({
+			title:"Good job!",
+			text: "Sign Up Succesfully!",
+			type: "success"
+		},function()
+		{
+			setTimeout(function (){
+				window.location.href = "login.html";
+			}, 300);
+
+		});
+	},
+	error: function (xhr, ajaxOptions, thrownError)
+	{
+		swal("Failed!", "Email is already used, please change a Email Address", "error");
+	},
+	cache: false,
+	contentType: false,
+	processData: false
+});
+
+return false;
+});
+</script>
+
+
+</body>
+</html>
