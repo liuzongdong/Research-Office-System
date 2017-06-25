@@ -65,10 +65,9 @@
 
     <div class="submenu">
     <ul>
-		<li><a href="/uic_project" class="selected">Category Ⅰ - III</a></li>
-		<li><a href="">Category IV</a></li>
-		<li><a href="">UIC Project Budget</a></li>
-		<li><a href="">Project Undertaking</a></li>
+		<li><a href="/uic_project" class="selected">Category I - III</a></li>
+		<li><a href="/iv_project">Category IV</a></li>
+		<li><a href="/project_undertaking">UIC Project Budget & Project Undertaking</a></li>
     </ul>
     </div>
 
