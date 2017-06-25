@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Personnel Development</title>
+<title>Add Personnel Development</title>
 <?php importCss(); ?>
 </head>
 <body>

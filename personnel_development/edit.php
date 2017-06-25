@@ -22,7 +22,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Reasearch Teacher</title>
+<title>Edit Personnel Development</title>
 <?php importCss(); ?>
 </head>
 <body>
