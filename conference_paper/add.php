@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Conference Paper</title>
+<title>Add Conference Paper</title>
 <?php importCss(); ?>
 </head>
 <body>
