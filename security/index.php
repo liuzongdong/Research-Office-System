@@ -51,8 +51,8 @@
 
     <div class="submenu">
     <ul>
-    <li><a href="/profile" class="selected">Profile</a></li>
-	<li><a href="/security" >Change Password</a></li>
+    <li><a href="/profile">Profile</a></li>
+	<li><a href="/security" class="selected">Change Password</a></li>
     </ul>
     </div>
 

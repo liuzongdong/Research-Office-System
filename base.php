@@ -14,6 +14,28 @@
             <link href=\"/css/easydropdown.css\" rel=\"stylesheet\">
             <script src=\"/js/jquery.js\"></script>
             <script src=\"/js/bootstrap.js\"></script>
+            <script src=\"/js/sweetalert.js\"></script>
+            <script src=\"/js/logout.js\"></script>
+            <script src=\"/js/placeimage.js\"></script>
+            <script src=\"/js/easydropdown.js\"></script>
+            <script src=\"/js/moment.js\"></script>
+            <script src=\"/js/bootstrap-datetimepicker.min.js\"></script>
+            <script src=\"/js/bootstrap-filestyle.js\"></script>
+        ";
+    }
+
+    function importFullCss()
+    {
+        echo
+        "
+            <link href=\"/css/style.css\" rel=\"stylesheet\">
+            <link href=\"/css/bootstrap.css\" rel=\"stylesheet\">
+            <link href=\"/css/bootstrap-table.css\" rel=\"stylesheet\">
+            <link href=\"/css/sweetalert.css\" rel=\"stylesheet\">
+            <link href=\"/css/bootstrap-datetimepicker.css\" rel=\"stylesheet\">
+            <link href=\"/css/easydropdown.css\" rel=\"stylesheet\">
+            <script src=\"/js/jquery.js\"></script>
+            <script src=\"/js/bootstrap.js\"></script>
             <script src=\"/js/bootstrap-table.js\"></script>
             <script src=\"/js/bootstrap-table-export.js\"></script>
             <script src=\"/js/bootstrap-table-toolbar.js\"></script>

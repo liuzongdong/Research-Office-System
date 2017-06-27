@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Government-funded Project</title>
 
-<?php importCss(); ?>
+<?php importFullCss(); ?>
 
 <!-- jQuery file -->
 
