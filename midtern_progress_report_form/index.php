@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>UIC Project</title>
 
-<?php importCss(); ?>
+<?php importFullCss(); ?>
 
 
 </head>
@@ -56,8 +56,7 @@
     <ul>
 		<li><a href="/uic_project" >Category I - III</a></li>
 		<li><a href="/iv_project">Category IV</a></li>
-		<li><a href="">UIC Project Budget</a></li>
-		<li><a href="">Project Undertaking</a></li>
+		<li><a href="">UIC Project Budget & Project Undertaking</a></li>
 		<li><a href="/midtern_progress_report_form" class="selected">Midtern Progress Report Form</a></li>
 		<li><a href="/completion_report_form">Completion Report Form</a></li>
     </ul>

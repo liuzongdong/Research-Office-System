@@ -57,112 +57,34 @@
     </div>
 
     <div>
-<?php
-	$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-	$sql = "select * from user where user_id = ?";
-	$prepare = $dbh -> prepare($sql); // Statement is Statement.
-	$execute = $prepare -> execute(array($_SESSION['user_id']));
-	if ($execute)
-	{
-		$row = $prepare -> fetch();
-	}
-?>
 
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Edit Profile
+					<div class="panel-heading">Change Password
 						<div style="float:right">
 						    <label for="submitForm" class="btn btn-primary"> Submit </label>
 						    <label for="resetForm" class="btn btn-default"> Reset </label>
 						</div>
 					</div>
 					<div class="panel-body">
-						<div class="col-xs-7">
-							<form role="form" id="data" method="post"enctype="multipart/form-data">
+						<div class="col-xs-12">
+							<form role="form" id="data" method="post">
 
 								<div class="form-group">
-									<label>First Name:</label>
-									<input class="form-control" name="firstname" required="require"<?php echo "value=".$row['first_name']; ?>>
+									<label>Old Password</label>
+									<input type="password" class="form-control" name="password" required="require">
 								</div>
 
 								<div class="form-group">
-									<label>Last Name:</label>
-									<input class="form-control" name="lastname" required="require"<?php echo "value=".$row['last_name']; ?>>
+									<label>New Password</label>
+									<input type="password" class="form-control" name="new_password" required="require">
 								</div>
-
-								<div class="form-group">
-									<label>English Name:</label>
-									<input class="form-control" name="englishname" required="require"<?php echo "value=".$row['english_name']; ?>>
-								</div>
-
-								<div class="form-group">
-									<label>Email:</label>
-									<input class="form-control" readonly="readonly" <?php echo "value=".$row['user_email']; ?>>
-								</div>
-
-								<div class="form-group">
-									<label>Highest Degree:</label>
-									<select class="dropdown" name="degree">
-										<option <?php if($row['degree'] == "Scholar") echo("selected");?> value = "Scholar">Scholar</option>
-										<option <?php if($row['degree'] == "Master") echo("selected");?> value = "Master">Master</option>
-										<option <?php if($row['degree'] == "PhD") echo("selected");?> value = "PhD">PhD</option>
-										<option <?php if($row['degree'] == "Prof") echo("selected");?> value = "Prof">Prof</option>
-									</select>
-								</div>
-
-								<div class="form-group">
-									<label>Phone Number:</label>
-									<input class="form-control" name="phone" required="require"<?php echo "value=".$row['phone']; ?>>
-								</div>
-
-								<div class="form-group">
-									<label>Education</label>
-									<textarea class="form-control" rows="6" name="education" required="require"><?php echo $row['education_desc']; ?></textarea>
-								</div>
-
-								<div class="form-group">
-									<label>Division/Centre:</label>
-									<select class="dropdown" name="division">
-										<option <?php if($row['division'] == "DST") echo("selected");?> value="DST">DST</option>
-										<option <?php if($row['division'] == "DCC") echo("selected");?> value="DCC">DCC</option>
-										<option <?php if($row['division'] == "DHSS") echo("selected");?> value="DHSS">DHSS</option>
-										<option <?php if($row['division'] == "DBM") echo("selected");?> value="DBM">DBM</option>
-									</select>
-								</div>
-
-								<div class="form-group">
-									<label>Programme:</label>
-									<select class="dropdown" name="programme">
-										<option <?php if($row['programme'] == "CST") echo("selected");?> value="CST">CST</option>
-										<option <?php if($row['programme'] == "CTV") echo("selected");?> value="CTV">CTV</option>
-										<option <?php if($row['programme'] == "ACCT") echo("selected");?> value="ACCT">ACCT</option>
-										<option <?php if($row['programme'] == "TESL") echo("selected");?> value="TESL">TESL</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
-									</select>
-								</div>
-
 							</br>
 
 								<div class="form-group" style="text-align:center;">
 									<button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>
 									<button id="resetForm" type="reset" class="btn btn-default hidden">Reset Button</button>
-								</div>
-
-							</div>
-							<div class="col-xs-5" style="text-align:center">
-							</br>
-								<div class="form-group">
-								<img src="upload/<?php echo $row['image_src']?>" id="preview" alt="" name="pic" width="80%"/>
-    							<br/>
-								<br/>
-								<div class="col-xs-10 col-xs-offset-1">
-								<input type="file" name="avator" class="filestyle" data-buttonText="&nbsp Upload" name="avator" id="avator" onchange="change()" accept="image/*">
-								</div>
-							</br>
-							</br>
-								<p class="help-block">Avatar File Should be JPEG, JPG or PNG File.</p>
 								</div>
 
 							</div>

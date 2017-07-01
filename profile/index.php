@@ -16,7 +16,7 @@
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="../index.php"><img src="../uic_logo.png"></img></a></div>
+    <div class="title"><a href="/index.php"><img src="../uic_logo.png"></img></a></div>
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?>,  <a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
@@ -51,8 +51,8 @@
 
     <div class="submenu">
     <ul>
-    <li><a href="index.php" class="selected">Profile</a></li>
-	<li><a href="index.php" >Change Password</a></li>
+    <li><a href="/profile" class="selected">Profile</a></li>
+	<li><a href="/security" >Change Password</a></li>
     </ul>
     </div>
 
