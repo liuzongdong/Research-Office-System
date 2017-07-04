@@ -69,12 +69,15 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">UIC Project(Midtern Progress Report Form) <a href="add.php"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Project</button></a></div>
+				<div class="panel-heading">UIC Project (Completion Report Form) <a href="add.php"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Project</button></a></div>
 				<div class="panel-body">
-					<table id="table" data-show-export="true" data-toggle="table" data-advanced-search="true" data-id-table="advancedTable" data-url="data.php" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+					<table id="table" data-show-refresh="true" data-show-export="true" data-toggle="table" data-advanced-search="true" data-id-table="advancedTable" data-url="data.php" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 						<thead>
 						<tr>
 							<th data-field="completion_report_form_title" data-halign="center" data-align="center" data-sortable="true" >Project Title</th>
+							<th data-field="cr_principal_investigator_name" data-halign="center" data-align="center" data-sortable="true" >Principal Investigator Name</th>
+							<th data-field="completion_report_form_project_starting_date" data-halign="center" data-align="center" data-sortable="true" >Approved Project Duration</th>
+							<th data-field="actual_project_starting_date" data-halign="center" data-align="center" data-sortable="true" >Actual Project Duration</th>
 							<th data-field="action" data-searchable="false" data-width="11%" data-halign="center" data-align="center">Action</th>
 						</tr>
 						</thead>

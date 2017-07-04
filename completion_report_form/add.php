@@ -52,13 +52,13 @@
     </div>
 
     <div class="submenu">
-    <ul>
-		<li><a href="/uic_project" >Category I - III</a></li>
-		<li><a href="/iv_project">Category IV</a></li>
-		<li><a href="/project_undertaking">UIC Project Budget & Project Undertaking</a></li>
-		<li><a href="/midtern_progress_report_form" >Midtern Progress Report Form</a></li>
-		<li><a href="/completion_report_form" class="selected">Completion Report Form</a></li>
-    </ul>
+		<ul>
+			<li><a href="/uic_project" >Category I - III</a></li>
+	  		<li><a href="/iv_project">Category IV</a></li>
+	  		<li><a href="/project_undertaking">UIC Project Budget & Project Undertaking</a></li>
+	  		<li><a href="/midtern_progress_report_form" >Midtern Progress Report Form</a></li>
+	  		<li><a href="/completion_report_form" class="selected">Completion Report Form</a></li>
+	    </ul>
     </div>
 
     <div>
@@ -90,38 +90,45 @@
 								<label>Title:</label>
 								<input class="form-control" name="completion_report_form_title" required="require">
 							</div>
+
+							<div class="form-group">
+		  					  <label>Abstract:</label>
+		  					  <textarea class="form-control" rows="6" name="completion_report_abstract" required="require"></textarea>
+		  				  </div>
 						</br>
-						<table id="table" data-toggle="table">
-							<thead>
-							<tr>
-								<th data-halign="center" data-align="center">Research Team</th>
-								<th data-halign="center" data-align="center">Name/Post</th>
-								<th data-halign="center" data-align="center">Academic Unit</th>
-							</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Principal Investigator</td>
-									<td> <input class="form-control" name="cr_principal_investigator_name" required="require"></td>
-									<td> <input class="form-control" name="cr_principal_investigator_unit" required="require"></td>
-								</tr>
-								<tr>
-									<td>Co-investigator(s)</td>
-									<td> <input class="form-control" name="cr_co_investigator_name" required="require"></td>
-									<td> <input class="form-control" name="cr_co_investigator_unit" required="require"></td>
-								</tr>
-								<tr>
-									<td>Others</td>
-									<td> <input class="form-control" name="cr_others_name" required="require"></td>
-									<td> <input class="form-control" name="cr_others_unit" required="require"></td>
-								</tr>
-							</tbody>
-						</table>
-							</br>
+								<div class="form-group">
+									<table id="table" data-toggle="table">
+										<thead>
+										<tr>
+											<th data-halign="center" data-align="center">Research Team</th>
+											<th data-halign="center" data-align="center">Name/Post</th>
+											<th data-halign="center" data-align="center">Academic Unit</th>
+										</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Principal Investigator</td>
+												<td> <input class="form-control" name="cr_principal_investigator_name" required="require"></td>
+												<td> <input class="form-control" name="cr_principal_investigator_unit" required="require"></td>
+											</tr>
+											<tr>
+												<td>Co-investigator(s)</td>
+												<td> <input class="form-control" name="cr_co_investigator_name" required="require"></td>
+												<td> <input class="form-control" name="cr_co_investigator_unit" required="require"></td>
+											</tr>
+											<tr>
+												<td>Others</td>
+												<td> <input class="form-control" name="cr_others_name" required="require"></td>
+												<td> <input class="form-control" name="cr_others_unit" required="require"></td>
+											</tr>
+										</tbody>
+									</table>
+							</div>
+
 							<div class="form-group">
 								<label>Approved Project Duration From:</label>
 								<div class='input-group date' id='datetimepicker1'>
-										<input id="startDate" name="completion_report_form_project_starting_date" type='text' required="require" readonly class="form-control"/>
+										<input name="completion_report_form_project_starting_date" type='text' required="require" readonly class="form-control"/>
 										<span class="input-group-addon">
 												<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -131,7 +138,7 @@
 							<div class="form-group">
 								<label>Approved Project Duration To:</label>
 								<div class='input-group date' id='datetimepicker2'>
-										<input id="endDate" name="completion_report_form_project_completion_date" type='text' required="require" readonly class="form-control"/>
+										<input name="completion_report_form_project_completion_date" type='text' required="require" readonly class="form-control"/>
 										<span class="input-group-addon">
 												<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -139,8 +146,23 @@
 							</div>
 
 							<div class="form-group">
-								<label>Duration:</label>
-								<input id="duration" class="form-control" name="completion_report_form_duration" required="require" readonly>
+								<label>Actual Project Duration From:</label>
+								<div class='input-group date' id='datetimepicker3'>
+										<input name="actual_project_starting_date" type='text' required="require" readonly class="form-control"/>
+										<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label>Actual Project Duration To:</label>
+								<div class='input-group date' id='datetimepicker4'>
+										<input name="actual_project_completion_date" type='text' required="require" readonly class="form-control"/>
+										<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+								</div>
 							</div>
 
 							<div class="form-group">
@@ -166,16 +188,6 @@
 	<div class="footer">©2017 United International College(UIC). All Rights Reserved.</div>
 </div>
 
-<script>
-
-	function getDuration()
-	{
-		var startDate = $("#datetimepicker1").data("DateTimePicker").date();
-		var endDate = $("#datetimepicker2").data("DateTimePicker").date();
-		return ((moment.duration(endDate - startDate)).humanize());
-	}
-</script>
-
 <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
@@ -197,54 +209,85 @@
         });
         $("#datetimepicker2").on("dp.change", function (e) {
             $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
-			$('#duration').val(getDuration());
+        });
+</script>
+
+<script type="text/javascript">
+            $(function () {
+                $('#datetimepicker3').datetimepicker({
+                    format: 'YYYY/MM/DD',
+					showTodayButton: true,
+					showClear: true,
+					ignoreReadonly: true
+                });
+				$('#datetimepicker4').datetimepicker({
+                    format: 'YYYY/MM/DD',
+					useCurrent: false,
+					showTodayButton: true,
+					showClear: true,
+					ignoreReadonly: true
+                });
+            });
+			$("#datetimepicker3").on("dp.change", function (e) {
+            $('#datetimepicker4').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker4").on("dp.change", function (e) {
+            $('#datetimepicker3').data("DateTimePicker").maxDate(e.date);
         });
 </script>
 
 <script>
-function confirmDelete(id) {
-    swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this record!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: false
-    }, function (isConfirm) {
-        if (!isConfirm) return;
-        $.ajax({
-            url: "delete.php",
-            type: "POST",
-            data: {
-                id: id
-            },
-            dataType: "html",
-            success: function (response)
-			{
-				var answer = JSON.parse(response);
-				switch ( answer.status_response )
-				{
-					case 'success':
-						swal("Done!", "It was succesfully deleted!", "success");
-						$('#table').bootstrapTable('refresh', {silent: true});
-						break;
-					case 'error' :
-						swal("Delete Failed!", "You are not allowed to Delete it", "error");
-						break;
-					case 'fail' :
-						swal("Delete Failed!", "Please check your internet connection!", "error");
-						break;
-				}
+$("form#data").submit(function(){
+var formData = new FormData(this);
+	$.ajax({
+	url: "new.php",
+	type: 'POST',
+	data: formData,
+	async: false,
 
-            },
-            error: function (xhr, ajaxOptions, thrownError)
-			{
-                swal("Delete Failed!", "Please check your internet connection.", "error");
-            }
-        });
-    });
-}
+	success: function (response)
+	{
+		var answer = JSON.parse(response);
+		switch ( answer.status_response )
+		{
+			case 'success' :
+				swal(
+					{
+					title:"Good job!",
+					text: "Add Succeed!",
+					type: "success"
+					},
+					function()
+					{
+						setTimeout(function (){
+							window.location.href = "index";
+						}, 300);
+
+					});
+				break;
+			case 'empty' :
+				swal("Add Failed!", "Please Complete the Form or There is only Spaces in your submission", "error");
+				break;
+			case 'error' :
+				swal("Add Failed!", "Please upload a PDF file, PDF File only!", "error");
+				break;
+			case 'fail' :
+				swal("Add Failed!", "Please check your internet connection!", "error");
+				break;
+
+		}
+	},
+	error: function (xhr, ajaxOptions, thrownError)
+	{
+		swal("Add Failed!", "Please check your internet connection!", "error");
+	},
+	cache: false,
+	contentType: false,
+	processData: false
+});
+
+return false;
+});
 </script>
 
 

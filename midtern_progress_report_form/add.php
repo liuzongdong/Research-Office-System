@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>UIC Project</title>
 
-<?php importCss(); ?>
+<?php importFullCss(); ?>
 
 
 </head>
@@ -93,57 +93,56 @@
 							</div>
 						</br>
 								<div class="form-group">
-								<table class="table table-bordered">
-								<thead>
-									<tr>
-										<th> Research Team</th>
-										<th> Name/Post</th>
-										<th> Academic Unit</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Principal Investigator</td>
-										<td> <input class="form-control" name="mp_principal_investigator_name" required="require"></td>
-										<td> <input class="form-control" name="mp_principal_investigator_unit" required="require"></td>
-									</tr>
-									<tr>
-										<td>Co-investigator(s)</td>
-										<td> <input class="form-control" name="mp_co_investigator_name" required="require"></td>
-										<td> <input class="form-control" name="mp_co_investigator_unit" required="require"></td>
-									</tr>
-									<tr>
-										<td>Others</td>
-										<td> <input class="form-control" name="mp_others_name" required="require"></td>
-										<td> <input class="form-control" name="mp_others_unit" required="require"></td>
-									</tr>
-								</body>
-							</table>
+									<table id="table" data-toggle="table">
+										<thead>
+										<tr>
+											<th data-halign="center" data-align="center">Research Team</th>
+											<th data-halign="center" data-align="center">Name/Post</th>
+											<th data-halign="center" data-align="center">Academic Unit</th>
+										</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Principal Investigator</td>
+												<td> <input class="form-control" name="mp_principal_investigator_name" required="require"></td>
+												<td> <input class="form-control" name="mp_principal_investigator_unit" required="require"></td>
+											</tr>
+											<tr>
+												<td>Co-investigator(s)</td>
+												<td> <input class="form-control" name="mp_co_investigator_name" required="require"></td>
+												<td> <input class="form-control" name="mp_co_investigator_unit" required="require"></td>
+											</tr>
+											<tr>
+												<td>Others</td>
+												<td> <input class="form-control" name="mp_others_name" required="require"></td>
+												<td> <input class="form-control" name="mp_others_unit" required="require"></td>
+											</tr>
+										</tbody>
+									</table>
 							</div>
-
 							<div class="form-group">
 								<label>Project Starting Date:</label>
-												<div class='input-group date' id='datetimepicker1'>
-														<input name="midtern_progress_report_form_project_starting_date" type='text' required="require" readonly class="form-control"/>
-														<span class="input-group-addon">
-																<span class="glyphicon glyphicon-calendar"></span>
-														</span>
-												</div>
+								<div class='input-group date' id='datetimepicker1'>
+										<input id="startDate" name="midtern_progress_report_form_project_starting_date" type='text' required="require" readonly class="form-control"/>
+										<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+								</div>
 							</div>
 
 							<div class="form-group">
 								<label>Project Completion Date:</label>
-												<div class='input-group date' id='datetimepicker2'>
-														<input name="midtern_progress_report_form_project_completion_date" type='text' required="require" readonly class="form-control"/>
-														<span class="input-group-addon">
-																<span class="glyphicon glyphicon-calendar"></span>
-														</span>
-												</div>
+								<div class='input-group date' id='datetimepicker2'>
+										<input id="endDate" name="midtern_progress_report_form_project_completion_date" type='text' required="require" readonly class="form-control"/>
+										<span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+										</span>
+								</div>
 							</div>
 
 							<div class="form-group">
-								<label>Duration (In Month):</label>
-								<input class="form-control" name="midtern_progress_report_form_duration" required="require">
+								<label>Duration:</label>
+								<input id="duration" class="form-control" name="midtern_progress_report_form_duration" required="require" readonly>
 							</div>
 
 							<div class="form-group">
@@ -169,6 +168,16 @@
 	<div class="footer">©2017 United International College(UIC). All Rights Reserved.</div>
 </div>
 
+<script>
+
+	function getDuration()
+	{
+		var startDate = $("#datetimepicker1").data("DateTimePicker").date();
+		var endDate = $("#datetimepicker2").data("DateTimePicker").date();
+		return ((moment.duration(endDate - startDate)).humanize());
+	}
+</script>
+
 <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
@@ -190,6 +199,7 @@
         });
         $("#datetimepicker2").on("dp.change", function (e) {
             $('#datetimepicker1').data("DateTimePicker").maxDate(e.date);
+			$('#duration').val(getDuration());
         });
 </script>
 

@@ -10,25 +10,25 @@
         require("../base.php");
         $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
     	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        $sql = "select up_user_id, up_file from uic_project where up_id = ?";
+        $sql = "select completion_report_user_id, completion_report_file from completion_report where completion_report_id = ?";
     	$prepare = $dbh -> prepare($sql);
     	$execute = $prepare -> execute(array($_POST['id']));
     	if ($execute)
     	{
     		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
-    		if ($data['up_user_id'] != $_SESSION['user_id'])
+    		if ($data['completion_report_user_id'] != $_SESSION['user_id'])
     		{
                 $response = array('status_response'  => 'error');
                 echo json_encode($response);
     		}
             else
             {
-                $sql = "delete from uic_project where up_id = ?";
+                $sql = "delete from completion_report where completion_report_id = ?";
                 $prepare = $dbh -> prepare($sql);
                 $execute = $prepare -> execute(array($_POST['id']));
                 if ($execute)
                 {
-                    unlink("upload/".$data['up_file']);
+                    unlink("upload/".$data['completion_report_file']);
                     $response = array('status_response'  => 'success');
                     echo json_encode($response);
                 }

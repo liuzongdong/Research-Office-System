@@ -24,8 +24,8 @@
         else
         {
             unset($missing);
-            $upid = $_POST['id'];
             $completion_report_form_title = $_POST["completion_report_form_title"];
+            $completion_report_abstract = $_POST["completion_report_abstract"];
             $cr_principal_investigator_name = $_POST["cr_principal_investigator_name"];
             $cr_principal_investigator_unit = $_POST["cr_principal_investigator_name"];
             $cr_co_investigator_name = $_POST["cr_co_investigator_name"];
@@ -49,22 +49,22 @@
                 {
                     $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-                    $sql = "select up_file from uic_project where up_id = ?";
+                    $sql = "select completion_report_file from completion_report where completion_report_id = ?";
                 	$prepare = $dbh -> prepare($sql);
                 	$execute = $prepare -> execute(array($_POST['id']));
                 	if ($execute)
                 	{
                 		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
-                        unlink("upload/".$data['up_file']);
+                        unlink("upload/".$data['completion_report_file']);
                     }
                     $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
                     $folder="upload/";
                     $filenamekey = md5(uniqid($_FILES["file"]["name"], true));
                     $filenamekey .= "." . $extension;
                     move_uploaded_file($_FILES["file"]["tmp_name"], "$folder".$filenamekey);
-                    $sql = "update uic_project set completion_report_form_title = ?, cr_principal_investigator_name = ?, cr_principal_investigator_name = ?, cr_co_investigator_name = ?, cr_co_investigator_unit = ?, cr_others_name = ?, cr_others_unit = ?, completion_report_form_project_starting_date = ?, completion_report_form_project_completion_date = ?, actual_project_starting_date = ?, actual_project_completion_date = ?, up_file = ? where up_id = ?";
+                    $sql = "update completion_report set completion_report_form_title = ?, cr_principal_investigator_name = ?, cr_principal_investigator_name = ?, cr_co_investigator_name = ?, cr_co_investigator_unit = ?, cr_others_name = ?, cr_others_unit = ?, completion_report_form_project_starting_date = ?, completion_report_form_project_completion_date = ?, actual_project_starting_date = ?, actual_project_completion_date = ?, completion_report_file = ? where completion_report_id = ?";
                     $prepare = $dbh -> prepare($sql);
-                    $execute = $prepare -> execute(array($completion_report_form_title, $cr_principal_investigator_name, $cr_principal_investigator_name, $cr_co_investigator_name, $cr_co_investigator_unit, $cr_others_name, $cr_others_unit, $completion_report_form_project_starting_date, $completion_report_form_project_completion_date, $actual_project_starting_date, $actual_project_completion_date, $filenamekey, $upid));
+                    $execute = $prepare -> execute(array($completion_report_form_title, $cr_principal_investigator_name, $cr_principal_investigator_name, $cr_co_investigator_name, $cr_co_investigator_unit, $cr_others_name, $cr_others_unit, $completion_report_form_project_starting_date, $completion_report_form_project_completion_date, $actual_project_starting_date, $actual_project_completion_date, $filenamekey, $_POST['id']));
                     if ($execute)
                     {
                         $response = array('status_response'  => 'success');
@@ -82,9 +82,9 @@
             {
                 $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-                $sql = "update uic_project set completion_report_form_title = ?, cr_principal_investigator_name = ?, cr_principal_investigator_name = ?, cr_co_investigator_name = ?, cr_co_investigator_unit = ?, cr_others_name = ?, cr_others_unit = ?, completion_report_form_project_starting_date = ?, completion_report_form_project_completion_date = ?, actual_project_starting_date = ?, actual_project_completion_date = ? where up_id = ?";
+                $sql = "update completion_report set completion_report_form_title = ?, cr_principal_investigator_name = ?, cr_principal_investigator_name = ?, cr_co_investigator_name = ?, cr_co_investigator_unit = ?, cr_others_name = ?, cr_others_unit = ?, completion_report_form_project_starting_date = ?, completion_report_form_project_completion_date = ?, actual_project_starting_date = ?, actual_project_completion_date = ? where completion_report_id = ?";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($completion_report_form_title, $cr_principal_investigator_name, $cr_principal_investigator_name, $cr_co_investigator_name, $cr_co_investigator_unit, $cr_others_name, $cr_others_unit, $completion_report_form_project_starting_date, $completion_report_form_project_completion_date, $actual_project_starting_date, $actual_project_completion_date, $upid));
+                $execute = $prepare -> execute(array($completion_report_form_title, $cr_principal_investigator_name, $cr_principal_investigator_name, $cr_co_investigator_name, $cr_co_investigator_unit, $cr_others_name, $cr_others_unit, $completion_report_form_project_starting_date, $completion_report_form_project_completion_date, $actual_project_starting_date, $actual_project_completion_date, $_POST['id']));
 
                 if ($execute)
                 {

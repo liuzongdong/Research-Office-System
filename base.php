@@ -21,6 +21,7 @@
             <script src=\"/js/moment.js\"></script>
             <script src=\"/js/bootstrap-datetimepicker.min.js\"></script>
             <script src=\"/js/bootstrap-filestyle.js\"></script>
+            <script src=\"/js/validator.js\"></script>
         ";
     }
 
@@ -51,6 +52,7 @@
             <script src=\"/js/moment.js\"></script>
             <script src=\"/js/bootstrap-datetimepicker.min.js\"></script>
             <script src=\"/js/bootstrap-filestyle.js\"></script>
+            <script src=\"/js/validator.js\"></script>
         ";
     }
 

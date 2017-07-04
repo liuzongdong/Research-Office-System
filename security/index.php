@@ -18,7 +18,7 @@
 	<div class="header">
     <div class="title"><a href="../index.php"><img src="../uic_logo.png"></img></a></div>
 
-    <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?>,  <a href="" onclick="logout()" class="logout">Logout</a> </div>
+    <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?>,  <a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
     <div class="menu">
     	<ul>
@@ -69,7 +69,7 @@
 					</div>
 					<div class="panel-body">
 						<div class="col-xs-12">
-							<form role="form" id="data" method="post">
+							<form data-toggle="validator" role="form" id="data" method="post">
 
 								<div class="form-group">
 									<label>Old Password</label>
@@ -78,9 +78,15 @@
 
 								<div class="form-group">
 									<label>New Password</label>
-									<input type="password" class="form-control" name="new_password" required="require">
+									<input id="new_password" type="password" class="form-control" name="new_password" required="require">
 								</div>
-							</br>
+
+								<div id="confirm" class="form-group">
+									<label>Confirm Password</label>
+									<input id="confirm_password" type="password" class="form-control" name="confirm_password" data-match="#new_password" data-match-error="Whoops, Password doesn't match" required="require">
+									<div class="help-block with-errors"></div>
+								</div>
+								<p id="validate-status"></p>
 
 								<div class="form-group" style="text-align:center;">
 									<button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>

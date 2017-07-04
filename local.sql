@@ -220,4 +220,36 @@ CREATE TABLE `iv_project`
     FOREIGN KEY (`iv_project_user_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `completion_report`
+(
+    `completion_report_id` int auto_increment primary key,
+    `completion_report_user_id` int(11),
+    `completion_report_form_title` varchar(200) DEFAULT '',
+    `cr_principal_investigator_name` varchar(200) DEFAULT '',
+    `cr_principal_investigator_unit` varchar(200) DEFAULT '',
+    `cr_co_investigator_name` varchar(200) DEFAULT '',
+    `cr_co_investigator_unit` varchar(200) DEFAULT '',
+    `cr_others_name` varchar(200) DEFAULT '',
+    `cr_others_unit` varchar(200) DEFAULT '',
+    `completion_report_form_project_starting_date` varchar(20) DEFAULT '',
+    `completion_report_form_project_completion_date` varchar(20) DEFAULT '',
+    `actual_project_starting_date` varchar(20) DEFAULT '',
+    `actual_project_completion_date` varchar(20) DEFAULT '',
+    `completion_report_file` varchar(200) DEFAULT '',
+    `action` varchar(10) DEFAULT '',
+    FOREIGN KEY (`completion_report_user_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `project_undertaking`
+(
+    `project_undertaking_id` int auto_increment primary key,
+    `project_undertaking_user_id` int(11),
+    `project_undertaking_title` varchar(200) DEFAULT '',
+    `project_undertaking_type` varchar(20) DEFAULT '',
+    `project_undertaking_file` varchar(200) DEFAULT '',
+    `action` varchar(10) DEFAULT '',
+    FOREIGN KEY (`project_undertaking_user_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 SELECT `patent_name`, `patent_code`, `english_name`, `division` FROM `patent`, `user` WHERE patent.patent_author_id = user.user_id AND user.user_id = 1

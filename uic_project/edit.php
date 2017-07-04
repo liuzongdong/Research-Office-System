@@ -128,7 +128,7 @@
 								<object data='<?php echo "upload/".$data['up_file']; ?>'
         							type='application/pdf'
         							width='100%'
-        							height='250px'>
+        							height='260px'>
 										<p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="<?php echo "upload/".$data['up_file']; ?>">Download PDF</a></p>
 								</object>
 							</div>
