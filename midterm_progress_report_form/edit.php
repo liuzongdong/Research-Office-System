@@ -7,13 +7,13 @@
 	}
 	$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-	$sql = "select * from uic_project where up_id = ?";
+	$sql = "select * from midterm_report where midterm_report_id = ?";
 	$prepare = $dbh -> prepare($sql); // Statement is Statement.
 	$execute = $prepare -> execute(array($_GET['id']));
 	if ($execute)
 	{
 		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
-		if ($data['up_user_id'] != $_SESSION['user_id'])
+		if ($data['midterm_report_user_id'] != $_SESSION['user_id'])
 		{
 			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index.php"</script>';
 		}
@@ -24,13 +24,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Edit UIC Project</title>
-<?php importCss(); ?>
+<?php importFullCss(); ?>
 </head>
 <body>
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="#"><img src="../uic_logo.png"></img></a></div>
+    <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?>,  <a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
@@ -68,7 +68,7 @@
 	  <li><a href="/uic_project" >Category I - III</a></li>
   	  <li><a href="/iv_project">Category IV</a></li>
   	  <li><a href="/project_undertaking">UIC Project Budget & Project Undertaking</a></li>
-  	  <li><a href="/midtern_progress_report_form" class="selected">Midtern Progress Report Form</a></li>
+  	  <li><a href="/midterm_progress_report_form" class="selected">midterm Progress Report Form</a></li>
   	  <li><a href="/completion_report_form">Completion Report Form</a></li>
     </ul>
     </div>
@@ -79,7 +79,7 @@
 			<div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Edit UIC Project(Midtern Progress Report Form)
+						Edit UIC Project(midterm Progress Report Form)
 						<div style="float:right">
 						    <label for="submitForm" class="btn btn-primary"> Submit </label>
 						    <label for="resetForm" class="btn btn-default"> Reset </label>
@@ -90,42 +90,42 @@
 							<form id="data" role="form" method="post">
                 <div class="form-group">
                   <label>Title:</label>
-                  <input class="form-control" name="midtern_progress_report_form_title" required="require"value="<?php echo $data['midtern_progress_report_form_title']; ?>">
+                  <input class="form-control" name="midterm_progress_report_form_title" required="require"value="<?php echo $data['midterm_progress_report_form_title']; ?>">
                 </div>
               </br>
                   <div class="form-group">
-                  <table class="table table-bordered">
-                  <thead>
-                    <tr>
-                      <th> Research Team</th>
-                      <th> Name/Post</th>
-                      <th> Academic Unit</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Principal Investigator</td>
-                      <td> <input class="form-control" name="mp_principal_investigator_name" required="require" value="<?php echo $data['mp_principal_investigator_name']; ?>"></td>
-                      <td> <input class="form-control" name="mp_principal_investigator_unit" required="require" value="<?php echo $data['mp_principal_investigator_unit']; ?>"></td>
-                    </tr>
-                    <tr>
-                      <td>Co-investigator(s)</td>
-                      <td> <input class="form-control" name="mp_co_investigator_name" required="require" value="<?php echo $data['mp_co_investigator_name']; ?>"></td>
-                      <td> <input class="form-control" name="mp_co_investigator_unit" required="require" value="<?php echo $data['mp_co_investigator_unit']; ?>"></td>
-                    </tr>
-                    <tr>
-                      <td>Others</td>
-                      <td> <input class="form-control" name="mp_others_name" required="require" value="<?php echo $data['mp_others_name']; ?>"></td>
-                      <td> <input class="form-control" name="mp_others_unit" required="require" value="<?php echo $data['mp_others_unit']; ?>"></td>
-                    </tr>
-                  </body>
-                </table>
+					  <table id="table" data-toggle="table">
+						  <thead>
+						  <tr>
+							  <th data-halign="center" data-align="center">Research Team</th>
+							  <th data-halign="center" data-align="center">Name/Post</th>
+							  <th data-halign="center" data-align="center">Academic Unit</th>
+						  </tr>
+						  </thead>
+						  <tbody>
+							  <tr>
+								  <td>Principal Investigator</td>
+								  <td> <input class="form-control" name="mp_principal_investigator_name" required="require" value="<?php echo $data['mp_principal_investigator_name']; ?>"></td>
+								  <td> <input class="form-control" name="mp_principal_investigator_unit" required="require" value="<?php echo $data['mp_principal_investigator_unit']; ?>"></td>
+							  </tr>
+							  <tr>
+								  <td>Co-investigator(s)</td>
+								  <td> <input class="form-control" name="mp_co_investigator_name" required="require" value="<?php echo $data['mp_co_investigator_name']; ?>"></td>
+								  <td> <input class="form-control" name="mp_co_investigator_unit" required="require" value="<?php echo $data['mp_co_investigator_unit']; ?>"></td>
+							  </tr>
+							  <tr>
+								  <td>Others</td>
+								  <td> <input class="form-control" name="mp_others_name" required="require" value="<?php echo $data['mp_others_name']; ?>"></td>
+								  <td> <input class="form-control" name="mp_others_unit" required="require" value="<?php echo $data['mp_others_unit']; ?>"></td>
+							  </tr>
+						  </tbody>
+					  </table>
                 </div>
 
                 <div class="form-group">
                   <label>Project Starting Date:</label>
                           <div class='input-group date' id='datetimepicker1'>
-                              <input name="midtern_progress_report_form_project_starting_date" type='text' required="require" readonly class="form-control"/ value="<?php echo $data['midtern_progress_report_form_project_starting_date']; ?>">
+                              <input id="startDate" name="midterm_progress_report_form_project_starting_date" type='text' required="require" readonly class="form-control">
                               <span class="input-group-addon">
                                   <span class="glyphicon glyphicon-calendar"></span>
                               </span>
@@ -135,7 +135,7 @@
                 <div class="form-group">
                   <label>Project Completion Date:</label>
                           <div class='input-group date' id='datetimepicker2'>
-                              <input name="midtern_progress_report_form_project_completion_date" type='text' required="require" readonly class="form-control"/ value="<?php echo $data['midtern_progress_report_form_project_completion_date']; ?>">
+                              <input id="endDate" name="midterm_progress_report_form_project_completion_date" type='text' required="require" readonly class="form-control">
                               <span class="input-group-addon">
                                   <span class="glyphicon glyphicon-calendar"></span>
                               </span>
@@ -143,8 +143,8 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Duration (In Month):</label>
-                  <input class="form-control" name="midtern_progress_report_form_duration" required="require" value="<?php echo $data['midtern_progress_report_form_duration']; ?>">
+                  <label>Duration (Please input Manually):</label>
+                  <input id="duration" class="form-control" name="midterm_progress_report_form_duration" required="require" value="<?php echo $data['midterm_progress_report_form_duration']; ?>">
                 </div>
 
                 <div class="form-group">
@@ -152,18 +152,17 @@
                 </br>
                   <input class="filestyle" data-buttonText="&nbsp Upload" type="file" name="file">
                 </div>
-
-								<button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>
-								<button id="resetForm" type="reset" class="btn btn-default hidden">Reset Button</button>
-							</div>
-							<div class="col-xs-6" id="pdf" style="padding-top:20px;">
-								<object data='<?php echo "upload/".$data['up_file']; ?>'
-        							type='application/pdf'
-        							width='100%'
-        							height='250px'>
-										<p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="helloworld">Download PDF</a></p>
-								</object>
-							</div>
+					<button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>
+					<button id="resetForm" type="reset" class="btn btn-default hidden">Reset Button</button>
+				</div>
+				<div class="col-xs-6" id="pdf" style="padding-top:20px;">
+					<object data='<?php echo "upload/".$data['midterm_report_file']; ?>'
+						type='application/pdf'
+						width='100%'
+						height='590px'>
+							<p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="helloworld">Download PDF</a></p>
+					</object>
+				</div>
 						</form>
 					</div>
 				</div>
@@ -178,14 +177,17 @@
 <script type="text/javascript">
             $(function () {
                 $('#datetimepicker1').datetimepicker({
+					useCurrent: false,
                     format: 'YYYY/MM/DD',
+					defaultDate: moment('<?php echo $data['midterm_progress_report_form_project_starting_date']; ?>', 'YYYY-MM-DD'),
 					showTodayButton: true,
 					showClear: true,
 					ignoreReadonly: true
                 });
 				$('#datetimepicker2').datetimepicker({
-                    format: 'YYYY/MM/DD',
 					useCurrent: false,
+                    format: 'YYYY/MM/DD',
+					defaultDate: moment('<?php echo $data['midterm_progress_report_form_project_completion_date']; ?>', 'YYYY-MM-DD'),
 					showTodayButton: true,
 					showClear: true,
 					ignoreReadonly: true
@@ -204,7 +206,8 @@ formData.append("id", <?php echo $_GET['id'];?>);
 
 	success: function (response)
 	{
-		var answer = JSON.parse(response);
+		alert(response);
+		//var answer = JSON.parse(response);
 		switch ( answer.status_response )
 		{
 			case 'success' :

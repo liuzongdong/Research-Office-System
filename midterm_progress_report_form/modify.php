@@ -24,17 +24,16 @@
         else
         {
             unset($missing);
-            $upid = $_POST['id'];
-            $midtern_progress_report_form_title = $_POST["midtern_progress_report_form_title"];
+            $midterm_progress_report_form_title = $_POST["midterm_progress_report_form_title"];
             $mp_principal_investigator_name = $_POST["mp_principal_investigator_name"];
             $mp_principal_investigator_unit = $_POST["mp_principal_investigator_name"];
             $mp_co_investigator_name = $_POST["mp_co_investigator_name"];
             $mp_co_investigator_unit = $_POST["mp_co_investigator_unit"];
             $mp_others_name = $_POST["mp_others_name"];
             $mp_others_unit = $_POST["mp_others_unit"];
-            $midtern_progress_report_form_project_starting_date = $_POST["midtern_progress_report_form_project_starting_date"];
-            $midtern_progress_report_form_project_completion_date = $_POST["midtern_progress_report_form_project_completion_date"];
-            $midtern_progress_report_form_duration = $_POST["midtern_progress_report_form_duration"];
+            $midterm_progress_report_form_project_starting_date = $_POST["midterm_progress_report_form_project_starting_date"];
+            $midterm_progress_report_form_project_completion_date = $_POST["midterm_progress_report_form_project_completion_date"];
+            $midterm_progress_report_form_duration = $_POST["midterm_progress_report_form_duration"];
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")
             {
@@ -48,22 +47,22 @@
                 {
                     $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-                    $sql = "select up_file from uic_project where up_id = ?";
+                    $sql = "select midterm_report_file from midterm_report where midterm_report_id = ?";
                 	$prepare = $dbh -> prepare($sql);
                 	$execute = $prepare -> execute(array($_POST['id']));
                 	if ($execute)
                 	{
                 		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
-                        unlink("upload/".$data['up_file']);
+                        unlink("upload/".$data['midterm_report_file']);
                     }
                     $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
                     $folder="upload/";
                     $filenamekey = md5(uniqid($_FILES["file"]["name"], true));
                     $filenamekey .= "." . $extension;
                     move_uploaded_file($_FILES["file"]["tmp_name"], "$folder".$filenamekey);
-                    $sql = "update uic_project set midtern_progress_report_form_title = ?, mp_principal_investigator_name = ?, mp_principal_investigator_unit = ?,  mp_co_investigator_name = ?, mp_co_investigator_unit = ?, mp_others_name = ?, mp_others_unit = ?, midtern_progress_report_form_project_starting_date = ?, midtern_progress_report_form_project_completion_date = ?, midtern_progress_report_form_duration = ?, up_file = ? where up_id = ?";
+                    $sql = "update midterm_report set midterm_progress_report_form_title = ?, mp_principal_investigator_name = ?, mp_principal_investigator_unit = ?,  mp_co_investigator_name = ?, mp_co_investigator_unit = ?, mp_others_name = ?, mp_others_unit = ?, midterm_progress_report_form_project_starting_date = ?, midterm_progress_report_form_project_completion_date = ?, midterm_progress_report_form_duration = ?, midterm_report_file = ? where midterm_report_id = ?";
                     $prepare = $dbh -> prepare($sql);
-                    $execute = $prepare -> execute(array($midtern_progress_report_form_title, $mp_principal_investigator_name, $mp_principal_investigator_unit,  $mp_co_investigator_name, $mp_co_investigator_unit, $mp_others_name, $mp_others_unit, $midtern_progress_report_form_project_starting_date, $midtern_progress_report_form_project_completion_date, $midtern_progress_report_form_duration, $filenamekey, $upid));
+                    $execute = $prepare -> execute(array($midterm_progress_report_form_title, $mp_principal_investigator_name, $mp_principal_investigator_unit,  $mp_co_investigator_name, $mp_co_investigator_unit, $mp_others_name, $mp_others_unit, $midterm_progress_report_form_project_starting_date, $midterm_progress_report_form_project_completion_date, $midterm_progress_report_form_duration, $filenamekey, $_POST['id']));
                     if ($execute)
                     {
                         $response = array('status_response'  => 'success');
@@ -81,9 +80,9 @@
             {
                 $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-                $sql = "update uic_project set midtern_progress_report_form_title = ?, mp_principal_investigator_name = ?, mp_principal_investigator_unit = ?,  mp_co_investigator_name = ?, mp_co_investigator_unit = ?, mp_others_name = ?, mp_others_unit = ?, midtern_progress_report_form_project_starting_date = ?, midtern_progress_report_form_project_completion_date = ?, midtern_progress_report_form_duration = ? where up_id = ?";
+                $sql = "update midterm_report set midterm_progress_report_form_title = ?, mp_principal_investigator_name = ?, mp_principal_investigator_unit = ?,  mp_co_investigator_name = ?, mp_co_investigator_unit = ?, mp_others_name = ?, mp_others_unit = ?, midterm_progress_report_form_project_starting_date = ?, midterm_progress_report_form_project_completion_date = ?, midterm_progress_report_form_duration = ? where midterm_report_id = ?";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($midtern_progress_report_form_title, $mp_principal_investigator_name, $mp_principal_investigator_unit,  $mp_co_investigator_name, $mp_co_investigator_unit, $mp_others_name, $mp_others_unit, $midtern_progress_report_form_project_starting_date, $midtern_progress_report_form_project_completion_date, $midtern_progress_report_form_duration, $upid));
+                $execute = $prepare -> execute(array($midterm_progress_report_form_title, $mp_principal_investigator_name, $mp_principal_investigator_unit,  $mp_co_investigator_name, $mp_co_investigator_unit, $mp_others_name, $mp_others_unit, $midterm_progress_report_form_project_starting_date, $midterm_progress_report_form_project_completion_date, $midterm_progress_report_form_duration, $_POST['id']));
                 if ($execute)
                 {
                     $response = array('status_response'  => 'success');

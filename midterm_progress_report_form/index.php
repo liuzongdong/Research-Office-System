@@ -57,7 +57,7 @@
 		<li><a href="/uic_project" >Category I - III</a></li>
 		<li><a href="/iv_project">Category IV</a></li>
 		<li><a href="">UIC Project Budget & Project Undertaking</a></li>
-		<li><a href="/midtern_progress_report_form" class="selected">Midtern Progress Report Form</a></li>
+		<li><a href="/midterm_progress_report_form" class="selected">midterm Progress Report Form</a></li>
 		<li><a href="/completion_report_form">Completion Report Form</a></li>
     </ul>
     </div>
@@ -69,12 +69,15 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">UIC Project(Midtern Progress Report Form) <a href="add.php"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Project</button></a></div>
+				<div class="panel-heading">UIC Project(midterm Progress Report Form) <a href="add.php"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Project</button></a></div>
 				<div class="panel-body">
-					<table id="table" data-show-export="true" data-toggle="table" data-advanced-search="true" data-id-table="advancedTable" data-url="data.php" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+					<table id="table" data-show-refresh="true" data-show-export="true" data-toggle="table" data-advanced-search="true" data-id-table="advancedTable" data-url="data.php" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 						<thead>
 						<tr>
-							<th data-field="midtern_progress_report_form_title" data-halign="center" data-align="center" data-sortable="true" >Project Title</th>
+							<th data-field="midterm_progress_report_form_title" data-halign="center" data-align="center" data-sortable="true" >Project Title</th>
+							<th data-field="mp_principal_investigator_name" data-halign="center" data-align="center" data-sortable="true" >Principal Investigator Name</th>
+							<th data-field="midterm_progress_report_form_project_starting_date" data-halign="center" data-align="center" data-sortable="true" >Project Duration</th>
+							<th data-field="midterm_progress_report_form_duration" data-halign="center" data-align="center" data-sortable="true" >Duration</th>
 							<th data-field="action" data-searchable="false" data-width="11%" data-halign="center" data-align="center">Action</th>
 						</tr>
 						</thead>

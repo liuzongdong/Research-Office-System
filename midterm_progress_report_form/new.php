@@ -24,16 +24,16 @@
         else
         {
             unset($missing);
-            $midtern_progress_report_form_title = $_POST["midtern_progress_report_form_title"];
+            $midterm_progress_report_form_title = $_POST["midterm_progress_report_form_title"];
             $mp_principal_investigator_name = $_POST["mp_principal_investigator_name"];
             $mp_principal_investigator_unit = $_POST["mp_principal_investigator_name"];
             $mp_co_investigator_name = $_POST["mp_co_investigator_name"];
             $mp_co_investigator_unit = $_POST["mp_co_investigator_unit"];
             $mp_others_name = $_POST["mp_others_name"];
             $mp_others_unit = $_POST["mp_others_unit"];
-            $midtern_progress_report_form_project_starting_date = $_POST["midtern_progress_report_form_project_starting_date"];
-            $midtern_progress_report_form_project_completion_date = $_POST["midtern_progress_report_form_project_completion_date"];
-            $midtern_progress_report_form_duration = $_POST["midtern_progress_report_form_duration"];
+            $midterm_progress_report_form_project_starting_date = $_POST["midterm_progress_report_form_project_starting_date"];
+            $midterm_progress_report_form_project_completion_date = $_POST["midterm_progress_report_form_project_completion_date"];
+            $midterm_progress_report_form_duration = $_POST["midterm_progress_report_form_duration"];
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
             if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")
@@ -50,11 +50,9 @@
                 $action = "";
                 $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-                $sql = "insert into uic_project (up_user_id, midtern_progress_report_form_title, mp_principal_investigator_name, mp_principal_investigator_unit,  mp_co_investigator_name, mp_co_investigator_unit, mp_others_name, mp_others_unit, midtern_progress_report_form_project_starting_date, midtern_progress_report_form_project_completion_date, midtern_progress_report_form_duration, action
-) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "insert into midterm_report (midterm_report_user_id, midterm_progress_report_form_title, mp_principal_investigator_name, mp_principal_investigator_unit, mp_co_investigator_name, mp_co_investigator_unit, mp_others_name, mp_others_unit, midterm_progress_report_form_project_starting_date, midterm_progress_report_form_project_completion_date, midterm_progress_report_form_duration, midterm_report_file, action) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($_SESSION['user_id'],$midtern_progress_report_form_title, $mp_principal_investigator_name, $mp_principal_investigator_unit,  $mp_co_investigator_name, $mp_co_investigator_unit, $mp_others_name, $mp_others_unit, $midtern_progress_report_form_project_starting_date, $midtern_progress_report_form_project_completion_date, $midtern_progress_report_form_duration, $action
-));
+                $execute = $prepare -> execute(array($_SESSION['user_id'],$midterm_progress_report_form_title, $mp_principal_investigator_name, $mp_principal_investigator_unit, $mp_co_investigator_name, $mp_co_investigator_unit, $mp_others_name, $mp_others_unit, $midterm_progress_report_form_project_starting_date, $midterm_progress_report_form_project_completion_date, $midterm_progress_report_form_duration, $filenamekey, $action));
                 if ($execute)
                 {
                     $response = array('status_response'  => 'success');

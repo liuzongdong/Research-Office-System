@@ -57,7 +57,7 @@
 		<li><a href="/uic_project" >Category I - III</a></li>
 		<li><a href="/iv_project">Category IV</a></li>
 		<li><a href="">UIC Project Budget & Project Undertaking</a></li>
-		<li><a href="/midtern_progress_report_form" class="selected">Midtern Progress Report Form</a></li>
+		<li><a href="/midterm_progress_report_form" class="selected">midterm Progress Report Form</a></li>
 		<li><a href="/completion_report_form">Completion Report Form</a></li>
     </ul>
     </div>
@@ -69,7 +69,7 @@
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">New UIC Porject（Midtern Progress Report Form）
+				<div class="panel-heading">New UIC Porject（midterm Progress Report Form）
 					<div style="float:right">
 						<label for="submitForm" class="btn btn-primary"> Submit </label>
 						<label for="resetForm" class="btn btn-default"> Reset </label>
@@ -81,7 +81,7 @@
 							<div class="form-group">
 								<label>File Download:</label>
 							</br>
-								<a href="files/#.docx" class="btn btn-default">
+								<a href="files/Report Form_Mid-term Progress.doc" class="btn btn-default">
 									<span class="glyphicon glyphicon-download-alt"></span>
 									Download Application Form Here
 								</a>
@@ -89,7 +89,7 @@
 
 							<div class="form-group">
 								<label>Title:</label>
-								<input class="form-control" name="midtern_progress_report_form_title" required="require">
+								<input class="form-control" name="midterm_progress_report_form_title" required="require">
 							</div>
 						</br>
 								<div class="form-group">
@@ -123,7 +123,7 @@
 							<div class="form-group">
 								<label>Project Starting Date:</label>
 								<div class='input-group date' id='datetimepicker1'>
-										<input id="startDate" name="midtern_progress_report_form_project_starting_date" type='text' required="require" readonly class="form-control"/>
+										<input id="startDate" name="midterm_progress_report_form_project_starting_date" type='text' required="require" readonly class="form-control"/>
 										<span class="input-group-addon">
 												<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -133,7 +133,7 @@
 							<div class="form-group">
 								<label>Project Completion Date:</label>
 								<div class='input-group date' id='datetimepicker2'>
-										<input id="endDate" name="midtern_progress_report_form_project_completion_date" type='text' required="require" readonly class="form-control"/>
+										<input id="endDate" name="midterm_progress_report_form_project_completion_date" type='text' required="require" readonly class="form-control"/>
 										<span class="input-group-addon">
 												<span class="glyphicon glyphicon-calendar"></span>
 										</span>
@@ -142,7 +142,7 @@
 
 							<div class="form-group">
 								<label>Duration:</label>
-								<input id="duration" class="form-control" name="midtern_progress_report_form_duration" required="require" readonly>
+								<input id="duration" class="form-control" name="midterm_progress_report_form_duration" required="require" readonly>
 							</div>
 
 							<div class="form-group">
@@ -152,9 +152,9 @@
 							</div>
 
 							<div class="form-group" style="text-align:center">
-													<button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>
-													<button id="resetForm" type="reset" class="btn btn-default hidden">Reset Button</button>
-												</div>
+								<button id="submitForm" type="submit" class="btn btn-primary hidden">Submit Button</button>
+								<button id="resetForm" type="reset" class="btn btn-default hidden">Reset Button</button>
+							</div>
 
 						</div>
 					</form>
@@ -204,49 +204,57 @@
 </script>
 
 <script>
-function confirmDelete(id) {
-    swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this record!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
-        closeOnConfirm: false
-    }, function (isConfirm) {
-        if (!isConfirm) return;
-        $.ajax({
-            url: "delete.php",
-            type: "POST",
-            data: {
-                id: id
-            },
-            dataType: "html",
-            success: function (response)
-			{
-				var answer = JSON.parse(response);
-				switch ( answer.status_response )
-				{
-					case 'success':
-						swal("Done!", "It was succesfully deleted!", "success");
-						$('#table').bootstrapTable('refresh', {silent: true});
-						break;
-					case 'error' :
-						swal("Delete Failed!", "You are not allowed to Delete it", "error");
-						break;
-					case 'fail' :
-						swal("Delete Failed!", "Please check your internet connection!", "error");
-						break;
-				}
+$("form#data").submit(function(){
+var formData = new FormData(this);
+	$.ajax({
+	url: "new.php",
+	type: 'POST',
+	data: formData,
+	async: false,
 
-            },
-            error: function (xhr, ajaxOptions, thrownError)
-			{
-                swal("Delete Failed!", "Please check your internet connection.", "error");
-            }
-        });
-    });
-}
+	success: function (response)
+	{
+		var answer = JSON.parse(response);
+		switch ( answer.status_response )
+		{
+			case 'success' :
+				swal(
+					{
+					title:"Good job!",
+					text: "Add Succeed!",
+					type: "success"
+					},
+					function()
+					{
+						setTimeout(function (){
+							window.location.href = "index";
+						}, 300);
+
+					});
+				break;
+			case 'empty' :
+				swal("Add Failed!", "Please Complete the Form or There is only Spaces in your submission", "error");
+				break;
+			case 'error' :
+				swal("Add Failed!", "Please upload a PDF file, PDF File only!", "error");
+				break;
+			case 'fail' :
+				swal("Add Failed!", "Please check your internet connection!", "error");
+				break;
+
+		}
+	},
+	error: function (xhr, ajaxOptions, thrownError)
+	{
+		swal("Add Failed!", "Please check your internet connection!", "error");
+	},
+	cache: false,
+	contentType: false,
+	processData: false
+});
+
+return false;
+});
 </script>
 
 

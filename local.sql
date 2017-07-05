@@ -251,5 +251,24 @@ CREATE TABLE `project_undertaking`
     FOREIGN KEY (`project_undertaking_user_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `midterm_report`
+(
+    `midterm_report_id` int auto_increment primary key,
+    `midterm_report_user_id` int(11),
+    `midterm_progress_report_form_title` varchar(200) DEFAULT '',
+    `mp_principal_investigator_name` varchar(200) DEFAULT '',
+    `mp_principal_investigator_unit` varchar(200) DEFAULT '',
+    `mp_co_investigator_name` varchar(200) DEFAULT '',
+    `mp_co_investigator_unit` varchar(200) DEFAULT '',
+    `mp_others_name` varchar(200) DEFAULT '',
+    `mp_others_unit` varchar(200) DEFAULT '',
+    `midterm_progress_report_form_project_starting_date` varchar(20) DEFAULT '',
+    `midterm_progress_report_form_project_completion_date` varchar(20) DEFAULT '',
+    `midterm_progress_report_form_duration` varchar(20) DEFAULT '',
+    `midterm_report_file` varchar(200) DEFAULT '',
+    `action` varchar(10) DEFAULT '',
+    FOREIGN KEY (`midterm_report_user_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 SELECT `patent_name`, `patent_code`, `english_name`, `division` FROM `patent`, `user` WHERE patent.patent_author_id = user.user_id AND user.user_id = 1
