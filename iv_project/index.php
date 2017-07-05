@@ -57,6 +57,8 @@
 		<li><a href="/uic_project">Category I - III</a></li>
 		<li><a href="/iv_project" class="selected">Category IV</a></li>
 		<li><a href="/project_undertaking">UIC Project Budget & Project Undertaking</a></li>
+		<li><a href="/midterm_progress_report_form">Midterm Progress Report Form</a></li>
+		<li><a href="/completion_report_form">Completion Report Form</a></li>
     </ul>
     </div>
 
