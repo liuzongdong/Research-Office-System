@@ -9,12 +9,10 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Reasearch Teacher</title>
-		<link href="../css/bootstrap.min.css" rel="stylesheet">
-		<link href="../css/style.css" rel="stylesheet">
-		<link href="../css/bootstrap-table.css" rel="stylesheet">
+		<title>Staff Page</title>
 
 	</head>
+	<?php importCss(); ?>
 	<body>
 		<div id="panelwrap">
 
@@ -67,10 +65,6 @@
     </div> <!--end of center_content-->
 
 </div>
-
-<script src="../js/jquery.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/bootstrap-table.js"></script>
 
 
 
