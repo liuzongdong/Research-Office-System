@@ -21,7 +21,7 @@
 	<div class="header">
     <div class="title"><a href="#"><img src="/uic_logo.png"></img></a></div>
 
-    <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?>,  <a href="#" onclick="logout()" class="logout">Logout</a> </div>
+    <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
     <div class="menu">
     	<ul>

@@ -9,10 +9,10 @@
     $email = $_POST["email"];
 	$password = $_POST["password"];
     $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-    $sql = "select * from user where user_email = ?"; // *, select all. '?' and '?', SQL Injection
-    $prepare = $dbh -> prepare($sql); // Statement is Statement.
-    $execute = $prepare -> execute(array($email)); // Var is Var.
+    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+    $sql = "select * from user where user_email = ?";
+    $prepare = $dbh -> prepare($sql);
+    $execute = $prepare -> execute(array($email));
     if ($execute)
     {
         $row = $prepare -> fetch();

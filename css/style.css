@@ -45,7 +45,7 @@ body{
 }
 .header_right a.logout{
     background:url(../images/logout.png) no-repeat left;
-    padding:0 0 0 22px;
+    padding:0 0 2px 22px;
 }
 .center_content{
     width:100%;

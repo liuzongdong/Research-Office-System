@@ -3,6 +3,8 @@
 	require("../base.php");
 		if (!(isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
 	    {
+			session_unset();
+			session_destroy();
 			echo '<script type="text/javascript">alert("Please Login");location.href="../login.html"</script>';
 	    }
 ?>
