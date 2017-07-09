@@ -26,3 +26,15 @@ RewriteRule ^ %{REQUEST_FILENAME}.php [NC,L]
 <Files *.pdf>
   ForceType application/pdf
 </Files>
+
+<Files *.doc>
+  ForceType application/octet-stream
+</Files>
+
+<Files *.docx>
+  ForceType application/octet-stream
+</Files>
+
+<Files *.xls>
+  ForceType application/octet-stream
+</Files>

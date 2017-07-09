@@ -135,8 +135,7 @@ var formData = new FormData(this);
 
 	success: function (response)
 	{
-		alert(response);
-		//var answer = JSON.parse(response);
+		var answer = JSON.parse(response);
 		switch ( answer.status_response )
 		{
 			case 'success' :

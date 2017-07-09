@@ -206,8 +206,7 @@ formData.append("id", <?php echo $_GET['id'];?>);
 
 	success: function (response)
 	{
-		alert(response);
-		//var answer = JSON.parse(response);
+		var answer = JSON.parse(response);
 		switch ( answer.status_response )
 		{
 			case 'success' :

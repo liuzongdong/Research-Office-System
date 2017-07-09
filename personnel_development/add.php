@@ -22,13 +22,13 @@
 
     <div class="menu">
     	<ul>
-			<li><a href="/index.php">Dashboard</a></li>
+			<li><a href="/">Dashboard</a></li>
     		<li><a href="/profile">Profile</a></li>
     		<li><a href="/uic_project">UIC Project</a></li>
     		<li><a href="/external_project">External Project</a></li>
-    		<li><a href="/publication">Publication</a></li>
-    		<li><a href="/achievements" class="selected">Achievements</a></li>
-    		<li><a href="/applications" >Applications</a></li>
+    		<li><a href="/journal">Publication</a></li>
+    		<li><a href="/patent" class="selected">Achievements</a></li>
+    		<li><a href="/applications">Applications</a></li>
 				<?php if ($_SESSION['user_type'] == 2)
 				{
 					$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
