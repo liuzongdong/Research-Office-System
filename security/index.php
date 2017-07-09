@@ -121,16 +121,30 @@ var formData = new FormData(this);
 		switch ( answer.status_response )
 		{
 			case 'success' :
-				swal("Good job!", "Update Succesfully!", "success");
+				swal(
+					{
+					title:"Good job!",
+					text: "Update Succeed.",
+					type: "success"
+					},
+					function()
+					{
+						setTimeout(function (){
+							window.location.href = "/logout";
+						}, 300);
+					});
 				break;
 			case 'empty' :
-				swal("Edit Failed!", "Please Complete the Form or There is only Spaces in your submission", "error");
+				swal("Update Failed!", "Please Complete the Form or There is only Spaces in your submission", "error");
+				break;
+			case 'unmatch' :
+				swal("Update Failed!", "Password Doesn't Match", "error");
 				break;
 			case 'error' :
-				swal("Edit Failed!", "Please upload a image file, PDF File only!", "error");
+				swal("Update Failed!", "Wrong Old Password!", "error");
 				break;
 			case 'fail' :
-				swal("Add Failed!", "Please check your internet connection!", "error");
+				swal("Update Failed!", "Please check your internet connection!", "error");
 				break;
 		}
 	},

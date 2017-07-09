@@ -24,73 +24,47 @@
         }
         else
         {
-            $firstname = $_POST["firstname"];
-            $lastname = $_POST["lastname"];
-            $englishname = $_POST["englishname"];
-            $degree = $_POST["degree"];
-            $phone = $_POST["phone"];
-            $education = $_POST["education"];
-            $division = $_POST["division"];
-            $programme = $_POST["programme"];
-            $upload_file=$_FILES["avator"]["name"];
-            if ($upload_file != "")
+            $old_password = $_POST["password"];
+            $new_password = $_POST["new_password"];
+            $password_confirm = $_POST["confirm_password"];
+            if ($new_password != $password_confirm)
             {
-                if (exif_imagetype($_FILES['avator']['tmp_name']))
-                {
-                    $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-                    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-                    $sql = "select image_src from user where user_id = ?";
-                    $prepare = $dbh -> prepare($sql);
-                    $execute = $prepare -> execute(array($_SESSION["user_id"]));
-                    if ($execute)
-                	{
-                		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
-                        unlink("upload/".$data['image_src']);
-                	}
-                    $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
-                    $folder="upload/";
-                    $filenamekey = md5(uniqid($_FILES["avator"]["name"], true));
-                    $filenamekey .= "." . $extension;
-                    move_uploaded_file($_FILES["avator"]["tmp_name"], "$folder".$filenamekey);
-                    $sql = "update user set last_name = ?, first_name = ?, english_name = ?, degree = ?, phone = ?, education_desc = ?, division = ?, programme = ?, image_src = ? where user_id = ?";
-                    $prepare = $dbh -> prepare($sql);
-                    $execute = $prepare -> execute(array($lastname, $firstname, $englishname, $degree, $phone, $education, $division, $programme, $filenamekey, $_SESSION["user_id"]));
-                    if ($execute)
-                    {
-                        $response = array('status_response'  => 'success');
-                        echo json_encode($response);
-                    }
-                    else
-                    {
-                        $response = array('status_response'  => 'fail');
-                        echo json_encode($response);
-                    }
-                    $dbh = null;
-                }
-                else
-                {
-                    $response = array('status_response'  => 'error');
-                    echo json_encode($response);
-                }
+                $response = array('status_response'  => 'unmatch');
+                echo json_encode($response);
             }
             else
             {
+                $password = password_hash($password_confirm, PASSWORD_DEFAULT);
                 $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-                $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-                $sql = "update user set last_name = ?, first_name = ?, english_name = ?, degree = ?, phone = ?, education_desc = ?, division = ?, programme = ? where user_id = ?";
+                $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                $sql = "select password from user where user_id = ?";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($lastname, $firstname, $englishname, $degree, $phone, $education, $division, $programme, $_SESSION["user_id"]));
+                $execute = $prepare -> execute(array($_SESSION["user_id"]));
                 if ($execute)
                 {
-                    $response = array('status_response'  => 'success');
-                    echo json_encode($response);
+                    $row = $prepare -> fetch();
+                    if (password_verify($old_password, $row['password']))
+                    {
+                        $sql = "update user set password = ? where user_id = ?";
+                        $prepare = $dbh -> prepare($sql);
+                        $execute = $prepare -> execute(array($password, $_SESSION["user_id"]));
+                        if ($execute)
+                        {
+                            $response = array('status_response'  => 'success');
+                            echo json_encode($response);
+                        }
+                        else
+                        {
+                            $response = array('status_response'  => 'fail');
+                            echo json_encode($response);
+                        }
+                    }
+                    else
+                    {
+                        $response = array('status_response'  => 'error');
+                        echo json_encode($response);
+                    }
                 }
-                else
-                {
-                    $response = array('status_response'  => 'fail');
-                    echo json_encode($response);
-                }
-                $dbh = null;
             }
         }
     }
