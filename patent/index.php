@@ -5,6 +5,10 @@
     {
 		echo '<script type="text/javascript">alert("Please Login");location.href="../login.html"</script>';
     }
+	if ((isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
+    {
+		header("Location: staff.php");
+    }
 ?>
 <html>
 <head>

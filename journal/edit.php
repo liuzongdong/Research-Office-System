@@ -64,9 +64,10 @@
 
     <div class="submenu">
     <ul>
-			<li><a href="index" class="selected">Journal</a></li>
-			<li><a href="/conference_paper">Conference Paper</a></li>
-			<li><a href="/academic_monograph">Academic Monograph</a></li>
+		<li><a href="/journal" class="selected">Journal</a></li>
+		<li><a href="/conference_paper">Conference Paper</a></li>
+		<li><a href="/academic_monograph">Academic Monograph</a></li>
+		<li><a href="/conference_presentation">Conference Presentation</a></li>
     </ul>
     </div>
 
@@ -194,7 +195,7 @@
 				  <object data='<?php echo "upload/".$data['journal_src']; ?>'
 					  type='application/pdf'
 					  width='100%'
-					  height='660px;'>
+					  height='700px;'>
 						  <p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="helloworld">Download PDF</a></p>
 				  </object>
 			  </div>

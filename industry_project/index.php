@@ -1,15 +1,19 @@
 <?php
 	session_start();
 	require("../base.php");
-    if (!(isset($_SESSION["teacher"]) && $_SESSION["teacher"] === true))
+	if (!(isset($_SESSION["teacher"]) && $_SESSION["teacher"] === true))
     {
 		echo '<script type="text/javascript">alert("Please Login");location.href="../login.html"</script>';
+    }
+	if ((isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
+    {
+		header("Location: staff.php");
     }
 ?>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Reasearch Teacher</title>
+<title>Industry Project</title>
 
 <?php importFullCss(); ?>
 

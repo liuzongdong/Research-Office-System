@@ -1,5 +1,5 @@
 <?php
-    session_start(); // Create a New Session.
+    session_start();
     require("base.php");
     if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) )
     {
@@ -28,10 +28,12 @@
             }
             if ($row['user_type'] == 3)
             {
+                $_SESSION['user_type'] = $row['user_type'];
+                $_SESSION["ip"] = $row['ip_address'];
                 $_SESSION['staff'] = true;
                 $_SESSION["user_id"] = $row["user_id"];
                 $_SESSION["english_name"] = $row['english_name'];
-                header("Location: staff/index.php");
+                header("Location: staff.php");
                 $dbh = null;
             }
                 if($row['user_type'] == 1 || $row['user_type'] == 2)

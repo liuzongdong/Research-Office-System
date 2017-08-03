@@ -1,12 +1,17 @@
 <?php
 	session_start();
 	require("base.php");
-    if (!(isset($_SESSION["teacher"]) && $_SESSION["teacher"] === true))
+	if ((isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
+    {
+		header("Location: staff.php");
+    }
+     else if (!(isset($_SESSION["teacher"]) && $_SESSION["teacher"] === true))
     {
 		session_unset();
 		session_destroy();
 		header("Location: login.html");
     }
+
 ?>
 <html>
 	<head>

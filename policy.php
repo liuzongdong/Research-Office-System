@@ -1,17 +1,20 @@
 <?php
 	session_start();
 	require("base.php");
+
     if (!(isset($_SESSION["teacher"]) && $_SESSION["teacher"] === true))
     {
-		session_unset();
-		session_destroy();
-		header("Location: login.html");
+		header("Location: logout.php");
+    }
+	if ((isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
+    {
+		header("Location: policy_staff.php");
     }
 ?>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Welcome to RO System</title>
+		<title>Policy</title>
 		<?php importCss(); ?>
 	</head>
 	<body>
