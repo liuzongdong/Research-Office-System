@@ -1,9 +1,13 @@
 <?php
 	session_start();
 	require("../base.php");
-    if (!(isset($_SESSION["teacher"]) && $_SESSION["teacher"] === true))
+	if (!(isset($_SESSION["teacher"]) && $_SESSION["teacher"] === true))
     {
 		echo '<script type="text/javascript">alert("Please Login");location.href="../login.html"</script>';
+    }
+	if ((isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
+    {
+		header("Location: staff.php");
     }
 ?>
 <html>
@@ -16,7 +20,7 @@
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="../index.php"><img src="../uic_logo.png"></img></a></div>
+    <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 

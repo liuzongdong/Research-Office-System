@@ -18,7 +18,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Edit UIC Project</title>
+<title>View UIC Project</title>
 <?php importCss(); ?>
 </head>
 <body>
@@ -61,7 +61,7 @@
 						View UIC Project
 					</div>
 					<div class="panel-body">
-						<div class="col-xs-6">
+						<div class="col-xs-12">
 							<form id="data" role="form" method="post">
 
 								<div class="form-group">
@@ -90,11 +90,11 @@
 
 
 							</div>
-							<div class="col-xs-6" id="pdf" style="padding-top:20px;">
+							<div class="col-xs-12" id="pdf" style="padding-top:20px;">
 								<object data='<?php echo "upload/".$data['up_file']; ?>'
         							type='application/pdf'
         							width='100%'
-        							height='260px'>
+        							height='460px'>
 										<p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="<?php echo "upload/".$data['up_file']; ?>">Download PDF</a></p>
 								</object>
 							</div>
@@ -125,60 +125,6 @@
 					ignoreReadonly: true
                 });
             });
-</script>
-<script>
-$("form#data").submit(function(id){
-var formData = new FormData(this);
-formData.append("id", <?php echo $_GET['id'];?>);
-	$.ajax({
-	url: "modify.php",
-	type: 'POST',
-	data: formData,
-	async: false,
-
-	success: function (response)
-	{
-		var answer = JSON.parse(response);
-		switch ( answer.status_response )
-		{
-			case 'success' :
-				swal(
-					{
-					title:"Good job!",
-					text: "Edit Succeed!",
-					type: "success"
-					},
-					function()
-					{
-						setTimeout(function (){
-							window.location.href = "index";
-						}, 300);
-
-					});
-				break;
-			case 'empty' :
-				swal("Edit Failed!", "Please Complete the Form or There is only Spaces in your submission", "error");
-				break;
-			case 'error' :
-				swal("Edit Failed!", "Please upload a PDF file, PDF File only!", "error");
-				break;
-			case 'fail' :
-				swal("Edit Failed!", "Please check your internet connection!", "error");
-				break;
-
-		}
-	},
-	error: function (xhr, ajaxOptions, thrownError)
-	{
-		swal("Edit Failed!", "Please check your internet connection.", "error");
-	},
-	cache: false,
-	contentType: false,
-	processData: false
-});
-
-return false;
-});
 </script>
 
 

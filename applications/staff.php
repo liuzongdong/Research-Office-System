@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require("../../base.php");
+	require("../base.php");
     if (!(isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
     {
 		echo '<script type="text/javascript">alert("Please Login");location.href="../../login.html"</script>';
@@ -9,11 +9,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Reasearch Teacher</title>
+<title>Application</title>
 
-<link href="../../css/bootstrap.min.css" rel="stylesheet">
-<link href="../../css/style.css" rel="stylesheet">
-<link href="../../css/bootstrap-table.css" rel="stylesheet">
+<?php importFullCss(); ?>
 
 <!-- jQuery file -->
 
@@ -22,20 +20,19 @@
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="#"><img src="../../uic_logo.png"></img></a></div>
+    <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
-    <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?>,  <a href="../../logout.php" class="logout">Logout</a> </div>
+	<div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
+
 
     <div class="menu">
     	<ul>
-			<li><a href="../index.php">Dashboard</a></li>
-    		<li><a href="../uic_project">UIC Project</a></li>
-    		<li><a href="../external_project">External Project</a></li>
-    		<li><a href="../publication" >Publication</a></li>
-    		<li><a href="../patent">Patent</a></li>
-    		<li><a href="#">Achievements</a></li>
-    		<li><a href="../applications" class="selected">Applications</a></li>
-			<li><a href="../new_round_application">New Round Applications</a></li>
+			<li><a href="/">Dashboard</a></li>
+    		<li><a href="/uic_project">UIC Project</a></li>
+    		<li><a href="/external_project">External Project</a></li>
+    		<li><a href="/journal">Publication</a></li>
+    		<li><a href="/patent">Achievements</a></li>
+    		<li><a href="/applications" class="selected">Applications</a></li>
     	</ul>
     </div>
 
@@ -43,11 +40,7 @@
 
     <div class="submenu">
     <ul>
-      <li><a href="index.php">RA</a></li>
-  		<li><a href="conference.php">Conference</a></li>
-  		<li><a href="visit.php">Visiting Scholar</a></li>
-  	    <li><a href="fund.php" >Publication Fund</a></li>
-  			<li><a href="history.php" class="selected">History</a></li>
+      <li><a class="selected" href="staff">Application</a></li>
     </ul>
     </div>
 
@@ -60,14 +53,14 @@
 			<div class="panel panel-default">
 				<div class="panel-heading">History </div>
 				<div class="panel-body">
-					<table id="table" data-show-export="true" data-toggle="table" data-url="data.php" data-search="true" data-advanced-search="true" data-id-table="advancedTable" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true" >
+					<table id="table" data-show-export="true" data-toggle="table" data-url="data_staff.php" data-search="true" data-advanced-search="true" data-id-table="advancedTable" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true" >
 						<thead>
 							<tr>
-								<th data-field="english_name" data-sortable="true" data-halign="center" data-align="center">Name</th>
 								<th data-field="app_title" data-sortable="true" data-halign="center" data-align="center">Title</th>
-								<th data-field="app_type" data-sortable="true" data-halign="center" data-align="center">Type</th>
-								<th data-field="programme" data-sortable="true" data-halign="center" data-align="center">Unit</th>
+								<th data-field="english_name" data-sortable="true" data-halign="center" data-align="center">Name</th>
 								<th data-field="division" data-sortable="true" data-halign="center" data-align="center">Division</th>
+								<th data-field="app_type" data-sortable="true" data-halign="center" data-align="center">Type</th>
+								<th data-field="programme" data-sortable="true" data-halign="center" data-align="center">Programme</th>
 								<th data-field="app_update_date" data-sortable="true" data-halign="center" data-align="center">Date</th>
 								<th data-field="action" data-halign="center" data-align="center" data-width="11%">Action</th>
 							</tr>
@@ -83,14 +76,6 @@
 	<div class="footer">©2017 United International College(UIC). All Rights Reserved.</div>
 
 </div>
-
-<script src="../../js/jquery.min.js"></script>
-<script src="../../js/bootstrap.min.js"></script>
-<script src="../../js/bootstrap-table.js"></script>
-<script src="../../js/FileSaver.min.js"></script>
-<script src="../../js/bootstrap-table-export.js"></script>
-<script src="../../js/bootstrap-table-toolbar.js"></script>
-<script src="../../js/tableExport.js"></script>
 
 </body>
 </html>
