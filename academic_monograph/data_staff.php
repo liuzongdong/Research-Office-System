@@ -16,7 +16,7 @@
         foreach($data as $key => $value)
         {
             $data[$key]['english_name'] = $data[$key]['english_name']. " " .$data[$key]['last_name'];
-            $data[$key]['action'] = "<a href=\"edit.php?id=".$data[$key]['academic_monograph_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">Edit</button></a> <a onclick = confirmDelete(".$data[$key]['academic_monograph_id'].")><button type=\"button\" class=\"btn btn-danger btn-xs\">Delete</button></a>";
+            $data[$key]['action'] = "<a href=\"view.php?id=".$data[$key]['academic_monograph_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">View</button></a> <a href=\"upload/".$data[$key]['academic_monograph_file']."\"><button type=\"button\" class=\"btn btn-default btn-xs\">Download</button></a>";
         }
         $json = json_encode($data);
     }

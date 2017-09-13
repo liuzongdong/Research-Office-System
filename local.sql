@@ -270,5 +270,11 @@ CREATE TABLE `midterm_report`
     FOREIGN KEY (`midterm_report_user_id`) REFERENCES `user`(`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE `policy`
+(
+    `policy_id` int auto_increment primary key,
+    `policy_content` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 SELECT `patent_name`, `patent_code`, `english_name`, `division` FROM `patent`, `user` WHERE patent.patent_author_id = user.user_id AND user.user_id = 1

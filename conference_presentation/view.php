@@ -20,6 +20,45 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Cinference Presentation</title>
 <?php importCss(); ?>
+<script>
+$(document).ready(function () {
+    var $nav = $('#menu > ul > li');
+  $nav.hover(
+    function() {
+        $(this).children('a').addClass('hovered');
+    },
+    function() {
+        $(this).children('a').removeClass('hovered');
+    }
+);
+});
+</script>
+<script>
+$(document).ready(function () {
+    var $nav = $('#menu > ul > li');
+  $nav.hover(
+    function() {
+        $(this).children('a').addClass('hovered');
+    },
+    function() {
+        $(this).children('a').removeClass('hovered');
+    }
+);
+});
+</script>
+<script>
+$(document).ready(function () {
+    var $nav = $('#menu > ul > li');
+  $nav.hover(
+    function() {
+        $(this).children('a').addClass('hovered');
+    },
+    function() {
+        $(this).children('a').removeClass('hovered');
+    }
+);
+});
+</script>
 </head>
 <body>
 <div id="panelwrap">
@@ -29,16 +68,83 @@
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
-    <div class="menu">
-    	<ul>
-			<li><a href="/">Dashboard</a></li>
-    		<li><a href="/uic_project">UIC Project</a></li>
-    		<li><a href="/external_project">External Project</a></li>
-    		<li><a href="/journal" class="selected">Publication</a></li>
-    		<li><a href="/patent" >Achievements</a></li>
-    		<li><a href="/applications">Applications</a></li>
-			</ul>
-    </div>
+	<div id="menu" class="menu">
+	<ul>
+		<li id="dashboard"><a href="/">Dashboard</a>
+			<div class="dropdown-dashboard">
+				<ul>
+					<li><a href="/">HomePage</a></li>
+					<li><a href="/policy.php">Policy</a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="policy"><a href="/policy.php">Policy</a>
+			<div class="dropdown-policy">
+				<ul>
+					<li><a href="/policy.php">Policy</a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="profile" ><a href="/profile">Profile</a>
+			<div class="dropdown-profile">
+				<ul>
+					<li><a href="/profile">Profile</a></li>
+					<li><a href="/security">Change Password</a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="uic-project"><a href="/uic_project">UIC Research Grant</a>
+			<div class="dropdown-uic-project">
+				<ul>
+					<li><a href="/uic_project">Category I - III</a></li>
+					<li><a href="/iv_project">Category IV</a></li>
+					<li><a href="/project_undertaking">Project Budget & Undertaking</a></li>
+					<li><a href="/midterm_progress_report_form">Midterm Progress</a></li>
+					<li><a href="/completion_report_form">Completion Report</a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="external-project"><a href="/external_project">External Project</a>
+			<div class="dropdown-external-project">
+				<ul>
+					<li><a href="/external_project">Government Funded</a></li>
+					<li><a href="/industry_project">Industry Funded</a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="publication"><a href="/journal" class="selected">Publication</a>
+			<div class="dropdown-publication">
+				<ul>
+					<li><a href="/journal">Journal</a></li>
+					<li><a href="/conference_paper">Conference Paper</a></li>
+					<li><a href="/academic_monograph">Academic Monograph</a></li>
+					<li><a href="/conference_presentation">Conference Presentation</a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="achievements"><a href="/patent">Achievements</a>
+			<div class="dropdown-achievements">
+				<ul>
+					<li><a href="/patent">Patent</a></li>
+					<li><a href="/software_copyright">Software Copyright</a></li>
+					<li><a href="/research_award">Research Award</a></li>
+					<li><a href="/personnel_development">Personnel Development</a></li>
+				</ul>
+			</div>
+		</li>
+		<li id="applications"><a href="/applications">Applications</a>
+			<div class="dropdown-applications">
+				<ul>
+					<li><a href="/applications/index.php">Research Assistant</a></li>
+					<li><a href="/applications/conference.php">Academic Conference</a></li>
+					<li><a href="/applications/visit.php">Visiting Scholar</a></li>
+					<li><a href="/applications/fund.php">Publication Fund</a></li>
+					<li><a href="/applications/fap.php">FAP</a></li>
+				</ul>
+			</div>
+		</li>
+	</ul>
+</div>
 
     </div>
 

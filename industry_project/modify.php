@@ -23,6 +23,7 @@
         }
         else
         {
+            unset($missing);
             $title = $_POST["title"];
             $type = $_POST["type"];
         	$role = $_POST["role"];
@@ -31,22 +32,67 @@
             $duration_to = $_POST["to"];
         	$amount = $_POST["amount"];
             $action = "";
-            $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-            $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-            $sql = "update industry_project set ip_title = ?, ip_type = ?, ip_role = ?, ip_fundsource = ?, ip_duration_from = ?, ip_duration_to = ?, ip_amount = ? where ip_id = ?";
-            $prepare = $dbh -> prepare($sql);
-            $execute = $prepare -> execute(array($title, $type, $role, $source, $duration_from, $duration_to, $amount, $_POST["id"]));
-            if ($execute)
+            $upload_file = $_FILES["file"]["name"];
+            if ($upload_file != "")
             {
-                $response = array('status_response'  => 'success');
-                echo json_encode($response);
+                if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")
+                {
+                    $response = array('status_response'  => 'error');
+                    echo json_encode($response);
+                }
+                else
+                {
+                    $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
+                	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                    $sql = "select ip_file from industry_project where ip_id = ?";
+                	$prepare = $dbh -> prepare($sql);
+                	$execute = $prepare -> execute(array($_POST['id']));
+                	if ($execute)
+                	{
+                		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
+                		unlink("upload/".$data['ip_file']);
+                	}
+                    $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
+                    $folder="upload/";
+                    $filenamekey = md5(uniqid($_FILES["file"]["name"], true));
+                    $filenamekey .= "." . $extension;
+                    move_uploaded_file($_FILES["file"]["tmp_name"], "$folder".$filenamekey);
+                    $sql = "update industry_project set ip_title = ?, ip_type = ?, ip_role = ?, ip_fundsource = ?, ip_duration_from = ?, ip_duration_to = ?, ip_amount = ?, ip_file = ? where ip_id = ?";
+                    $prepare = $dbh -> prepare($sql);
+                    $execute = $prepare -> execute(array($title, $type, $role, $source, $duration_from, $duration_to, $amount, $filenamekey, $_POST["id"]));
+                    if ($execute)
+                    {
+                        $response = array('status_response'  => 'success');
+                        echo json_encode($response);
+                    }
+                    else
+                    {
+                        $response = array('status_response'  => 'fail');
+                        echo json_encode($response);
+                    }
+                    $dbh = null;
+                }
             }
             else
             {
-                $response = array('status_response'  => 'fail');
-                echo json_encode($response);
+                $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
+                $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+                $sql = "update industry_project set ip_title = ?, ip_type = ?, ip_role = ?, ip_fundsource = ?, ip_duration_from = ?, ip_duration_to = ?, ip_amount = ? where ip_id = ?";
+                $prepare = $dbh -> prepare($sql);
+                $execute = $prepare -> execute(array($title, $type, $role, $source, $duration_from, $duration_to, $amount, $_POST["id"]));
+                if ($execute)
+                {
+                    $response = array('status_response'  => 'success');
+                    echo json_encode($response);
+                }
+                else
+                {
+                    $response = array('status_response'  => 'fail');
+                    echo json_encode($response);
+                }
+                $dbh = null;
             }
-            $dbh = null;
+
         }
     }
 

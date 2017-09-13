@@ -10,7 +10,7 @@
         require("../base.php");
         $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
     	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    	$sql = "select ep_user_id from external_project where ep_id = ?";
+    	$sql = "select ep_user_id, ep_file from external_project where ep_id = ?";
     	$prepare = $dbh -> prepare($sql); // Statement is Statement.
     	$execute = $prepare -> execute(array($_POST['id']));
     	if ($execute)
@@ -23,6 +23,7 @@
     		}
             else
             {
+                unlink("upload/".$data['ep_file']);
                 $sql = "delete from external_project where ep_id = ?";
                 $prepare = $dbh -> prepare($sql);
                 $execute = $prepare -> execute(array($_POST['id']));

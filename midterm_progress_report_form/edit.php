@@ -25,6 +25,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Edit UIC Project</title>
 <?php importFullCss(); ?>
+<script>
+$(document).ready(function () {
+    var $nav = $('#menu > ul > li');
+  $nav.hover(
+    function() {
+        $(this).children('a').addClass('hovered');
+    },
+    function() {
+        $(this).children('a').removeClass('hovered');
+    }
+);
+});
+</script>
 </head>
 <body>
 <div id="panelwrap">
@@ -37,8 +50,9 @@
     <div class="menu">
     	<ul>
 			<li><a href="/">Dashboard</a></li>
+			<li><a href="/policy.php">Policy</a></li>
     		<li><a href="/profile">Profile</a></li>
-    		<li><a href="/uic_project" class="selected">UIC Project</a></li>
+    		<li><a href="/uic_project" class="selected">UIC Research Grant</a></li>
     		<li><a href="/external_project">External Project</a></li>
     		<li><a href="/journal">Publication</a></li>
     		<li><a href="/patent">Achievements</a></li>
@@ -67,9 +81,9 @@
     <ul>
 		<li><a href="/uic_project" >Category I - III</a></li>
   	  <li><a href="/iv_project">Category IV</a></li>
-  	  <li><a href="/project_undertaking">UIC Project Budget & Project Undertaking</a></li>
-  	  <li><a href="/midterm_progress_report_form" class="selected">Midterm Progress Report Form</a></li>
-  	  <li><a href="/completion_report_form">Completion Report Form</a></li>
+  	  <li><a href="/project_undertaking">Project Budget & Undertaking</a></li>
+  	  <li><a href="/midterm_progress_report_form" class="selected">Midterm Progress Report</a></li>
+  	  <li><a href="/completion_report_form">Completion Report</a></li>
     </ul>
     </div>
 

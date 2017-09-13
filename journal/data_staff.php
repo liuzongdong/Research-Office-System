@@ -13,7 +13,7 @@
         foreach($data as $key => $value)
         {
             $data[$key]['english_name'] = $data[$key]['english_name']. " " .$data[$key]['last_name'];
-            $data[$key]['action'] = "<a href=\"view.php?id=".$data[$key]['journal_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">View</button></a> <a href=\"upload/".$data[$key]['journal_id']."\"><button type=\"button\" class=\"btn btn-default btn-xs\">Download</button></a>";
+            $data[$key]['action'] = "<a href=\"view.php?id=".$data[$key]['journal_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">View</button></a> <a href=\"upload/".$data[$key]['journal_src']."\"><button type=\"button\" class=\"btn btn-default btn-xs\">Download</button></a>";
         }
         $json = json_encode($data);
     }

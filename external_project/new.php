@@ -32,21 +32,36 @@
             $duration_to = $_POST["to"];
         	$amount = $_POST["amount"];
             $action = "";
-            $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-            $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-            $sql = "insert into external_project (ep_user_id, ep_title, ep_role, ep_fundsource, ep_duration_from, ep_duration_to, ep_amount, ep_type, action) values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $prepare = $dbh -> prepare($sql);
-            $execute = $prepare -> execute(array($_SESSION['user_id'], $title, $role, $source, $duration_from, $duration_to, $amount, $type, $action));
-            if ($execute)
+            $upload_file = $_FILES["file"]["name"];
+            $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
+            if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")
             {
-                $response = array('status_response'  => 'success');
+                $response = array('status_response'  => 'error');
                 echo json_encode($response);
             }
             else
             {
-                $response = array('status_response'  => 'fail');
-                echo json_encode($response);
+                $folder="upload/";
+                $filenamekey = md5(uniqid($_FILES["file"]["name"], true));
+                $filenamekey .= "." . $extension;
+                move_uploaded_file($_FILES["file"]["tmp_name"], "$folder".$filenamekey);
+                $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
+                $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
+                $sql = "insert into external_project (ep_user_id, ep_title, ep_role, ep_fundsource, ep_duration_from, ep_duration_to, ep_amount, ep_type, ep_file, action) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $prepare = $dbh -> prepare($sql);
+                $execute = $prepare -> execute(array($_SESSION['user_id'], $title, $role, $source, $duration_from, $duration_to, $amount, $type, $filenamekey, $action));
+                if ($execute)
+                {
+                    $response = array('status_response'  => 'success');
+                    echo json_encode($response);
+                }
+                else
+                {
+                    $response = array('status_response'  => 'fail');
+                    echo json_encode($response);
+                }
             }
+
         }
     }
     $dbh = null;

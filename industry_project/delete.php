@@ -10,7 +10,7 @@
         require("../base.php");
         $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
     	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    	$sql = "select ip_user_id from industry_project where ip_id = ?";
+    	$sql = "select ip_user_id, ip_file from industry_project where ip_id = ?";
     	$prepare = $dbh -> prepare($sql);
     	$execute = $prepare -> execute(array($_POST['id']));
     	if ($execute)
@@ -23,6 +23,7 @@
     		}
             else
             {
+                unlink("upload/".$data['ip_file']);
                 $sql = "delete from industry_project where ip_id = ?";
                 $prepare = $dbh -> prepare($sql);
                 $execute = $prepare -> execute(array($_POST['id']));

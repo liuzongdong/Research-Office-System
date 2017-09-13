@@ -23,14 +23,14 @@ body{
 }
 
 .title img{
-    width:604px;
+    width:824px;
     height:101px;
 }
 
 .header_right
 {
     float:right;
-    padding:70px 20px 0 0;
+    padding:65px 20px 0 0;
 }
 .header_right a
 {
@@ -54,9 +54,435 @@ body{
 
 .menu
 {
+    position: relative;
     float:left;
     padding:27px 0 0 14px;
 }
+.menu .dropdown-dashboard
+{
+    display: none;
+    z-index:1000;
+    position: absolute;
+    top: 57px;
+    width: 110px;
+    height: 80px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.menu .dropdown-dashboard li a {
+  display: block;
+  padding: 7px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.menu .dropdown-dashboard li
+{
+    padding-left: 0px;
+    width: 100%;
+}
+.menu .dropdown-dashboard li a:hover
+{
+    background-color:#317DBF;
+    color:white
+}
+.menu .dropdown-dashboard li a
+{
+    background-color: white;
+    width: 100%;
+}
+.menu .dropdown-dashboard li a:focus
+{
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.menu .dropdown-policy
+{
+    display: none;
+    z-index:1000;
+    position: absolute;
+    top: 57px;
+    width: 80px;
+    height: 46px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.menu .dropdown-policy li a {
+  display: block;
+  padding: 7px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.menu .dropdown-policy li
+{
+    padding-left: 0px;
+    width: 100%;
+}
+.menu .dropdown-policy li a:hover
+{
+    background-color:#317DBF;
+    color:white
+}
+.menu .dropdown-policy li a
+{
+    background-color: white;
+    width: 100%;
+}
+.menu .dropdown-policy li a:focus
+{
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.menu .dropdown-profile
+{
+    display: none;
+    z-index:1000;
+    position: absolute;
+    top: 57px;
+    width: 160px;
+    height: 80px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.menu .dropdown-profile li a {
+  display: block;
+  padding: 7px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.menu .dropdown-profile li
+{
+    padding-left: 0px;
+    width: 100%;
+}
+.menu .dropdown-profile li a:hover
+{
+    background-color:#317DBF;
+    color:white
+}
+.menu .dropdown-profile li a
+{
+    background-color: white;
+    width: 100%;
+}
+.menu .dropdown-profile li a:focus
+{
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.menu .dropdown-uic-project
+{
+    display: none;
+    z-index:1000;
+    position: absolute;
+    top: 57px;
+    width: 230px;
+    height: 182px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.menu .dropdown-uic-project li a {
+  display: block;
+  padding: 7px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.menu .dropdown-uic-project li
+{
+    padding-left: 0px;
+    width: 100%;
+}
+.menu .dropdown-uic-project li a:hover
+{
+    background-color:#317DBF;
+    color:white
+}
+.menu .dropdown-uic-project li a
+{
+    background-color: white;
+    width: 100%;
+}
+.menu .dropdown-uic-project li a:focus
+{
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.menu .dropdown-external-project
+{
+    display: none;
+    z-index:1000;
+    position: absolute;
+    top: 57px;
+    width: 175px;
+    height: 80px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.menu .dropdown-external-project li a {
+  display: block;
+  padding: 7px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.menu .dropdown-external-project li
+{
+    padding-left: 0px;
+    width: 100%;
+}
+.menu .dropdown-external-project li a:hover
+{
+    background-color:#317DBF;
+    color:white
+}
+.menu .dropdown-external-project li a
+{
+    background-color: white;
+    width: 100%;
+}
+.menu .dropdown-external-project li a:focus
+{
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.menu .dropdown-publication
+{
+    display: none;
+    z-index:1000;
+    position: absolute;
+    top: 57px;
+    width: 200px;
+    height: 148px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.menu .dropdown-publication li a {
+  display: block;
+  padding: 7px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.menu .dropdown-publication li
+{
+    padding-left: 0px;
+    width: 100%;
+}
+.menu .dropdown-publication li a:hover
+{
+    background-color:#317DBF;
+    color:white
+}
+.menu .dropdown-publication li a
+{
+    background-color: white;
+    width: 100%;
+}
+.menu .dropdown-publication li a:focus
+{
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.menu .dropdown-achievements
+{
+    display: none;
+    z-index:1000;
+    position: absolute;
+    top: 57px;
+    width: 195px;
+    height: 148px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.menu .dropdown-achievements li a {
+  display: block;
+  padding: 7px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.menu .dropdown-achievements li
+{
+    padding-left: 0px;
+    width: 100%;
+}
+.menu .dropdown-achievements li a:hover
+{
+    background-color:#317DBF;
+    color:white
+}
+.menu .dropdown-achievements li a
+{
+    background-color: white;
+    width: 100%;
+}
+.menu .dropdown-achievements li a:focus
+{
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+.menu .dropdown-applications
+{
+    display: none;
+    z-index:1000;
+    position: absolute;
+    top: 57px;
+    width: 180px;
+    height: 183px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.menu .dropdown-applications li a {
+  display: block;
+  padding: 7px 20px;
+  clear: both;
+  font-weight: normal;
+  line-height: 1.42857143;
+  color: #333;
+  white-space: nowrap;
+}
+.menu .dropdown-applications li
+{
+    padding-left: 0px;
+    width: 100%;
+}
+.menu .dropdown-applications li a:hover
+{
+    background-color:#317DBF;
+    color:white
+}
+.menu .dropdown-applications li a
+{
+    background-color: white;
+    width: 100%;
+}
+.menu .dropdown-applications li a:focus
+{
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+
+
 .menu ul
 {
     padding:0px;
@@ -89,7 +515,43 @@ body{
     text-decoration:none;
     margin:0 4px 0 0;
 }
-.menu ul li a:hover{background-color:#317DBF; color:white}
+.menu ul li a:hover, .menu ul li a.hovered
+{
+    background-color:#317DBF;
+    color:white
+}
+
+#dashboard:hover .dropdown-dashboard {
+    display: block;
+}
+
+#policy:hover .dropdown-policy {
+    display: block;
+}
+
+#profile:hover .dropdown-profile {
+    display: block;
+}
+
+#uic-project:hover .dropdown-uic-project {
+    display: block;
+}
+
+#external-project:hover .dropdown-external-project {
+    display: block;
+}
+
+#publication:hover .dropdown-publication {
+    display: block;
+}
+
+#achievements:hover .dropdown-achievements {
+    display: block;
+}
+
+#applications:hover .dropdown-applications {
+    display: block;
+}
 
 .submenu
 {
