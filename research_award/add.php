@@ -263,7 +263,7 @@ var formData = new FormData(this);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

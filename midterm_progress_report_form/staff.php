@@ -136,7 +136,7 @@ $(document).ready(function () {
 			<div class="panel panel-default">
 				<div class="panel-heading">UIC Project(Midterm Progress Report)</div>
 				<div class="panel-body">
-					<table id="table" data-show-refresh="true" data-show-export="true" data-toggle="table" data-advanced-search="true" data-id-table="advancedTable" data-url="data_staff.php" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+					<table id="table" data-show-refresh="true" data-show-export="true" data-show-toggle="true" data-toggle="table" data-advanced-search="true" data-id-table="advancedTable" data-url="data_staff.php" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 						<thead>
 						<tr>
 							<th data-field="midterm_progress_report_form_title" data-halign="center" data-align="center" data-sortable="true" >Project Title</th>

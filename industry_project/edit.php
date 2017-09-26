@@ -285,7 +285,7 @@ formData.append("id", <?php echo $_GET['id'];?>);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

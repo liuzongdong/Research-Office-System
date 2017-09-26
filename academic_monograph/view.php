@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require("../base.php");
-    if (!(isset($_SESSION["teacher"]) && $_SESSION["teacher"] === true))
+    if (!(isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
     {
 		echo '<script type="text/javascript">alert("Please Login");location.href="/login.html"</script>';
     }
@@ -13,10 +13,6 @@
 	if ($execute)
 	{
 		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
-		if ($data['academic_monograph_author_id'] != $_SESSION['user_id'])
-		{
-			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index"</script>';
-		}
 	}
 ?>
 <html>
@@ -37,32 +33,6 @@ $(document).ready(function () {
 );
 });
 </script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
 </head>
 <body>
 <div id="panelwrap">
@@ -70,7 +40,7 @@ $(document).ready(function () {
 	<div class="header">
     <div class="title"><a href="/index.php"><img src="/uic_logo.png"></img></a></div>
 
-    <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
+    <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
 	<div id="menu" class="menu">
 	<ul>

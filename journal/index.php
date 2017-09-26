@@ -155,7 +155,7 @@ $(document).ready(function () {
 			<div class="panel panel-default">
 				<div class="panel-heading">Journal <a href="add.php"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Journal</button></a></div>
 				<div class="panel-body">
-					<table id="table" data-toggle="table" data-url="data.php" data-show-refresh="true" data-show-export="true" data-advanced-search="true" data-id-table="advancedTable" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+					<table id="table" data-toggle="table" data-url="data.php" data-show-refresh="true" data-show-export="true"  data-advanced-search="true" data-id-table="advancedTable" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 						<thead>
 						<tr>
 							<th data-field="journal_title" data-sortable="true" data-halign="center" data-align="center">Article Title</th>

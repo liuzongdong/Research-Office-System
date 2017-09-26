@@ -70,7 +70,7 @@ $(document).ready(function () {
 						<li><a href="/iv_project">Category IV</a></li>
 						<li><a href="/project_undertaking">Project Budget & Undertaking</a></li>
 						<li><a href="/midterm_progress_report_form">Midterm Progress</a></li>
-						<li><a href="/complete_report_form">Completion Report</a></li>
+						<li><a href="/completion_report_form">Completion Report</a></li>
 					</ul>
 				</div>
 			</li>

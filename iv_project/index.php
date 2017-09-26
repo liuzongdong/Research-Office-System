@@ -36,7 +36,7 @@ $(document).ready(function () {
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="#"><img src="/uic_logo.png"></img></a></div>
+    <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
@@ -72,7 +72,7 @@ $(document).ready(function () {
 					<li><a href="/iv_project">Category IV</a></li>
 					<li><a href="/project_undertaking">Project Budget & Undertaking</a></li>
 					<li><a href="/midterm_progress_report_form">Midterm Progress</a></li>
-					<li><a href="/complete_report_form">Completion Report</a></li>
+					<li><a href="/completion_report_form">Completion Report</a></li>
 				</ul>
 			</div>
 		</li>
@@ -154,9 +154,9 @@ $(document).ready(function () {
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">UIC Project (Fund For Institutes and Centers) <a href="add"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Project</button></a></div>
+				<div class="panel-heading">UIC Project (Fund For Institutes and Centers) <a href="add.php"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Project</button></a></div>
 				<div class="panel-body">
-					<table id="table" data-show-refresh="true" data-show-export="true" data-toggle="table" data-advanced-search="true" data-id-table="advancedTable" data-url="data.php" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+					<table id="table" data-show-refresh="true" data-show-export="true"  data-toggle="table" data-advanced-search="true" data-id-table="advancedTable" data-url="data.php" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 						<thead>
 						<tr>
 							<th data-field="iv_project_name" data-halign="center" data-align="center" data-sortable="true" >Name of Institute or Center</th>

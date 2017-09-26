@@ -13,7 +13,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>UIC Project Budget & Project Undertaking</title>
+<title>Project Budget & Undertaking</title>
 <?php importCss(); ?>
 <script>
 $(document).ready(function () {
@@ -233,7 +233,7 @@ var formData = new FormData(this);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

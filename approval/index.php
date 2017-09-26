@@ -55,7 +55,7 @@ $(document).ready(function () {
 		<div id="panelwrap">
 
 		<div class="header">
-    	<div class="title"><a href="#"><img src="../uic_logo.png"></img></a></div>
+    	<div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
     	<div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?>,  <a href="../logout.php" class="logout">Logout</a> </div>
 
@@ -90,7 +90,7 @@ $(document).ready(function () {
 
     <div class="submenu">
     <ul>
-    <li><a href="index" class="selected">Approval</a></li>
+    <li><a href="index.php" class="selected">Approval</a></li>
     </ul>
     </div>
 
@@ -101,7 +101,7 @@ $(document).ready(function () {
 				<div class="panel panel-default">
 					<div class="panel-heading">Waiting Approval</div>
 					<div class="panel-body">
-						<table data-toggle="table" data-url="data.php" data-show-export="true" data-advanced-search="true" data-id-table="advancedTable" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+						<table data-toggle="table" data-url="data.php" data-show-export="true"  data-advanced-search="true" data-id-table="advancedTable" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 							<thead>
 							<tr>
 								<th data-field="english_name" data-sortable="true" data-halign="center" data-align="center">Applicant</th>

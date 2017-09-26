@@ -155,7 +155,7 @@ $(document).ready(function () {
 			<div class="panel panel-default">
 				<div class="panel-heading">Personnel Development <a href="add.php"<button style="float:right; margin-top:5px;" type="button" class="btn btn-primary" name="button">Add Personnel Development</button></a></div>
 				<div class="panel-body">
-					<table id="table" data-toggle="table" data-show-refresh="true" data-url="data.php" data-show-export="true" data-advanced-search="true" data-id-table="advancedTable" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+					<table id="table" data-toggle="table" data-show-refresh="true" data-url="data.php" data-show-export="true"  data-advanced-search="true" data-id-table="advancedTable" data-striped="true" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 						<thead>
 						<tr>
 							<th data-field="personnel_deveplopment_training_person" data-sortable="true" data-halign="center" data-align="center">Name of Trained Person</th>

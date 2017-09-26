@@ -7,7 +7,7 @@
     require("../base.php");
     $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-    $sql = "select user_id, user_email, division, programme, english_name, first_name, last_name, action from user where user_type = 1"; // *, select all. '?' and '?', SQL Injection
+    $sql = "select user_id, user_email, division, programme, english_name, first_name, last_name, user_action from user where user_type = 1"; // *, select all. '?' and '?', SQL Injection
     $prepare = $dbh -> prepare($sql); // Statement is Statement.
     $execute = $prepare -> execute(); // Var is Var.
     if ($execute)

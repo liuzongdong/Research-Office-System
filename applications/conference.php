@@ -34,7 +34,7 @@ $(document).ready(function () {
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="#"><img src="../uic_logo.png"></img></a></div>
+    <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
@@ -137,11 +137,11 @@ $(document).ready(function () {
 
     <div class="submenu">
     <ul>
-	    <li><a href="index">Research Assistant</a></li>
-		<li><a href="conference" class="selected">Academic Conference</a></li>
-		<li><a href="visit">Visiting Scholar</a></li>
-	    <li><a href="fund">Publication Fund</a></li>
-		<li><a href="fap">FAP</a></li>
+	    <li><a href="index.php">Research Assistant</a></li>
+		<li><a href="conference.php" class="selected">Academic Conference</a></li>
+		<li><a href="visit.php">Visiting Scholar</a></li>
+	    <li><a href="fund.php">Publication Fund</a></li>
+		<li><a href="fap.php">FAP</a></li>
     </ul>
     </div>
 
@@ -220,7 +220,7 @@ var formData = new FormData(this);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "conference";
+							window.location.href = "conference.php";
 						}, 300);
 
 					});

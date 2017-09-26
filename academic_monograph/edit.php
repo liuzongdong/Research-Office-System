@@ -15,7 +15,7 @@
 		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
 		if ($data['academic_monograph_author_id'] != $_SESSION['user_id'])
 		{
-			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index"</script>';
+			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index.php"</script>';
 		}
 	}
 ?>
@@ -300,7 +300,7 @@ formData.append("id", <?php echo $_GET['id'];?>);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

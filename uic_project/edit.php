@@ -43,7 +43,7 @@ $(document).ready(function () {
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="#"><img src="../uic_logo.png"></img></a></div>
+    <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?>  <a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
@@ -148,9 +148,9 @@ $(document).ready(function () {
     <ul>
 		<li><a href="/uic_project" class="selected">Category I - III</a></li>
 		<li><a href="/iv_project">Category IV</a></li>
-		<li><a href="/project_undertaking">UIC Project Budget & Project Undertaking</a></li>
-		<li><a href="/midtern_progress_report_form">Midtern Progress Report Form</a></li>
-		<li><a href="/completion_report_form">Completion Report Form</a></li>
+		<li><a href="/project_undertaking">Project Budget & Undertaking</a></li>
+		<li><a href="/midterm_progress_report_form">Midterm Progress Report</a></li>
+		<li><a href="/completion_report_form">Completion Report</a></li>
     </ul>
     </div>
 
@@ -266,7 +266,7 @@ formData.append("id", <?php echo $_GET['id'];?>);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

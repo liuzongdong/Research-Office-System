@@ -32,7 +32,7 @@ $(document).ready(function () {
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="#"><img src="/uic_logo.png"></img></a></div>
+    <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
@@ -149,7 +149,7 @@ $(document).ready(function () {
 	<div class="row">
 		<div class="col-xs-12">
 			<div class="panel panel-default">
-				<div class="panel-heading">New UIC Porject（Completion Report Form）
+				<div class="panel-heading">New UIC Porject（Completion Report）
 					<div style="float:right">
 						<label for="submitForm" class="btn btn-primary"> Submit </label>
 						<label for="resetForm" class="btn btn-default"> Reset </label>
@@ -341,7 +341,7 @@ var formData = new FormData(this);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

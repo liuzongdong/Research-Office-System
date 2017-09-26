@@ -139,7 +139,7 @@ $(document).ready(function () {
 			<div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						View UIC Project (Completion Report Form)
+						View UIC Project (Completion Report)
 					</div>
 					<div class="panel-body">
 						<div class="col-xs-6">

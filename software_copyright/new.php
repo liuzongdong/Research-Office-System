@@ -3,7 +3,7 @@
     if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) )
     {
         header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
-        die( header( 'location:index' ) );
+        die( header( 'location:/403.html' ) );
     } //Deny directly access from url, which means, user cannot type "mysiteaddress/new.php" in the address bar.
     else
     {

@@ -24,32 +24,6 @@ $(document).ready(function () {
 );
 });
 </script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
 </head>
 <body>
 <div id="panelwrap">
@@ -59,17 +33,6 @@ $(document).ready(function () {
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
-    <div class="menu">
-    	<ul>
-			<li><a href="/">Dashboard</a></li>
-    		<li><a href="/profile">Profile</a></li>
-    		<li><a href="/uic_project">UIC Project</a></li>
-    		<li><a href="/external_project">External Project</a></li>
-    		<li><a href="/journal" class="selected">Publication</a></li>
-    		<li><a href="/patent" >Achievements</a></li>
-    		<li><a href="/applications" >Applications</a></li>
-    	</ul>
-    </div>
 
     </div>
 
@@ -166,6 +129,14 @@ $(document).ready(function () {
 		}
 		?>
 	</ul>
+</div>
+<div class="submenu">
+<ul>
+		<li><a href="/journal" >Journal</a></li>
+		<li><a href="/conference_paper" class="selected">Conference Paper</a></li>
+		<li><a href="/academic_monograph">Academic Monograph</a></li>
+		<li><a href="/conference_presentation">Conference Presentation</a></li>
+</ul>
 </div>
     <div>
 
@@ -346,7 +317,7 @@ var formData = new FormData(this);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

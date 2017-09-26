@@ -15,7 +15,7 @@
 		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
 		if ($data['journal_user_id'] != $_SESSION['user_id'])
 		{
-			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index"</script>';
+			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index.php"</script>';
 		}
 	}
 ?>
@@ -68,7 +68,7 @@ $(document).ready(function () {
 <div id="panelwrap">
 
 	<div class="header">
-    <div class="title"><a href="#"><img src="../uic_logo.png"></img></a></div>
+    <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
     <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
@@ -356,7 +356,7 @@ formData.append("id", <?php echo $_GET['id'];?>);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

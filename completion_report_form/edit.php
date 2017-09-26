@@ -160,7 +160,7 @@ $(document).ready(function () {
 			<div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Edit UIC Project (Completion Report Form)
+						Edit UIC Project (Completion Report)
 						<div style="float:right">
 						    <label for="submitForm" class="btn btn-primary"> Submit </label>
 						    <label for="resetForm" class="btn btn-default"> Reset </label>
@@ -335,7 +335,7 @@ formData.append("id", <?php echo $_GET['id'];?>);
 					function()
 					{
 						setTimeout(function (){
-							window.location.href = "index";
+							window.location.href = "index.php";
 						}, 300);
 
 					});

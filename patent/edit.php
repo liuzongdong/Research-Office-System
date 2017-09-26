@@ -15,7 +15,7 @@
 		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
 		if ($data['patent_author_id'] != $_SESSION['user_id'])
 		{
-			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index"</script>';
+			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index.php"</script>';
 		}
 	}
 ?>
@@ -145,7 +145,7 @@ $(document).ready(function () {
 
     <div class="submenu">
     <ul>
-		<li><a href="index" class="selected">Patent</a></li>
+		<li><a href="index.php" class="selected">Patent</a></li>
 		<li><a href="/software_copyright" >Software Copyright</a></li>
 		<li><a href="/research_award">Research Award</a></li>
 		<li><a href="/personnel_development">Personnel Development</a></li>
@@ -241,7 +241,7 @@ $(document).ready(function () {
 						function()
 						{
 							setTimeout(function (){
-								window.location.href = "index";
+								window.location.href = "index.php";
 							}, 300);
 
 						});

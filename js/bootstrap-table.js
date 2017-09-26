@@ -358,7 +358,7 @@
             paginationSwitchDown: 'glyphicon-collapse-down icon-chevron-down',
             paginationSwitchUp: 'glyphicon-collapse-up icon-chevron-up',
             refresh: 'glyphicon-refresh icon-refresh',
-            toggle: 'glyphicon-list-alt icon-list-alt',
+            toggle: 'glyphicon-download-alt icon-list-alt',
             columns: 'glyphicon-th icon-th',
             detailOpen: 'glyphicon-plus icon-plus',
             detailClose: 'glyphicon-minus icon-minus'
@@ -488,7 +488,7 @@
             return 'Refresh';
         },
         formatToggle: function () {
-            return 'Toggle';
+            return 'Download';
         },
         formatColumns: function () {
             return 'Columns';
@@ -1086,7 +1086,7 @@
             html.push(sprintf('<button class="btn' +
                     sprintf(' btn-%s', this.options.buttonsClass) +
                     sprintf(' btn-%s', this.options.iconSize) +
-                    '" type="button" name="toggle" aria-label="toggle" title="%s">',
+                    '" type="button" name="toggle" style="height:34px;" aria-label="toggle" title="%s">',
                     this.options.formatToggle()),
                 sprintf('<i class="%s %s"></i>', this.options.iconsPrefix, this.options.icons.toggle),
                 '</button>');
@@ -1146,7 +1146,7 @@
         if (this.options.showToggle) {
             this.$toolbar.find('button[name="toggle"]')
                 .off('click').on('click', function () {
-                    that.toggleView();
+                    findPDF();
                 });
         }
 
@@ -2973,7 +2973,7 @@
         } else {
             var trs = this.$body.children();
             for (var i = 0; i < trs.length; i++) {
-                this.expandRow_(true, $(trs[i]).data("index"));
+                this.expandRow_(true, $(trs[i]).data("index.php"));
             }
         }
     };
@@ -2984,7 +2984,7 @@
         } else {
             var trs = this.$body.children();
             for (var i = 0; i < trs.length; i++) {
-                this.expandRow_(false, $(trs[i]).data("index"));
+                this.expandRow_(false, $(trs[i]).data("index.php"));
             }
         }
     };
