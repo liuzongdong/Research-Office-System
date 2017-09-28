@@ -245,19 +245,32 @@ $(document).ready(function () {
 								<div class="form-group">
 									<label>Programme:</label>
 									<select class="dropdown" name="programme">
+										<option <?php if($row['programme'] == "APSY") echo("selected");?> value="APSY">APSY</option>
 										<option <?php if($row['programme'] == "CST") echo("selected");?> value="CST">CST</option>
-										<option <?php if($row['programme'] == "CTV") echo("selected");?> value="CTV">CTV</option>
+										<option <?php if($row['programme'] == "DST") echo("selected");?> value="DST">DST</option>
+										<option <?php if($row['programme'] == "ENVS") echo("selected");?> value="ENVS">ENVS</option>
+										<option <?php if($row['programme'] == "FM") echo("selected");?> value="FM">FM</option>
+										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
+										<option <?php if($row['programme'] == "STAT") echo("selected");?> value="STAT">STAT</option>
 										<option <?php if($row['programme'] == "ACCT") echo("selected");?> value="ACCT">ACCT</option>
+										<option <?php if($row['programme'] == "FIN") echo("selected");?> value="FIN">FIN</option>
+										<option <?php if($row['programme'] == "AE") echo("selected");?> value="AE">AE</option>
+										<option <?php if($row['programme'] == "MHR") echo("selected");?> value="MHR">MHR</option>
+										<option <?php if($row['programme'] == "MKT") echo("selected");?> value="MKT">MKT</option>
+										<option <?php if($row['programme'] == "EBIS") echo("selected");?> value="EBIS">EBIS</option>
+										<option <?php if($row['programme'] == "CCM") echo("selected");?> value="CCM">CCM</option>
+										<option <?php if($row['programme'] == "CTV") echo("selected");?> value="CTV">CTV</option>
+										<option <?php if($row['programme'] == "MAD") echo("selected");?> value="MAD">MAD</option>
+										<option <?php if($row['programme'] == "MA") echo("selected");?> value="MA">MA</option>
+										<option <?php if($row['programme'] == "ATS") echo("selected");?> value="ATS">ATS</option>
+										<option <?php if($row['programme'] == "ELLS") echo("selected");?> value="ELLS">ELLS</option>
+										<option <?php if($row['programme'] == "GIR") echo("selected");?> value="GIR">GIR</option>
+										<option <?php if($row['programme'] == "IJ") echo("selected");?> value="IJ">IJ</option>
+										<option <?php if($row['programme'] == "PRA") echo("selected");?> value="PRA">PRA</option>
+										<option <?php if($row['programme'] == "SWSA") echo("selected");?> value="SWSA">SWSA</option>
 										<option <?php if($row['programme'] == "TESL") echo("selected");?> value="TESL">TESL</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">APSY</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">ENVS</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
-										<option <?php if($row['programme'] == "FST") echo("selected");?> value="FST">FST</option>
+										<option <?php if($row['programme'] == "CELL") echo("selected");?> value="CELL">CELL</option>
+
 									</select>
 								</div>
 

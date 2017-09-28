@@ -160,7 +160,9 @@ $(document).ready(function () {
 						<thead>
 						<tr>
 							<th data-field="iv_project_name" data-halign="center" data-align="center" data-sortable="true" >Name of Institute or Center</th>
-							<th data-field="iv_project_budget" data-halign="center" data-align="center" data-sortable="true">Budget(yuan, RMB)</th>
+							<th data-field="iv_project_budget" data-halign="center" data-align="center" data-sortable="true">Budget (Yuan, RMB)</th>
+							<th data-field="update_date" data-halign="center" data-align="center" data-sortable="true">Update Time</th>
+							<th data-field="iv_project_status" data-halign="center" data-align="center" data-sortable="true">Status</th>
 							<th data-field="action" data-searchable="false" data-width="11%" data-halign="center" data-align="center">Action</th>
 						</tr>
 						</thead>

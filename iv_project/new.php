@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Asia/Shanghai');
     session_start();
     if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) )
     {
@@ -27,6 +28,7 @@
             $iv_project_name_of_institute_or_center = $_POST["iv_project_name_of_institute_or_center"];
             $iv_project_budget = $_POST["iv_project_budget"];
             $upload_file = $_FILES["file"]["name"];
+            $update_date = date("Y-m-d H:i:s");
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
             if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")
             {
@@ -42,9 +44,9 @@
                 $action = "";
                 $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-                $sql = "insert into iv_project (iv_project_user_id, iv_project_name, iv_project_budget, iv_project_file, action) values(?, ?, ?, ?, ?)";
+                $sql = "insert into iv_project (iv_project_user_id, iv_project_name, update_date, iv_project_budget, iv_project_file, action) values(?, ?, ?, ?, ?, ?)";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($_SESSION['user_id'], $iv_project_name_of_institute_or_center, $iv_project_budget, $filenamekey, $action));
+                $execute = $prepare -> execute(array($_SESSION['user_id'], $iv_project_name_of_institute_or_center, $update_date, $iv_project_budget, $filenamekey, $action));
                 if ($execute)
                 {
                     $response = array('status_response'  => 'success');

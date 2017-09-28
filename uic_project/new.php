@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Asia/Shanghai');
     session_start();
     if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) )
     {
@@ -24,9 +25,10 @@
         else
         {
             unset($missing);
-            $title = $_POST["title"];
-            $duration_from = $_POST["from"];
-            $duration_to = $_POST["to"];
+            $title = strip_tags($_POST["title"]);
+            $update_date = date("Y-m-d H:i:s");
+            $duration_from = strip_tags($_POST["from"]);
+            $duration_to = strip_tags($_POST["to"]);
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
             if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")
@@ -43,9 +45,9 @@
                 $action = "";
                 $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-                $sql = "insert into uic_project (up_user_id, up_title, up_duration_from, up_duration_to, up_file, action) values(?, ?, ?, ?, ?, ?)";
+                $sql = "insert into uic_project (up_user_id, up_title, update_date, up_duration_from, up_duration_to, up_file, action) values(?, ?, ?, ?, ?, ?, ?)";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($_SESSION['user_id'], $title, $duration_from, $duration_to, $filenamekey, $action));
+                $execute = $prepare -> execute(array($_SESSION['user_id'], $title, $update_date, $duration_from, $duration_to, $filenamekey, $action));
                 if ($execute)
                 {
                     $response = array('status_response'  => 'success');

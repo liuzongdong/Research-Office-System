@@ -1,4 +1,5 @@
 <?php
+	date_default_timezone_set('Asia/Shanghai');
 	session_start();
 	if (!(isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
     {
@@ -21,7 +22,7 @@
 			}
 			else
 			{
-				$zipname = 'file.zip';
+				$zipname = date("Y-m-d H:i:s").'.zip';
 				$zip = new ZipArchive;
 				$zip->open($zipname, ZipArchive::CREATE);
 				foreach ($array as $file)

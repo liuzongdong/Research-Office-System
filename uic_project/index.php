@@ -30,7 +30,6 @@ $(document).ready(function () {
 });
 </script>
 
-
 </head>
 <body>
 <div id="panelwrap">
@@ -161,6 +160,8 @@ $(document).ready(function () {
 						<tr>
 							<th data-field="up_title" data-halign="center" data-align="center" data-sortable="true" >Project Title</th>
 							<th data-field="up_duration_from" data-halign="center" data-align="center" data-sortable="true">Duration</th>
+							<th data-field="update_date" data-halign="center" data-align="center" data-sortable="true">Update Time</th>
+							<th data-field="up_status" data-halign="center" data-align="center" data-sortable="true">Status</th>
 							<th data-field="action" data-searchable="false" data-width="11%" data-halign="center" data-align="center">Action</th>
 						</tr>
 						</thead>
@@ -172,7 +173,7 @@ $(document).ready(function () {
 
 	<div class="clear"></div>
     </div> <!--end of center_content-->
-	<div class="footer">©2017 United International College(UIC). All Rights Reserved.</div>
+	<div onload="addStatus()"class="footer">©2017 United International College(UIC). All Rights Reserved.</div>
 
 </div>
 

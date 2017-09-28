@@ -51,6 +51,7 @@
             <script src=\"/js/easydropdown.js\"></script>
             <script src=\"/js/moment.js\"></script>
             <script src=\"/js/download.js\"></script>
+            <script src=\"/js/addstatus.js\"></script>
             <script src=\"/js/bootstrap-datetimepicker.min.js\"></script>
             <script src=\"/js/bootstrap-filestyle.js\"></script>
             <script src=\"/js/validator.js\"></script>

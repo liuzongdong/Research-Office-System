@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Asia/Shanghai');
     session_start();
     if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) )
     {
@@ -24,6 +25,7 @@
         else
         {
             unset($missing);
+            $update_date = date("Y-m-d H:i:s");
             $completion_report_form_title = $_POST["completion_report_form_title"];
             $completion_report_abstract = $_POST["completion_report_abstract"];
             $cr_principal_investigator_name = $_POST["cr_principal_investigator_name"];
@@ -52,9 +54,9 @@
                 $action = "";
                 $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-                $sql = "insert into completion_report (completion_report_user_id, completion_report_form_title, completion_report_abstract, cr_principal_investigator_name, cr_principal_investigator_unit, cr_co_investigator_name, cr_co_investigator_unit, cr_others_name, cr_others_unit, completion_report_form_project_starting_date, completion_report_form_project_completion_date, actual_project_starting_date, actual_project_completion_date, completion_report_file, action) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "insert into completion_report (completion_report_user_id, completion_report_form_title, completion_report_abstract, cr_principal_investigator_name, cr_principal_investigator_unit, cr_co_investigator_name, cr_co_investigator_unit, cr_others_name, cr_others_unit, completion_report_form_project_starting_date, completion_report_form_project_completion_date, actual_project_starting_date, actual_project_completion_date, completion_report_file, update_date, action) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($_SESSION['user_id'], $completion_report_form_title, $completion_report_abstract, $cr_principal_investigator_name, $cr_principal_investigator_unit, $cr_co_investigator_name, $cr_co_investigator_unit, $cr_others_name, $cr_others_unit, $completion_report_form_project_starting_date, $completion_report_form_project_completion_date, $actual_project_starting_date, $actual_project_completion_date, $filenamekey, $action));
+                $execute = $prepare -> execute(array($_SESSION['user_id'], $completion_report_form_title, $completion_report_abstract, $cr_principal_investigator_name, $cr_principal_investigator_unit, $cr_co_investigator_name, $cr_co_investigator_unit, $cr_others_name, $cr_others_unit, $completion_report_form_project_starting_date, $completion_report_form_project_completion_date, $actual_project_starting_date, $actual_project_completion_date, $filenamekey, $update_date, $action));
                 if ($execute)
                 {
                     $response = array('status_response'  => 'success');

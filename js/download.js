@@ -1,7 +1,7 @@
 function findPDF()
 {
 	var links = document.getElementsByTagName('a');
-	// Do this selection based on your table
+	// Do this selection based on table
 	var arr = [];
 	for(var count = 0; count <links.length; count++)
 	{
@@ -19,9 +19,6 @@ function findPDF()
 
 function post(path, params, method) {
     method = method || "post"; // Set method to post by default if not specified.
-
-    // The rest of this code assumes you are not using a library.
-    // It can be made less wordy if you use one.
     var form = document.createElement("form");
     form.setAttribute("method", method);
     form.setAttribute("action", path);

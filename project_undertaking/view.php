@@ -34,32 +34,6 @@ $(document).ready(function () {
 );
 });
 </script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
 </head>
 <body>
 <div id="panelwrap">
@@ -187,7 +161,7 @@ $(document).ready(function () {
 								<object data='<?php echo "upload/".$data['project_undertaking_file']; ?>'
         							type='application/pdf'
         							width='100%'
-        							height='460px'>
+        							height='600px'>
 										<p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="<?php echo "upload/".$data['project_undertaking_file']; ?>">Download PDF</a></p>
 								</object>
 							</div>

@@ -156,10 +156,12 @@ $(document).ready(function () {
 						<thead>
 						<tr>
 							<th data-field="english_name" data-halign="center" data-align="center" data-sortable="true" >Name</th>
-							<th data-visible="true" data-field="division" data-halign="center" data-align="center" data-sortable="true" >Division</th>
-							<th data-visible="true" data-field="programme" data-halign="center" data-align="center" data-sortable="true" >Programme</th>
+							<th data-visible="false" data-field="division" data-halign="center" data-align="center" data-sortable="true" >Division</th>
+							<th data-visible="false" data-field="programme" data-halign="center" data-align="center" data-sortable="true" >Programme</th>
 							<th data-field="project_undertaking_type" data-halign="center" data-align="center" data-sortable="true" >Project Type</th>
 							<th data-field="project_undertaking_title" data-halign="center" data-align="center" data-sortable="true">Title</th>
+							<th data-field="update_date" data-halign="center" data-align="center" data-sortable="true">Update Time</th>
+							<th data-field="project_undertaking_status" data-halign="center" data-align="center" data-sortable="true">Status</th>
 							<th data-field="action" data-searchable="false" data-width="13%" data-halign="center" data-align="center">Action</th>
 						</tr>
 						</thead>

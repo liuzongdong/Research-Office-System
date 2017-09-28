@@ -162,7 +162,8 @@ $(document).ready(function () {
 							<th data-field="midterm_progress_report_form_title" data-halign="center" data-align="center" data-sortable="true" >Project Title</th>
 							<th data-field="mp_principal_investigator_name" data-halign="center" data-align="center" data-sortable="true" >Principal Investigator Name</th>
 							<th data-field="midterm_progress_report_form_project_starting_date" data-halign="center" data-align="center" data-sortable="true" >Project Duration</th>
-							<th data-field="midterm_progress_report_form_duration" data-halign="center" data-align="center" data-sortable="true" >Duration</th>
+							<th data-field="update_date" data-halign="center" data-align="center" data-sortable="true">Update Time</th>
+							<th data-field="midterm_report_status" data-halign="center" data-align="center" data-sortable="true">Status</th>
 							<th data-field="action" data-searchable="false" data-width="11%" data-halign="center" data-align="center">Action</th>
 						</tr>
 						</thead>

@@ -572,6 +572,7 @@
         this.initBody();
         this.initSearchText();
         this.initServer();
+        this.initStatus();
     };
 
     BootstrapTable.prototype.initLocale = function () {
@@ -634,6 +635,7 @@
             this.$tableContainer.addClass('table-no-bordered');
         }
     };
+
 
     BootstrapTable.prototype.initTable = function () {
         var that = this,
@@ -895,6 +897,8 @@
         }
     };
 
+
+
     /**
      * @param data
      * @param type: append / prepend
@@ -921,6 +925,7 @@
             return;
         }
         this.initSort();
+        this.initStatus();
     };
 
     BootstrapTable.prototype.initSort = function () {
@@ -1033,6 +1038,7 @@
 
         this.initSort();
         this.initBody();
+        this.initStatus();
     };
 
     BootstrapTable.prototype.initToolbar = function () {
@@ -1224,6 +1230,7 @@
         this.initSearch();
         this.updatePagination();
         this.trigger('search', text);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.initSearch = function () {
@@ -2293,6 +2300,7 @@
         this.initSearch();
         this.initPagination();
         this.initBody();
+        this.initStatus();
 
         if (this.options.showColumns) {
             var $items = this.$toolbar.find('.keep-open input').prop('disabled', false);
@@ -2396,6 +2404,7 @@
         this.initSearch();
         this.initPagination();
         this.initBody(fixedScroll);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.append = function (data) {
@@ -2404,6 +2413,7 @@
         this.initPagination();
         this.initSort();
         this.initBody(true);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.prepend = function (data) {
@@ -2412,6 +2422,7 @@
         this.initPagination();
         this.initSort();
         this.initBody(true);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.remove = function (params) {
@@ -2444,6 +2455,7 @@
         this.initPagination();
         this.initSort();
         this.initBody(true);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.removeAll = function () {
@@ -2531,6 +2543,7 @@
         this.initPagination();
         this.initSort();
         this.initBody(true);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.insertRow = function (params) {
@@ -2542,6 +2555,7 @@
         this.initPagination();
         this.initSort();
         this.initBody(true);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.updateRow = function (params) {
@@ -2559,6 +2573,7 @@
         this.initPagination();
         this.initSort();
         this.initBody(true);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.initHiddenRows = function () {
@@ -2651,6 +2666,7 @@
         }
         this.initSort();
         this.initBody(true);
+        this.initStatus();
     };
 
     BootstrapTable.prototype.getOptions = function () {
@@ -2987,6 +3003,11 @@
                 this.expandRow_(false, $(trs[i]).data("index.php"));
             }
         }
+    };
+
+    BootstrapTable.prototype.initStatus = function ()
+    {
+        addStatus();
     };
 
     BootstrapTable.prototype.updateFormatText = function (name, text) {

@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Asia/Shanghai');
     session_start();
     require("../base.php");
     if ( $_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) )
@@ -28,6 +29,7 @@
             $title = $_POST["title"];
             $duration_from = $_POST["from"];
             $duration_to = $_POST["to"];
+            $update_date = date("Y-m-d H:i:s");
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")
             {
@@ -54,9 +56,9 @@
                     $filenamekey = md5(uniqid($_FILES["file"]["name"], true));
                     $filenamekey .= "." . $extension;
                     move_uploaded_file($_FILES["file"]["tmp_name"], "$folder".$filenamekey);
-                    $sql = "update uic_project set up_title = ?, up_duration_from = ?, up_duration_to = ?, up_file = ? where up_id = ?";
+                    $sql = "update uic_project set up_title = ?, update_date = ?, up_duration_from = ?, up_duration_to = ?, up_file = ?, up_status = ? where up_id = ?";
                     $prepare = $dbh -> prepare($sql);
-                    $execute = $prepare -> execute(array($title, $duration_from, $duration_to, $filenamekey, $upid));
+                    $execute = $prepare -> execute(array($title, $update_date, $duration_from, $duration_to, $filenamekey, "0", $upid));
                     if ($execute)
                     {
                         $response = array('status_response'  => 'success');
@@ -74,9 +76,9 @@
             {
                 $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
                 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-                $sql = "update uic_project set up_title = ?, up_duration_from = ?, up_duration_to = ? where up_id = ?";
+                $sql = "update uic_project set up_title = ?, update_date = ?, up_duration_from = ?, up_duration_to = ?, up_status = ? where up_id = ?";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($title, $duration_from, $duration_to, $upid));
+                $execute = $prepare -> execute(array($title, $update_date, $duration_from, $duration_to, "0", $upid));
                 if ($execute)
                 {
                     $response = array('status_response'  => 'success');
