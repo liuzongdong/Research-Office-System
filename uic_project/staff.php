@@ -30,7 +30,7 @@ $(document).ready(function () {
 </script>
 
 </head>
-<body>
+<body onload="getCount()">
 <div id="panelwrap">
 
 	<div class="header">
@@ -64,7 +64,7 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<li id="uic-project"><a href="/uic_project" class="selected">UIC Research Grant</a>
+		<li id="uic-project"><a id="uic_project" href="/uic_project" class="selected">UIC Research Grant</a>
 			<div class="dropdown-uic-project">
 				<ul>
 					<li><a href="/uic_project">Category I - III</a></li>
@@ -114,23 +114,6 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<?php
-		if ($_SESSION['user_type'] == 2)
-		{
-			$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-			$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-			$sql = "select * from application, user where application.app_user_id = user.user_id AND user.programme = ? and approval = 0"; // *, select all. '?' and '?', SQL Injection
-			$prepare = $dbh -> prepare($sql); // Statement is Statement.
-			$execute = $prepare -> execute(array($_SESSION["programme"])); // Var is Var.
-			if ($execute)
-			{
-				$row = $prepare -> fetchall(PDO::FETCH_ASSOC);
-				$rowCount = count($row);
-			}
-			$dbh = null;
-			echo "<li><a href=\"/approval\">Waiting Approval (".$rowCount.")</a></li>";
-		}
-		?>
 	</ul>
 </div>
 
@@ -138,7 +121,7 @@ $(document).ready(function () {
 
     <div class="submenu">
     <ul>
-		<li><a href="/uic_project" class="selected">Category I - III</a></li>
+		<li id="uic-project"><a id="uic_project" href="/uic_project" class="selected">Category I - III</a></li>
 		<li><a href="/iv_project">Category IV</a></li>
 		<li><a href="/project_undertaking">Project Budget & Undertaking</a></li>
 		<li><a href="/midterm_progress_report_form">Midterm Progress Report</a></li>
@@ -208,6 +191,7 @@ function confirmApprove(id) {
 					case 'success':
 						swal("Done!", "It was succesfully Approval!", "success");
 						$('#table').bootstrapTable('refresh', {silent: true});
+						getCount();
 						break;
 					case 'error' :
 						swal("Approval Failed!", "You are not allowed to Approval it", "error");
@@ -252,6 +236,7 @@ function confirmReject(id) {
 					case 'success':
 						swal("Done!", "It was succesfully Reject!", "success");
 						$('#table').bootstrapTable('refresh', {silent: true});
+						getCount();
 						break;
 					case 'error' :
 						swal("Reject Failed!", "You are not allowed to Approval it", "error");
@@ -270,6 +255,7 @@ function confirmReject(id) {
     });
 }
 </script>
+
 
 
 </body>

@@ -29,7 +29,7 @@
             }
             $data[$key]['english_name'] = $data[$key]['english_name']. " " .$data[$key]['last_name'];
             // $data[$key]['up_duration_from'] = $data[$key]['up_duration_from']. " ~ " .$data[$key]['up_duration_to'];
-            $data[$key]['action'] = "<a href=\"view.php?id=".$data[$key]['project_undertaking_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">View</button></a> <a href=\"upload/".$data[$key]['project_undertaking_file']."\"><button type=\"button\" class=\"btn btn-default btn-xs\">Download</button></a>";
+            $data[$key]['action'] = "<a href=\"upload/".$data[$key]['project_undertaking_file']."\"><button type=\"button\" class=\"btn btn-default btn-xs\">Download</button></a> <a href=\"view.php?id=".$data[$key]['project_undertaking_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">View</button></a> <a onclick = confirmApprove(".$data[$key]['project_undertaking_id'].")><button type=\"button\" class=\"btn btn-primary btn-xs\">Approve</button></a> <a onclick = confirmReject(".$data[$key]['project_undertaking_id'].")><button type=\"button\" class=\"btn btn-danger btn-xs\">Reject</button></a>";
         }
         $json = json_encode($data);
     }

@@ -28,32 +28,6 @@ $(document).ready(function () {
 );
 });
 </script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
 </head>
 <body>
 <div id="panelwrap">

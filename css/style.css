@@ -1,3 +1,13 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
 body{
     background-color:#ccd6da;
     font-family:Arial, Helvetica, sans-serif;
@@ -96,7 +106,7 @@ body{
 }
 .menu .dropdown-dashboard li a:hover
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 .menu .dropdown-dashboard li a
@@ -149,7 +159,7 @@ body{
 }
 .menu .dropdown-policy li a:hover
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 .menu .dropdown-policy li a
@@ -202,7 +212,7 @@ body{
 }
 .menu .dropdown-profile li a:hover
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 .menu .dropdown-profile li a
@@ -255,7 +265,7 @@ body{
 }
 .menu .dropdown-uic-project li a:hover
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 .menu .dropdown-uic-project li a
@@ -308,7 +318,7 @@ body{
 }
 .menu .dropdown-external-project li a:hover
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 .menu .dropdown-external-project li a
@@ -361,7 +371,7 @@ body{
 }
 .menu .dropdown-publication li a:hover
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 .menu .dropdown-publication li a
@@ -414,7 +424,7 @@ body{
 }
 .menu .dropdown-achievements li a:hover
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 .menu .dropdown-achievements li a
@@ -467,7 +477,7 @@ body{
 }
 .menu .dropdown-applications li a:hover
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 .menu .dropdown-applications li a
@@ -510,54 +520,70 @@ body{
     color:#FFFFFF;
     display:block;
     float:left;
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     padding:7px 12px 5px 12px;
     text-decoration:none;
     margin:0 4px 0 0;
 }
 .menu ul li a:hover, .menu ul li a.hovered
 {
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     color:white
 }
 
 #dashboard:hover .dropdown-dashboard {
     display: block;
+    opacity: 1;
+    animation: fadeIn 400ms;
 }
 
 #policy:hover .dropdown-policy {
     display: block;
+    opacity: 1;
+    animation: fadeIn 400ms;
 }
 
 #profile:hover .dropdown-profile {
     display: block;
+    opacity: 1;
+    animation: fadeIn 400ms;
 }
 
 #uic-project:hover .dropdown-uic-project {
     display: block;
+    opacity: 1;
+    animation: fadeIn 400ms;
 }
 
 #external-project:hover .dropdown-external-project {
     display: block;
+    opacity: 1;
+    animation: fadeIn 400ms;
 }
 
 #publication:hover .dropdown-publication {
     display: block;
+    opacity: 1;
+    animation: fadeIn 400ms;
 }
 
 #achievements:hover .dropdown-achievements {
     display: block;
+    opacity: 1;
+    animation: fadeIn 400ms;
 }
 
 #applications:hover .dropdown-applications {
     display: block;
+    opacity: 1;
+    animation: fadeIn 400ms;
 }
 
 .submenu
 {
     width:100%;
     height:auto;
-    background-color:#317DBF;
+    background-color:#0f6cb4;
     clear:both;
     float:left;
 }

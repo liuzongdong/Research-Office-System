@@ -28,7 +28,7 @@ $(document).ready(function () {
 
 
 </head>
-<body>
+<body onload="getCount()">
 <div id="panelwrap">
 
 	<div class="header">
@@ -61,7 +61,7 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<li id="uic-project"><a href="/uic_project" class="selected">UIC Research Grant</a>
+		<li id="uic-project"><a id="uic_project" href="/uic_project" class="selected">UIC Research Grant</a>
 			<div class="dropdown-uic-project">
 				<ul>
 					<li><a href="/uic_project">Category I - III</a></li>
@@ -162,7 +162,7 @@ $(document).ready(function () {
 							<th data-field="project_undertaking_title" data-halign="center" data-align="center" data-sortable="true">Title</th>
 							<th data-field="update_date" data-halign="center" data-align="center" data-sortable="true">Update Time</th>
 							<th data-field="project_undertaking_status" data-halign="center" data-align="center" data-sortable="true">Status</th>
-							<th data-field="action" data-searchable="false" data-width="13%" data-halign="center" data-align="center">Action</th>
+							<th data-field="action" data-searchable="false" data-width="23%" data-halign="center" data-align="center">Action</th>
 						</tr>
 						</thead>
 					</table>
@@ -176,7 +176,97 @@ $(document).ready(function () {
 	<div class="footer">©2017 United International College(UIC). All Rights Reserved.</div>
 
 </div>
+<script>
+function confirmApprove(id) {
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this record!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, Approval",
+        closeOnConfirm: false
+    }, function (isConfirm) {
+        if (!isConfirm) return;
+        $.ajax({
+            url: "approve.php",
+            type: "POST",
+            data: {
+                id: id
+            },
+            dataType: "html",
+            success: function (response)
+			{
+				var answer = JSON.parse(response);
+				switch ( answer.status_response )
+				{
+					case 'success':
+						swal("Done!", "It was succesfully Approval!", "success");
+						$('#table').bootstrapTable('refresh', {silent: true});
+						getCount();
+						break;
+					case 'error' :
+						swal("Approval Failed!", "You are not allowed to Approval it", "error");
+						break;
+					case 'fail' :
+						swal("Approval Failed!", "Please check your internet connection!", "error");
+						break;
+				}
 
+            },
+            error: function (xhr, ajaxOptions, thrownError)
+			{
+                swal("Approval Failed!", "Please check your internet connection.", "error");
+            }
+        });
+    });
+}
+
+function confirmReject(id) {
+    swal({
+        title: "Are you sure?",
+        text: "You will not be able to recover this record!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, Reject",
+        closeOnConfirm: false
+    }, function (isConfirm) {
+        if (!isConfirm) return;
+        $.ajax({
+            url: "reject.php",
+            type: "POST",
+            data: {
+                id: id
+            },
+            dataType: "html",
+            success: function (response)
+			{
+				var answer = JSON.parse(response);
+				switch ( answer.status_response )
+				{
+					case 'success':
+						swal("Done!", "It was succesfully Reject!", "success");
+						$('#table').bootstrapTable('refresh', {silent: true});
+						getCount();
+						break;
+					case 'error' :
+						swal("Reject Failed!", "You are not allowed to Approval it", "error");
+						break;
+					case 'fail' :
+						swal("Reject Failed!", "Please check your internet connection!", "error");
+						break;
+				}
+
+            },
+            error: function (xhr, ajaxOptions, thrownError)
+			{
+                swal("Reject Failed!", "Please check your internet connection.", "error");
+            }
+        });
+    });
+}
+</script>
 
 </body>
 </html>

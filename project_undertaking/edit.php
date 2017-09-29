@@ -7,13 +7,13 @@
 	}
 	$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-	$sql = "select * from iv_project where iv_project_id = ?";
+	$sql = "select * from project_undertaking where project_undertaking_id = ?";
 	$prepare = $dbh -> prepare($sql); // Statement is Statement.
 	$execute = $prepare -> execute(array($_GET['id']));
 	if ($execute)
 	{
 		$data = $prepare -> fetch(PDO::FETCH_ASSOC);
-		if ($data['iv_project_user_id'] != $_SESSION['user_id'])
+		if ($data['project_undertaking_user_id'] != $_SESSION['user_id'])
 		{
 			echo '<script type="text/javascript">alert("You are not allow to Edit it!");location.href="index.php"</script>';
 		}
@@ -45,7 +45,7 @@ $(document).ready(function () {
 	<div class="header">
     <div class="title"><a href="/"><img src="/uic_logo.png"></img></a></div>
 
-    <div class="header_right">Welcome <?php echo $_SESSION['english_name']. " ". $_SESSION['last_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
+    <div class="header_right">Welcome <?php echo $_SESSION['english_name']; ?><a href="#" onclick="logout()" class="logout">Logout</a> </div>
 
 	<div id="menu" class="menu">
 	<ul>
@@ -122,23 +122,6 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<?php
-		if ($_SESSION['user_type'] == 2)
-		{
-			$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
-			$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
-			$sql = "select * from application, user where application.app_user_id = user.user_id AND user.programme = ? and approval = 0"; // *, select all. '?' and '?', SQL Injection
-			$prepare = $dbh -> prepare($sql); // Statement is Statement.
-			$execute = $prepare -> execute(array($_SESSION["programme"])); // Var is Var.
-			if ($execute)
-			{
-				$row = $prepare -> fetchall(PDO::FETCH_ASSOC);
-				$rowCount = count($row);
-			}
-			$dbh = null;
-			echo "<li><a href=\"/approval\">Waiting Approval (".$rowCount.")</a></li>";
-		}
-		?>
 	</ul>
 </div>
 
@@ -147,8 +130,8 @@ $(document).ready(function () {
     <div class="submenu">
     <ul>
 		<li><a href="/uic_project">Category I - III</a></li>
-		<li><a href="/iv_project" class="selected">Category IV</a></li>
-		<li><a href="/project_undertaking">Project Budget & Undertaking</a></li>
+		<li><a href="/iv_project">Category IV</a></li>
+		<li><a href="/project_undertaking" class="selected">Project Budget & Undertaking</a></li>
 		<li><a href="/midterm_progress_report_form">Midterm Progress Report</a></li>
 		<li><a href="/completion_report_form">Completion Report</a></li>
     </ul>
@@ -160,7 +143,7 @@ $(document).ready(function () {
 			<div class="col-xs-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Edit UIC Project (Fund For Institutes and Centers)
+						Edit Project Budget & Undertaking
 						<div style="float:right">
 						    <label for="submitForm" class="btn btn-primary"> Submit </label>
 						    <label for="resetForm" class="btn btn-default"> Reset </label>
@@ -171,14 +154,17 @@ $(document).ready(function () {
 							<form id="data" role="form" method="post">
 
 								<div class="form-group">
-									<label>Name of Institute or Center:</label>
-									<input class="form-control" name="iv_project_name_of_institute_or_center" required="require" value="<?php echo $data['iv_project_name']; ?>">
+									<label>Project Type:</label>
+									<select class="dropdown" name="type">
+										<option <?php if($data['project_undertaking_type'] == "UIC Project Budget") echo("selected");?> value = "UIC Project Budget"> UIC Project Budget </option>
+										<option <?php if($data['project_undertaking_type'] == "Project Undertaking") echo("selected");?> value = "Project Undertaking"> Project Undertaking </option>
+									</select>
 								</div>
 
-                <div class="form-group">
-                  <label>Budget(yuan, RMB)</label>
-                  <input class="form-control" name="iv_project_budget" required="require" value="<?php echo $data['iv_project_budget']; ?>">
-                </div>
+				                <div class="form-group">
+				                  <label>Title:</label>
+				                  <input class="form-control" name="title" required="require" value="<?php echo $data['project_undertaking_title']; ?>">
+				                </div>
 
 								<div class="form-group">
 									<label>Please Upload File Here if any. (PDF Only!)</label>
@@ -192,11 +178,11 @@ $(document).ready(function () {
 
 							</div>
 							<div class="col-xs-12" id="pdf" style="padding-top:20px;">
-								<object data='<?php echo "upload/".$data['iv_project_file']; ?>'
+								<object data='<?php echo "upload/".$data['project_undertaking_file']; ?>'
         							type='application/pdf'
         							width='100%'
-        							height='1200px'>
-										<p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="<?php echo "upload/".$data['iv_project_file']; ?>">Download PDF</a></p>
+        							height='600px'>
+										<p>This browser does not support inline PDFs. Please download the PDF to view it: <a href="<?php echo "upload/".$data['project_undertaking_file']; ?>">Download PDF</a></p>
 								</object>
 							</div>
 						</form>
