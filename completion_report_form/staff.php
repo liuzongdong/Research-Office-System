@@ -61,7 +61,7 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<li id="uic-project"><a id="uic_project" href="/uic_project" class="selected">UIC Research Grant</a>
+		<li id="uic-project"><a id="uic_project" href="/uic_project" class="selected">UIC Research Grant <span class="badge"><?php GetProjectCount(); ?></span></a>
 			<div class="dropdown-uic-project">
 				<ul>
 					<li><a href="/uic_project">Category I - III</a></li>
@@ -188,6 +188,7 @@ function confirmApprove(id) {
 					case 'success':
 						swal("Done!", "It was succesfully Approval!", "success");
 						$('#table').bootstrapTable('refresh', {silent: true});
+						getCount();
 						break;
 					case 'error' :
 						swal("Approval Failed!", "You are not allowed to Approval it", "error");
@@ -232,6 +233,7 @@ function confirmReject(id) {
 					case 'success':
 						swal("Done!", "It was succesfully Reject!", "success");
 						$('#table').bootstrapTable('refresh', {silent: true});
+						getCount();
 						break;
 					case 'error' :
 						swal("Reject Failed!", "You are not allowed to Approval it", "error");

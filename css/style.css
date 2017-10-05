@@ -589,7 +589,7 @@ body{
 }
 .submenu ul
 {
-    padding:5px 0 5px 25px;
+    padding:5px 5px 5px 25px;
     margin:0px;
     list-style:none;
 }
@@ -597,10 +597,10 @@ body{
 .submenu ul li a{ display:block; float:left; padding:3px 6px 3px 6px;  color:#FFFFFF; text-decoration:none;
 margin:5px 4px 10px 0;font-size:13px;}
 .submenu ul li a.selected{display:block; float:left; padding:3px 6px 3px 6px; color:#FFFFFF; text-decoration:none;
-margin:5px 4px 8px 0;color:#FFFFFF; font-size:13px; background-color:#366082;
+margin:5px 4px 10px 0;color:#FFFFFF; font-size:13px; background-color:#71B838;
 -moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;border-radius:5px;
 }
-.submenu ul li a:hover{background-color:#366082; color:#FFFFFF;
+.submenu ul li a:hover{background-color:#71B838; color:#FFFFFF;
 -moz-border-radius:5px;-webkit-border-radius:5px;-khtml-border-radius:5px;border-radius:5px;
 }
 

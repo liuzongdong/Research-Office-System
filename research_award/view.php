@@ -35,7 +35,7 @@ $(document).ready(function () {
 });
 </script>
 </head>
-<body>
+<body onload="getCount()">
 <div id="panelwrap">
 
 	<div class="header">
@@ -68,7 +68,7 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<li id="uic-project"><a href="/uic_project">UIC Research Grant</a>
+		<li id="uic-project"><a href="/uic_project">UIC Research Grant <span class="badge"><?php GetProjectCount(); ?></a>
 			<div class="dropdown-uic-project">
 				<ul>
 					<li><a href="/uic_project">Category I - III</a></li>

@@ -19,33 +19,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>View UIC Project</title>
-<?php importCss(); ?>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
-<script>
-$(document).ready(function () {
-    var $nav = $('#menu > ul > li');
-  $nav.hover(
-    function() {
-        $(this).children('a').addClass('hovered');
-    },
-    function() {
-        $(this).children('a').removeClass('hovered');
-    }
-);
-});
-</script>
+<?php importFullCss(); ?>
 <script>
 $(document).ready(function () {
     var $nav = $('#menu > ul > li');
@@ -60,7 +34,7 @@ $(document).ready(function () {
 });
 </script>
 </head>
-<body>
+<body onload="getCount()">
 <div id="panelwrap">
 
 	<div class="header">
@@ -93,7 +67,7 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<li id="uic-project"><a href="/uic_project" class="selected">UIC Research Grant</a>
+		<li id="uic-project"><a id="uic_project" href="/uic_project" class="selected">UIC Research Grant <span class="badge"><?php GetProjectCount(); ?></span></a>
 			<div class="dropdown-uic-project">
 				<ul>
 					<li><a href="/uic_project">Category I - III</a></li>

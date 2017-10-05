@@ -15,7 +15,7 @@
         $data = $prepare -> fetchall(PDO::FETCH_ASSOC);
         foreach($data as $key => $value)
         {
-            $data[$key]['action'] = "<a href=\"detail.php?id=".$data[$key]['user_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">View</button></a> <a onclick = resetPassword(".$data[$key]['user_id'].")><button type=\"button\" class=\"btn btn-danger btn-xs\">Reset Password</button></a>";
+            $data[$key]['action'] = "<a href=\"detail.php?id=".$data[$key]['user_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">View</button></a> ";
         }
         $json = json_encode($data);
     }

@@ -25,7 +25,7 @@ $(document).ready(function () {
 });
 </script>
 </head>
-<body>
+<body onload="getCount()">
 <div id="panelwrap">
 
 	<div class="header">

@@ -61,7 +61,7 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<li id="uic-project"><a id="uic_project" href="/uic_project" class="selected">UIC Research Grant</a>
+		<li id="uic-project"><a id="uic_project" href="/uic_project" class="selected">UIC Research Grant <span class="badge"><?php GetProjectCount(); ?></span></a>
 			<div class="dropdown-uic-project">
 				<ul>
 					<li><a href="/uic_project">Category I - III</a></li>

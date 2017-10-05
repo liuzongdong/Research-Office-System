@@ -58,7 +58,7 @@ $(document).ready(function () {
 				</ul>
 			</div>
 		</li>
-		<li id="uic-project"><a id="uic_project" href="/uic_project">UIC Research Grant</a>
+		<li id="uic-project"><a id="uic_project" href="/uic_project">UIC Research Grant <span class="badge"><?php GetProjectCount(); ?></span></a>
 			<div class="dropdown-uic-project">
 				<ul>
 					<li><a href="/uic_project">Category I - III</a></li>
@@ -143,7 +143,7 @@ $(document).ready(function () {
 		<div class="panel panel-default">
 			<div class="panel-heading">Teacher Profile</div>
 			<div class="panel-body">
-				<table id="table" data-toggle="table" data-url="data.php" data-show-refresh="true" data-show-export="true" data-show-toggle="true" data-advanced-search="true" data-id-table="advancedTable" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
+				<table id="table" data-toggle="table" data-url="data.php" data-show-refresh="true" data-show-export="true" data-advanced-search="true" data-id-table="advancedTable" data-search="true" data-select-item-name="toolbar1" data-pagination="true" data-sort-name="name" data-sort-order="desc" data-show-columns="true">
 					<thead>
 					<tr>
 						<th data-field="user_email" data-sortable="true" data-halign="center" data-align="center">Email</th>
@@ -152,7 +152,7 @@ $(document).ready(function () {
 						<th data-field="english_name" data-sortable="true" data-halign="center" data-align="center">English Name</th>
 						<th data-field="division" data-sortable="true" data-halign="center" data-align="center">Division</th>
 						<th data-field="programme" data-sortable="true" data-halign="center" data-align="center">Programme</th>
-						<th data-field="action" data-searchable="false" data-width="18%" data-halign="center" data-align="center">Action</th>
+						<th data-field="action" data-searchable="false" data-width="7%" data-halign="center" data-align="center">Action</th>
 					</tr>
 					</thead>
 				</table>
