@@ -25,8 +25,8 @@
         else
         {
             unset($missing);
-            $title = $_POST["title"];
-            $type = $_POST["type"];
+            $title = strip_tags($_POST["title"]);
+            $type = strip_tags($_POST["type"]);
             $update_date = date("Y-m-d H:i:s");
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")

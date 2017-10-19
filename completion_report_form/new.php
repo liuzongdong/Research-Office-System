@@ -26,18 +26,18 @@
         {
             unset($missing);
             $update_date = date("Y-m-d H:i:s");
-            $completion_report_form_title = $_POST["completion_report_form_title"];
-            $completion_report_abstract = $_POST["completion_report_abstract"];
-            $cr_principal_investigator_name = $_POST["cr_principal_investigator_name"];
-            $cr_principal_investigator_unit = $_POST["cr_principal_investigator_name"];
-            $cr_co_investigator_name = $_POST["cr_co_investigator_name"];
-            $cr_co_investigator_unit = $_POST["cr_co_investigator_unit"];
-            $cr_others_name = $_POST["cr_others_name"];
-            $cr_others_unit = $_POST["cr_others_unit"];
-            $completion_report_form_project_starting_date = $_POST["completion_report_form_project_starting_date"];
-            $completion_report_form_project_completion_date = $_POST["completion_report_form_project_completion_date"];
-            $actual_project_starting_date = $_POST["actual_project_starting_date"];
-            $actual_project_completion_date = $_POST["actual_project_completion_date"];
+            $completion_report_form_title = strip_tags($_POST["completion_report_form_title"]);
+            $completion_report_abstract = strip_tags($_POST["completion_report_abstract"]);
+            $cr_principal_investigator_name = strip_tags($_POST["cr_principal_investigator_name"]);
+            $cr_principal_investigator_unit = strip_tags($_POST["cr_principal_investigator_name"]);
+            $cr_co_investigator_name = strip_tags($_POST["cr_co_investigator_name"]);
+            $cr_co_investigator_unit = strip_tags($_POST["cr_co_investigator_unit"]);
+            $cr_others_name = strip_tags($_POST["cr_others_name"]);
+            $cr_others_unit = strip_tags($_POST["cr_others_unit"]);
+            $completion_report_form_project_starting_date = strip_tags($_POST["completion_report_form_project_starting_date"]);
+            $completion_report_form_project_completion_date = strip_tags($_POST["completion_report_form_project_completion_date"]);
+            $actual_project_starting_date = strip_tags($_POST["actual_project_starting_date"]);
+            $actual_project_completion_date = strip_tags($_POST["actual_project_completion_date"]);
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
             if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")

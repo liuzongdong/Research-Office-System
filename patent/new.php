@@ -24,9 +24,9 @@
         else
         {
             unset($missing);
-            $name = $_POST["name"];
-        	$code = $_POST["code"];
-        	$authorization = $_POST["authorization"];
+            $name = strip_tags($_POST["name"]);
+        	$code = strip_tags($_POST["code"]);
+        	$authorization = strip_tags($_POST["authorization"]);
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
             if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")

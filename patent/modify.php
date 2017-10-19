@@ -23,9 +23,9 @@
         }
         else
         {
-            $name = $_POST["name"];
-        	$code = $_POST["code"];
-        	$authorization = $_POST["authorization"];
+            $name = strip_tags($_POST["name"]);
+        	$code = strip_tags($_POST["code"]);
+        	$authorization = strip_tags($_POST["authorization"]);
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")
             {

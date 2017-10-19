@@ -280,6 +280,16 @@ return false;
 });
 </script>
 
+<script>
+$('input').on('keypress', function (e) {
+    if (/^[a-zA-Z0-9\.\ \-\(\)\:\b]+$/.test(String.fromCharCode(e.keyCode))) {
+        return;
+    } else {
+        e.preventDefault();
+    }
+});
+</script>
+
 
 
 </body>

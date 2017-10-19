@@ -24,14 +24,14 @@
         }
         else
         {
-            $firstname = $_POST["firstname"];
-            $lastname = $_POST["lastname"];
-            $englishname = $_POST["englishname"];
-            $degree = $_POST["degree"];
-            $phone = $_POST["phone"];
-            $education = $_POST["education"];
-            $division = $_POST["division"];
-            $programme = $_POST["programme"];
+            $firstname = strip_tags($_POST["firstname"]);
+            $lastname = strip_tags($_POST["lastname"]);
+            $englishname = strip_tags($_POST["englishname"]);
+            $degree = strip_tags($_POST["degree"]);
+            $phone = strip_tags($_POST["phone"]);
+            $education = strip_tags($_POST["education"]);
+            $division = strip_tags($_POST["division"]);
+            $programme = strip_tags($_POST["programme"]);
             $upload_file=$_FILES["avator"]["name"];
             if ($upload_file != "")
             {

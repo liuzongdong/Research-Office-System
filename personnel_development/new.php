@@ -24,13 +24,13 @@
         else
         {
             unset($missing);
-            $personnel_deveplopment_training_category = $_POST["personnel_deveplopment_training_category"];
-        	$personnel_deveplopment_training_person = $_POST["personnel_deveplopment_training_person"];
-        	$personnel_deveplopment_project_name = $_POST["personnel_deveplopment_project_name"];
-            $personnel_deveplopment_author = $_POST["personnel_deveplopment_author"];
-            $personnel_deveplopment_abstract = $_POST["personnel_deveplopment_abstract"];
-            $personnel_deveplopment_start_date = $_POST["personnel_deveplopment_start_date"];
-            $personnel_deveplopment_due_date = $_POST["personnel_deveplopment_due_date"];
+            $personnel_deveplopment_training_category = strip_tags($_POST["personnel_deveplopment_training_category"]);
+        	$personnel_deveplopment_training_person = strip_tags($_POST["personnel_deveplopment_training_person"]);
+        	$personnel_deveplopment_project_name = strip_tags($_POST["personnel_deveplopment_project_name"]);
+            $personnel_deveplopment_author = strip_tags($_POST["personnel_deveplopment_author"]);
+            $personnel_deveplopment_abstract = strip_tags($_POST["personnel_deveplopment_abstract"]);
+            $personnel_deveplopment_start_date = strip_tags($_POST["personnel_deveplopment_start_date"]);
+            $personnel_deveplopment_due_date = strip_tags($_POST["personnel_deveplopment_due_date"]);
             $action = "";
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);

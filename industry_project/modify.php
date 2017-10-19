@@ -24,13 +24,13 @@
         else
         {
             unset($missing);
-            $title = $_POST["title"];
-            $type = $_POST["type"];
-        	$role = $_POST["role"];
-            $source = $_POST["source"];
-            $duration_from = $_POST["from"];
-            $duration_to = $_POST["to"];
-        	$amount = $_POST["amount"];
+            $title = strip_tags($_POST["title"]);
+            $type = strip_tags($_POST["type"]);
+        	$role = strip_tags($_POST["role"]);
+            $source = strip_tags($_POST["source"]);
+            $duration_from = strip_tags($_POST["from"]);
+            $duration_to = strip_tags($_POST["to"]);
+        	$amount = strip_tags($_POST["amount"]);
             $action = "";
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")
@@ -59,7 +59,7 @@
                     move_uploaded_file($_FILES["file"]["tmp_name"], "$folder".$filenamekey);
                     $sql = "update industry_project set ip_title = ?, ip_type = ?, ip_role = ?, ip_fundsource = ?, ip_duration_from = ?, ip_duration_to = ?, ip_amount = ?, ip_file = ? where ip_id = ?";
                     $prepare = $dbh -> prepare($sql);
-                    $execute = $prepare -> execute(array($title, $type, $role, $source, $duration_from, $duration_to, $amount, $filenamekey, $_POST["id"]));
+                    $execute = $prepare -> execute(array($title, $type, $role, $source, $duration_from, $duration_to, $amount, $filenamekey, strip_tags($_POST["id"])));
                     if ($execute)
                     {
                         $response = array('status_response'  => 'success');
@@ -79,7 +79,7 @@
                 $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
                 $sql = "update industry_project set ip_title = ?, ip_type = ?, ip_role = ?, ip_fundsource = ?, ip_duration_from = ?, ip_duration_to = ?, ip_amount = ? where ip_id = ?";
                 $prepare = $dbh -> prepare($sql);
-                $execute = $prepare -> execute(array($title, $type, $role, $source, $duration_from, $duration_to, $amount, $_POST["id"]));
+                $execute = $prepare -> execute(array($title, $type, $role, $source, $duration_from, $duration_to, $amount, strip_tags($_POST["id"])));
                 if ($execute)
                 {
                     $response = array('status_response'  => 'success');

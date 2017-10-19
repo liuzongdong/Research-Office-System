@@ -1,4 +1,7 @@
 Options -Indexes
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^ %{REQUEST_FILENAME}.php [NC,L]
 <files base.php>
 	Order allow,deny
 	Deny from all
@@ -7,6 +10,18 @@ Options -Indexes
 	Order allow,deny
 	Deny from all
 </files>
+
+<IfModule mod_expires.c>
+        ExpiresActive On
+        ExpiresDefault "access plus 2 day"
+        ExpiresByType image/jpg "access plus 5 days"
+        ExpiresByType image/jpeg "access plus 5 days"
+        ExpiresByType image/png "access plus 1 month"
+        ExpiresByType text/css "access plus 1 month"
+	ExpiresByType application/pdf "access plus 1 month"
+        ExpiresByType text/x-javascript "access plus 1 month"
+        ExpiresByType image/x-icon "access plus 1 year"
+</IfModule>
 
 <Files *.pdf>
   ForceType application/pdf

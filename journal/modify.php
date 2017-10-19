@@ -24,17 +24,17 @@
         else
         {
             unset($missing);
-            $title = $_POST["title"];
-            $abstract = $_POST["abstract"];
-            $author = $_POST["author"];
-            $journalname = $_POST["journalname"];
-            $time = $_POST["time"];
-            $published_status = $_POST["published_status"];
-            $sci = $_POST["sci"];
-            $ei = $_POST["ei"];
-            $istp = $_POST["istp"];
-            $if = $_POST["if"];
-            $acknowledged = $_POST["acknowledged"];
+            $title = strip_tags($_POST["title"]);
+            $abstract = strip_tags($_POST["abstract"]);
+            $author = strip_tags($_POST["author"]);
+            $journalname = strip_tags($_POST["journalname"]);
+            $time = strip_tags($_POST["time"]);
+            $published_status = strip_tags($_POST["published_status"]);
+            $sci = strip_tags($_POST["sci"]);
+            $ei = strip_tags($_POST["ei"]);
+            $istp = strip_tags($_POST["istp"]);
+            $if = strip_tags($_POST["if"]);
+            $acknowledged = strip_tags($_POST["acknowledged"]);
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")
             {

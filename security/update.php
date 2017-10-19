@@ -24,9 +24,9 @@
         }
         else
         {
-            $old_password = $_POST["password"];
-            $new_password = $_POST["new_password"];
-            $password_confirm = $_POST["confirm_password"];
+            $old_password = strip_tags($_POST["password"]);
+            $new_password = strip_tags($_POST["new_password"]);
+            $password_confirm = strip_tags($_POST["confirm_password"]);
             if ($new_password != $password_confirm)
             {
                 $response = array('status_response'  => 'unmatch');

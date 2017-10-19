@@ -26,16 +26,16 @@
         {
             unset($missing);
             $update_date = date("Y-m-d H:i:s");
-            $midterm_progress_report_form_title = $_POST["midterm_progress_report_form_title"];
-            $mp_principal_investigator_name = $_POST["mp_principal_investigator_name"];
-            $mp_principal_investigator_unit = $_POST["mp_principal_investigator_name"];
-            $mp_co_investigator_name = $_POST["mp_co_investigator_name"];
-            $mp_co_investigator_unit = $_POST["mp_co_investigator_unit"];
-            $mp_others_name = $_POST["mp_others_name"];
-            $mp_others_unit = $_POST["mp_others_unit"];
-            $midterm_progress_report_form_project_starting_date = $_POST["midterm_progress_report_form_project_starting_date"];
-            $midterm_progress_report_form_project_completion_date = $_POST["midterm_progress_report_form_project_completion_date"];
-            $midterm_progress_report_form_duration = $_POST["midterm_progress_report_form_duration"];
+            $midterm_progress_report_form_title = strip_tags($_POST["midterm_progress_report_form_title"]);
+            $mp_principal_investigator_name = strip_tags($_POST["mp_principal_investigator_name"]);
+            $mp_principal_investigator_unit = strip_tags($_POST["mp_principal_investigator_name"]);
+            $mp_co_investigator_name = strip_tags($_POST["mp_co_investigator_name"]);
+            $mp_co_investigator_unit = strip_tags($_POST["mp_co_investigator_unit"]);
+            $mp_others_name = strip_tags($_POST["mp_others_name"]);
+            $mp_others_unit = strip_tags($_POST["mp_others_unit"]);
+            $midterm_progress_report_form_project_starting_date = strip_tags($_POST["midterm_progress_report_form_project_starting_date"]);
+            $midterm_progress_report_form_project_completion_date = strip_tags($_POST["midterm_progress_report_form_project_completion_date"]);
+            $midterm_progress_report_form_duration = strip_tags($_POST["midterm_progress_report_form_duration"]);
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
             if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")

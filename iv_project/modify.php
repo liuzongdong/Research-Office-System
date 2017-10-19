@@ -25,8 +25,8 @@
         else
         {
             unset($missing);
-            $iv_project_name_of_institute_or_center = $_POST["iv_project_name_of_institute_or_center"];
-            $iv_project_budget = $_POST["iv_project_budget"];
+            $iv_project_name_of_institute_or_center = strip_tags($_POST["iv_project_name_of_institute_or_center"]);
+            $iv_project_budget = strip_tags($_POST["iv_project_budget"]);
             $update_date = date("Y-m-d H:i:s");
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")

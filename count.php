@@ -1,10 +1,6 @@
 <?php
 	session_start();
 	require("base.php");
-	if (!(isset($_SESSION["staff"]) && $_SESSION["staff"] === true))
-    {
-		echo '<script type="text/javascript">alert("Please Login");location.href="../login.html"</script>';
-    }
 	$dbh = new PDO($dbinfo,$dbusername,$dbpassword);
 	$dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false); //Disable Prepared Statements, in case of SQL Injection.
 	$sql = "select * from iv_project where iv_project_status = 0"; // *, select all. '?' and '?', SQL Injection

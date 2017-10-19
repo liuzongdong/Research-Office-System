@@ -5,8 +5,8 @@
     {
         header("Location:".$url); exit;
     }
-    $email = $_POST["email"];
-    $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
+    $email = strip_tags($_POST["email"]);
+    $password = password_hash(strip_tags($_POST["password"]), PASSWORD_DEFAULT);
     $dbh = new PDO($dbinfo,$dbusername,$dbpassword);
     $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $sql = "select * from user where user_email = ?";

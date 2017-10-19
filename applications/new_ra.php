@@ -24,7 +24,7 @@
         else
         {
             unset($missing);
-            $title = $_POST["title"];
+            $title = strip_tags($_POST["title"]);
             $updateddate = date("Y  M  d");
             $type = "RA";
             if ($_SESSION['user_type'] == 2)

@@ -12,7 +12,7 @@
         foreach($data as $key => $value)
         {
             $data[$key]['ip_duration_from'] = $data[$key]['ip_duration_from']." ~ ".$data[$key]['ip_duration_to'];
-            $data[$key]['action'] = "<a href=\"edit?id=".$data[$key]['ip_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">Edit</button></a> <a onclick = confirmDelete(".$data[$key]['ip_id'].")><button type=\"button\" class=\"btn btn-danger btn-xs\">Delete</button></a>";
+            $data[$key]['action'] = "<a href=\"edit.php?id=".$data[$key]['ip_id']."\"><button type=\"button\" class=\"btn btn-primary btn-xs\">Edit</button></a> <a onclick = confirmDelete(".$data[$key]['ip_id'].")><button type=\"button\" class=\"btn btn-danger btn-xs\">Delete</button></a>";
         }
         $json = json_encode($data);
         echo $json;

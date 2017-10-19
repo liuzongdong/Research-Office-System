@@ -26,9 +26,9 @@
         {
             unset($missing);
             $upid = $_POST['id'];
-            $title = $_POST["title"];
-            $duration_from = $_POST["from"];
-            $duration_to = $_POST["to"];
+            $title = strip_tags($_POST["title"]);
+            $duration_from = strip_tags($_POST["from"]);
+            $duration_to = strip_tags($_POST["to"]);
             $update_date = date("Y-m-d H:i:s");
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")

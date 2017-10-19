@@ -24,19 +24,19 @@
         else
         {
             unset($missing);
-            $title = $_POST["report_name"];
-            $abstract = $_POST["abstract"];
-            $author = $_POST["author"];
-            $type = $_POST["report_type"];
-            $conference_name = $_POST["conference_name"];
-        	$conference_addressorganizer = $_POST["conference_addressorganizer"];
-            $country = $_POST["country"];
-            $city = $_POST["city"];
-            $conference_address = $_POST["conference_address"];
-            $page_number = $_POST["page_number"];
-            $start_date = $_POST["start_date"];
-            $due_date = $_POST["due_date"];
-            $published_date = $_POST["published_date"];
+            $title = strip_tags($_POST["report_name"]);
+            $abstract = strip_tags($_POST["abstract"]);
+            $author = strip_tags($_POST["author"]);
+            $type = strip_tags($_POST["report_type"]);
+            $conference_name = strip_tags($_POST["conference_name"]);
+        	$conference_addressorganizer = strip_tags($_POST["conference_addressorganizer"]);
+            $country = strip_tags($_POST["country"]);
+            $city = strip_tags($_POST["city"]);
+            $conference_address = strip_tags($_POST["conference_address"]);
+            $page_number = strip_tags($_POST["page_number"]);
+            $start_date = strip_tags($_POST["start_date"]);
+            $due_date = strip_tags($_POST["due_date"]);
+            $published_date = strip_tags($_POST["published_date"]);
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")
             {

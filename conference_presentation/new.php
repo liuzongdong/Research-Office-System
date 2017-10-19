@@ -24,16 +24,16 @@
         else
         {
             unset($missing);
-            $conference_presentation_report_type = $_POST["conference_presentation_report_type"];
-        	$conference_presentation_type_of_meeting = $_POST["conference_presentation_type_of_meeting"];
-        	$conference_presentation_report_name = $_POST["conference_presentation_report_name"];
-            $conference_presentation_author = $_POST["conference_presentation_author"];
-            $conference_presentation_abstract = $_POST["conference_presentation_abstract"];
-            $conference_presentation_conference_name = $_POST["conference_presentation_conference_name"];
-            $conference_presentation_country = $_POST["conference_presentation_country"];
-            $conference_presentation_conference_address = $_POST["conference_presentation_conference_address"];
-            $conference_presentation_start_date = $_POST["conference_presentation_start_date"];
-            $conference_presentation_due_date = $_POST["conference_presentation_due_date"];
+            $conference_presentation_report_type = strip_tags($_POST["conference_presentation_report_type"]);
+        	$conference_presentation_type_of_meeting = strip_tags($_POST["conference_presentation_type_of_meeting"]);
+        	$conference_presentation_report_name = strip_tags($_POST["conference_presentation_report_name"]);
+            $conference_presentation_author = strip_tags($_POST["conference_presentation_author"]);
+            $conference_presentation_abstract = strip_tags($_POST["conference_presentation_abstract"]);
+            $conference_presentation_conference_name = strip_tags($_POST["conference_presentation_conference_name"]);
+            $conference_presentation_country = strip_tags($_POST["conference_presentation_country"]);
+            $conference_presentation_conference_address = strip_tags($_POST["conference_presentation_conference_address"]);
+            $conference_presentation_start_date = strip_tags($_POST["conference_presentation_start_date"]);
+            $conference_presentation_due_date = strip_tags($_POST["conference_presentation_due_date"]);
             $action = "";
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);

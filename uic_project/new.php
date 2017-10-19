@@ -25,10 +25,10 @@
         else
         {
             unset($missing);
-            $title = strip_tags($_POST["title"]);
+            $title = strip_tags(strip_tags($_POST["title"]));
             $update_date = date("Y-m-d H:i:s");
-            $duration_from = strip_tags($_POST["from"]);
-            $duration_to = strip_tags($_POST["to"]);
+            $duration_from = strip_tags(strip_tags($_POST["from"]));
+            $duration_to = strip_tags(strip_tags($_POST["to"]));
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
             if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")

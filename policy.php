@@ -146,71 +146,33 @@ $(document).ready(function () {
 				<div class="panel-heading"> Policy </div>
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-xs-4">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									Default Panel
-								</div>
-								<div class="panel-body">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-								</div>
-							</div>
-						</div>
 
-						<div class="col-xs-4">
-							<div class="panel panel-primary">
-								<div class="panel-heading">
-									Primary Panel
-								</div>
-								<div class="panel-body">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-4">
-							<div class="panel panel-success">
-								<div class="panel-heading">
-									Success Panel
-								</div>
-								<div class="panel-body">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-								</div>
-							</div>
-						</div>
-
-					</div><!-- /.row -->
-
-					<div class="row">
-						<div class="col-xs-4">
+						<div class="col-xs-6">
 							<div class="panel panel-info">
 								<div class="panel-heading">
-									Info Panel
+									Information
 								</div>
 								<div class="panel-body">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
+									<p>
+									<pre style="font-size:15px;"><span class='glyphicon glyphicon-export' aria-hidden='false'></span> Means export to excel or pdf.</pre>
+									<pre style="font-size:15px;"><span class='glyphicon glyphicon-time' aria-hidden='false'></span> Means waiting approval.</pre>
+									<pre style="font-size:15px;"><span class='glyphicon glyphicon-ok' aria-hidden='false'></span> Means rejected.</pre>
+									<pre style="font-size:15px;"><span class='glyphicon glyphicon-remove' aria-hidden='false'></span> Means approved.</pre>
+									</p>
 								</div>
 							</div>
 						</div>
 
-						<div class="col-xs-4">
+						<div class="col-xs-6">
 							<div class="panel panel-warning">
 								<div class="panel-heading">
-									Warning Panel
+									Waring
 								</div>
 								<div class="panel-body">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xs-4">
-							<div class="panel panel-danger">
-								<div class="panel-heading">
-									Danger Panel
-								</div>
-								<div class="panel-body">
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut ante in sapien blandit luctus sed ut lacus. Phasellus urna est, faucibus nec ultrices placerat, feugiat et ligula. Donec vestibulum magna a dui pharetra molestie. Fusce et dui urna.</p>
+									<p>
+										<pre style="font-size:15px;"><span class='glyphicon glyphicon-time' aria-hidden='false'></span> Edit records will keep it in waiting status.</pre>
+										<pre style="font-size:15px;"><span class='glyphicon glyphicon-comment' aria-hidden='false'></span> Best View in Chrome, Firefox.</pre>
+									</p>
 								</div>
 							</div>
 						</div>

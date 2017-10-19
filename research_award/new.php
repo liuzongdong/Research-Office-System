@@ -24,13 +24,13 @@
         else
         {
             unset($missing);
-            $research_award_achievement_name = $_POST["research_award_achievement_name"];
-            $research_award_abstract = $_POST["research_award_abstract"];
-            $research_award_author = $_POST["research_award_author"];
-            $research_award_assessment_organization = $_POST["research_award_assessment_organization"];
-            $research_award_publication_time = $_POST["research_award_publication_time"];
-            $research_award_reward_category = $_POST["research_award_reward_category"];
-            $research_award_reward_grade = $_POST["research_award_reward_grade"];
+            $research_award_achievement_name = strip_tags($_POST["research_award_achievement_name"]);
+            $research_award_abstract = strip_tags($_POST["research_award_abstract"]);
+            $research_award_author = strip_tags($_POST["research_award_author"]);
+            $research_award_assessment_organization = strip_tags($_POST["research_award_assessment_organization"]);
+            $research_award_publication_time = strip_tags($_POST["research_award_publication_time"]);
+            $research_award_reward_category = strip_tags($_POST["research_award_reward_category"]);
+            $research_award_reward_grade = strip_tags($_POST["research_award_reward_grade"]);
             $action = "";
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);

@@ -24,15 +24,15 @@
         else
         {
             unset($missing);
-            $academic_monograph_monograph_title = $_POST["academic_monograph_monograph_title"];
-        	$academic_monograph_abstract = $_POST["academic_monograph_abstract"];
-        	$academic_monograph_author = $_POST["academic_monograph_author"];
-            $academic_monograph_isbn_number = $_POST["academic_monograph_isbn_number"];
-            $academic_monograph_country = $_POST["academic_monograph_country"];
-            $academic_monograph_city = $_POST["academic_monograph_city"];
-            $academic_monograph_total_word = $_POST["academic_monograph_total_word"];
-            $academic_monograph_press = $_POST["academic_monograph_press"];
-            $academic_monograph_published_date = $_POST["academic_monograph_published_date"];
+            $academic_monograph_monograph_title = strip_tags($_POST["academic_monograph_monograph_title"]);
+        	$academic_monograph_abstract = strip_tags($_POST["academic_monograph_abstract"]);
+        	$academic_monograph_author = strip_tags($_POST["academic_monograph_author"]);
+            $academic_monograph_isbn_number = strip_tags($_POST["academic_monograph_isbn_number"]);
+            $academic_monograph_country = strip_tags($_POST["academic_monograph_country"]);
+            $academic_monograph_city = strip_tags($_POST["academic_monograph_city"]);
+            $academic_monograph_total_word = strip_tags($_POST["academic_monograph_total_word"]);
+            $academic_monograph_press = strip_tags($_POST["academic_monograph_press"]);
+            $academic_monograph_published_date = strip_tags($_POST["academic_monograph_published_date"]);
             $action = "";
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);

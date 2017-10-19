@@ -24,12 +24,12 @@
         else
         {
             unset($missing);
-            $software_copyright_dynacomm = $_POST["software_copyright_dynacomm"];
-            $software_copyright_author = $_POST["software_copyright_author"];
-            $software_copyright_registration_number = $_POST["software_copyright_registration_number"];
-            $software_copyright_completion_time = $_POST["software_copyright_completion_time"];
-            $software_copyright_way = $_POST["software_copyright_way"];
-            $software_copyright_scope = $_POST["software_copyright_scope"];
+            $software_copyright_dynacomm = strip_tags($_POST["software_copyright_dynacomm"]);
+            $software_copyright_author = strip_tags($_POST["software_copyright_author"]);
+            $software_copyright_registration_number = strip_tags($_POST["software_copyright_registration_number"]);
+            $software_copyright_completion_time = strip_tags($_POST["software_copyright_completion_time"]);
+            $software_copyright_way = strip_tags($_POST["software_copyright_way"]);
+            $software_copyright_scope = strip_tags($_POST["software_copyright_scope"]);
             $upload_file = $_FILES["file"]["name"];
             if ($upload_file != "")
             {

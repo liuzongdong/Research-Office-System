@@ -21,8 +21,13 @@
             if ($row['user_type'] == 4)
             {
                 $_SESSION['user_type'] = $row['user_type'];
+                $_SESSION["ip"] = $row['ip_address'];
                 $_SESSION['admin'] = true;
                 $_SESSION["english_name"] = $row['english_name'];
+                $ip_address = get_client_ip();
+                $sql = "update user set ip_address = ? where user_id = ?";
+                $prepare = $dbh -> prepare($sql);
+                $execute = $prepare -> execute(array($ip_address, $_SESSION["user_id"]));
                 header("Location: admin/index.php");
                 $dbh = null;
             }
@@ -33,6 +38,10 @@
                 $_SESSION['staff'] = true;
                 $_SESSION["user_id"] = $row["user_id"];
                 $_SESSION["english_name"] = $row['english_name'];
+                $ip_address = get_client_ip();
+                $sql = "update user set ip_address = ? where user_id = ?";
+                $prepare = $dbh -> prepare($sql);
+                $execute = $prepare -> execute(array($ip_address, $_SESSION["user_id"]));
                 header("Location: staff.php");
                 $dbh = null;
             }

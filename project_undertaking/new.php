@@ -25,8 +25,8 @@
         else
         {
             unset($missing);
-            $title = $_POST["title"];
-            $type = $_POST["type"];
+            $title = strip_tags($_POST["title"]);
+            $type = strip_tags($_POST["type"]);
             $update_date = date("Y-m-d H:i:s");
             if (mime_content_type($_FILES['file']['tmp_name']) != "application/pdf")
             {

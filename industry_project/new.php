@@ -24,13 +24,13 @@
         else
         {
             unset($missing);
-            $title = $_POST["title"];
-            $type = $_POST["type"];
-        	$role = $_POST["role"];
-            $source = $_POST["source"];
-            $duration_from = $_POST["from"];
-            $duration_to = $_POST["to"];
-        	$amount = $_POST["amount"];
+            $title = strip_tags($_POST["title"]);
+            $type = strip_tags($_POST["type"]);
+        	$role = strip_tags($_POST["role"]);
+            $source = strip_tags($_POST["source"]);
+            $duration_from = strip_tags($_POST["from"]);
+            $duration_to = strip_tags($_POST["to"]);
+        	$amount = strip_tags($_POST["amount"]);
             $action = "";
             $upload_file = $_FILES["file"]["name"];
             $extension = pathinfo($upload_file, PATHINFO_EXTENSION);
